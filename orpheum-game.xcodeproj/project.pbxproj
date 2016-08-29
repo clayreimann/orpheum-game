@@ -16,6 +16,12 @@
 		C83B4B2C1C601C4400321C0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B2A1C601C4400321C0B /* LaunchScreen.storyboard */; };
 		C83B4B371C601C4400321C0B /* Ramp_Game___YichenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B361C601C4400321C0B /* Ramp_Game___YichenTests.swift */; };
 		C83B4B421C601C4400321C0B /* Ramp_Game___YichenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B411C601C4400321C0B /* Ramp_Game___YichenUITests.swift */; };
+		C88E3F5D1D6FC49F00FDC143 /* LeverGameNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88E3F5C1D6FC49F00FDC143 /* LeverGameNew.swift */; };
+		C88E3F5F1D6FC7BB00FDC143 /* LeverGameNew.sks in Resources */ = {isa = PBXBuildFile; fileRef = C88E3F5E1D6FC7BB00FDC143 /* LeverGameNew.sks */; };
+		C88E9CAD1D53E92100CB0C9D /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = C88E9CAC1D53E92100CB0C9D /* monster.png */; };
+		C8D456371CA1F9E10095DB4E /* Snowball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D456361CA1F9E10095DB4E /* Snowball.swift */; };
+		C8F888761D39454E00A8FA80 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8F888751D39454E00A8FA80 /* MenuScene.sks */; };
+		C8F888781D39457F00A8FA80 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F888771D39457F00A8FA80 /* MenuScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C83B4B1A1C601C4400321C0B /* Ramp Game - Yichen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ramp Game - Yichen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C83B4B1A1C601C4400321C0B /* orpheum-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "orpheum-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83B4B1D1C601C4400321C0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C83B4B1F1C601C4400321C0B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		C83B4B211C601C4400321C0B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -45,12 +51,18 @@
 		C83B4B281C601C4400321C0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C83B4B2B1C601C4400321C0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C83B4B2D1C601C4400321C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C83B4B321C601C4400321C0B /* Ramp Game - YichenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ramp Game - YichenTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C83B4B321C601C4400321C0B /* orpheum-gameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "orpheum-gameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83B4B361C601C4400321C0B /* Ramp_Game___YichenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ramp_Game___YichenTests.swift"; sourceTree = "<group>"; };
 		C83B4B381C601C4400321C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C83B4B3D1C601C4400321C0B /* Ramp Game - YichenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ramp Game - YichenUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C83B4B3D1C601C4400321C0B /* orpheum-gameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "orpheum-gameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83B4B411C601C4400321C0B /* Ramp_Game___YichenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ramp_Game___YichenUITests.swift"; sourceTree = "<group>"; };
 		C83B4B431C601C4400321C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C88E3F5C1D6FC49F00FDC143 /* LeverGameNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeverGameNew.swift; sourceTree = "<group>"; };
+		C88E3F5E1D6FC7BB00FDC143 /* LeverGameNew.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeverGameNew.sks; sourceTree = "<group>"; };
+		C88E9CAC1D53E92100CB0C9D /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monster.png; path = "../../../../Documents/GWC Code/monster.png"; sourceTree = "<group>"; };
+		C8D456361CA1F9E10095DB4E /* Snowball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snowball.swift; sourceTree = "<group>"; };
+		C8F888751D39454E00A8FA80 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		C8F888771D39457F00A8FA80 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,62 +93,69 @@
 		C83B4B111C601C4400321C0B = {
 			isa = PBXGroup;
 			children = (
-				C83B4B1C1C601C4400321C0B /* Ramp Game - Yichen */,
-				C83B4B351C601C4400321C0B /* Ramp Game - YichenTests */,
-				C83B4B401C601C4400321C0B /* Ramp Game - YichenUITests */,
+				C83B4B1C1C601C4400321C0B /* orpheum-game */,
+				C83B4B351C601C4400321C0B /* orpheum-gameTests */,
+				C83B4B401C601C4400321C0B /* orpheum-gameUITests */,
 				C83B4B1B1C601C4400321C0B /* Products */,
+				C88E9CAC1D53E92100CB0C9D /* monster.png */,
 			);
 			sourceTree = "<group>";
 		};
 		C83B4B1B1C601C4400321C0B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C83B4B1A1C601C4400321C0B /* Ramp Game - Yichen.app */,
-				C83B4B321C601C4400321C0B /* Ramp Game - YichenTests.xctest */,
-				C83B4B3D1C601C4400321C0B /* Ramp Game - YichenUITests.xctest */,
+				C83B4B1A1C601C4400321C0B /* orpheum-game.app */,
+				C83B4B321C601C4400321C0B /* orpheum-gameTests.xctest */,
+				C83B4B3D1C601C4400321C0B /* orpheum-gameUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C83B4B1C1C601C4400321C0B /* Ramp Game - Yichen */ = {
+		C83B4B1C1C601C4400321C0B /* orpheum-game */ = {
 			isa = PBXGroup;
 			children = (
 				C83B4B1D1C601C4400321C0B /* AppDelegate.swift */,
 				C83B4B1F1C601C4400321C0B /* GameScene.sks */,
 				C83B4B211C601C4400321C0B /* GameScene.swift */,
+				C8F888751D39454E00A8FA80 /* MenuScene.sks */,
+				C8F888771D39457F00A8FA80 /* MenuScene.swift */,
+				C8D456361CA1F9E10095DB4E /* Snowball.swift */,
 				C83B4B231C601C4400321C0B /* GameViewController.swift */,
+				C88E3F5C1D6FC49F00FDC143 /* LeverGameNew.swift */,
+				C88E3F5E1D6FC7BB00FDC143 /* LeverGameNew.sks */,
 				C83B4B251C601C4400321C0B /* Main.storyboard */,
 				C83B4B281C601C4400321C0B /* Assets.xcassets */,
 				C83B4B2A1C601C4400321C0B /* LaunchScreen.storyboard */,
 				C83B4B2D1C601C4400321C0B /* Info.plist */,
 			);
-			path = "Ramp Game - Yichen";
+			name = "orpheum-game";
+			path = "oprheum-game";
 			sourceTree = "<group>";
 		};
-		C83B4B351C601C4400321C0B /* Ramp Game - YichenTests */ = {
+		C83B4B351C601C4400321C0B /* orpheum-gameTests */ = {
 			isa = PBXGroup;
 			children = (
 				C83B4B361C601C4400321C0B /* Ramp_Game___YichenTests.swift */,
 				C83B4B381C601C4400321C0B /* Info.plist */,
 			);
-			path = "Ramp Game - YichenTests";
+			path = "orpheum-gameTests";
 			sourceTree = "<group>";
 		};
-		C83B4B401C601C4400321C0B /* Ramp Game - YichenUITests */ = {
+		C83B4B401C601C4400321C0B /* orpheum-gameUITests */ = {
 			isa = PBXGroup;
 			children = (
 				C83B4B411C601C4400321C0B /* Ramp_Game___YichenUITests.swift */,
 				C83B4B431C601C4400321C0B /* Info.plist */,
 			);
-			path = "Ramp Game - YichenUITests";
+			path = "orpheum-gameUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C83B4B191C601C4400321C0B /* Ramp Game - Yichen */ = {
+		C83B4B191C601C4400321C0B /* orpheum-game */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C83B4B461C601C4400321C0B /* Build configuration list for PBXNativeTarget "Ramp Game - Yichen" */;
+			buildConfigurationList = C83B4B461C601C4400321C0B /* Build configuration list for PBXNativeTarget "orpheum-game" */;
 			buildPhases = (
 				C83B4B161C601C4400321C0B /* Sources */,
 				C83B4B171C601C4400321C0B /* Frameworks */,
@@ -146,14 +165,14 @@
 			);
 			dependencies = (
 			);
-			name = "Ramp Game - Yichen";
+			name = "orpheum-game";
 			productName = "Ramp Game - Yichen";
-			productReference = C83B4B1A1C601C4400321C0B /* Ramp Game - Yichen.app */;
+			productReference = C83B4B1A1C601C4400321C0B /* orpheum-game.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C83B4B311C601C4400321C0B /* Ramp Game - YichenTests */ = {
+		C83B4B311C601C4400321C0B /* orpheum-gameTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C83B4B491C601C4400321C0B /* Build configuration list for PBXNativeTarget "Ramp Game - YichenTests" */;
+			buildConfigurationList = C83B4B491C601C4400321C0B /* Build configuration list for PBXNativeTarget "orpheum-gameTests" */;
 			buildPhases = (
 				C83B4B2E1C601C4400321C0B /* Sources */,
 				C83B4B2F1C601C4400321C0B /* Frameworks */,
@@ -164,14 +183,14 @@
 			dependencies = (
 				C83B4B341C601C4400321C0B /* PBXTargetDependency */,
 			);
-			name = "Ramp Game - YichenTests";
+			name = "orpheum-gameTests";
 			productName = "Ramp Game - YichenTests";
-			productReference = C83B4B321C601C4400321C0B /* Ramp Game - YichenTests.xctest */;
+			productReference = C83B4B321C601C4400321C0B /* orpheum-gameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C83B4B3C1C601C4400321C0B /* Ramp Game - YichenUITests */ = {
+		C83B4B3C1C601C4400321C0B /* orpheum-gameUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C83B4B4C1C601C4400321C0B /* Build configuration list for PBXNativeTarget "Ramp Game - YichenUITests" */;
+			buildConfigurationList = C83B4B4C1C601C4400321C0B /* Build configuration list for PBXNativeTarget "orpheum-gameUITests" */;
 			buildPhases = (
 				C83B4B391C601C4400321C0B /* Sources */,
 				C83B4B3A1C601C4400321C0B /* Frameworks */,
@@ -182,9 +201,9 @@
 			dependencies = (
 				C83B4B3F1C601C4400321C0B /* PBXTargetDependency */,
 			);
-			name = "Ramp Game - YichenUITests";
+			name = "orpheum-gameUITests";
 			productName = "Ramp Game - YichenUITests";
-			productReference = C83B4B3D1C601C4400321C0B /* Ramp Game - YichenUITests.xctest */;
+			productReference = C83B4B3D1C601C4400321C0B /* orpheum-gameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -194,7 +213,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = "Yichen Yao";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					C83B4B191C601C4400321C0B = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -212,7 +231,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C83B4B151C601C4400321C0B /* Build configuration list for PBXProject "Ramp Game - Yichen" */;
+			buildConfigurationList = C83B4B151C601C4400321C0B /* Build configuration list for PBXProject "orpheum-game" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -225,9 +244,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C83B4B191C601C4400321C0B /* Ramp Game - Yichen */,
-				C83B4B311C601C4400321C0B /* Ramp Game - YichenTests */,
-				C83B4B3C1C601C4400321C0B /* Ramp Game - YichenUITests */,
+				C83B4B191C601C4400321C0B /* orpheum-game */,
+				C83B4B311C601C4400321C0B /* orpheum-gameTests */,
+				C83B4B3C1C601C4400321C0B /* orpheum-gameUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,6 +257,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C83B4B201C601C4400321C0B /* GameScene.sks in Resources */,
+				C88E3F5F1D6FC7BB00FDC143 /* LeverGameNew.sks in Resources */,
+				C8F888761D39454E00A8FA80 /* MenuScene.sks in Resources */,
+				C88E9CAD1D53E92100CB0C9D /* monster.png in Resources */,
 				C83B4B2C1C601C4400321C0B /* LaunchScreen.storyboard in Resources */,
 				C83B4B291C601C4400321C0B /* Assets.xcassets in Resources */,
 				C83B4B271C601C4400321C0B /* Main.storyboard in Resources */,
@@ -267,7 +289,10 @@
 			files = (
 				C83B4B221C601C4400321C0B /* GameScene.swift in Sources */,
 				C83B4B241C601C4400321C0B /* GameViewController.swift in Sources */,
+				C8F888781D39457F00A8FA80 /* MenuScene.swift in Sources */,
+				C88E3F5D1D6FC49F00FDC143 /* LeverGameNew.swift in Sources */,
 				C83B4B1E1C601C4400321C0B /* AppDelegate.swift in Sources */,
+				C8D456371CA1F9E10095DB4E /* Snowball.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,12 +317,12 @@
 /* Begin PBXTargetDependency section */
 		C83B4B341C601C4400321C0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C83B4B191C601C4400321C0B /* Ramp Game - Yichen */;
+			target = C83B4B191C601C4400321C0B /* orpheum-game */;
 			targetProxy = C83B4B331C601C4400321C0B /* PBXContainerItemProxy */;
 		};
 		C83B4B3F1C601C4400321C0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C83B4B191C601C4400321C0B /* Ramp Game - Yichen */;
+			target = C83B4B191C601C4400321C0B /* orpheum-game */;
 			targetProxy = C83B4B3E1C601C4400321C0B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -413,6 +438,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Ramp-Game---Yichen";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -424,6 +450,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Ramp-Game---Yichen";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -480,7 +507,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C83B4B151C601C4400321C0B /* Build configuration list for PBXProject "Ramp Game - Yichen" */ = {
+		C83B4B151C601C4400321C0B /* Build configuration list for PBXProject "orpheum-game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C83B4B441C601C4400321C0B /* Debug */,
@@ -489,29 +516,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C83B4B461C601C4400321C0B /* Build configuration list for PBXNativeTarget "Ramp Game - Yichen" */ = {
+		C83B4B461C601C4400321C0B /* Build configuration list for PBXNativeTarget "orpheum-game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C83B4B471C601C4400321C0B /* Debug */,
 				C83B4B481C601C4400321C0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		C83B4B491C601C4400321C0B /* Build configuration list for PBXNativeTarget "Ramp Game - YichenTests" */ = {
+		C83B4B491C601C4400321C0B /* Build configuration list for PBXNativeTarget "orpheum-gameTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C83B4B4A1C601C4400321C0B /* Debug */,
 				C83B4B4B1C601C4400321C0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		C83B4B4C1C601C4400321C0B /* Build configuration list for PBXNativeTarget "Ramp Game - YichenUITests" */ = {
+		C83B4B4C1C601C4400321C0B /* Build configuration list for PBXNativeTarget "orpheum-gameUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C83B4B4D1C601C4400321C0B /* Debug */,
 				C83B4B4E1C601C4400321C0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,11 +1,7 @@
-//
-//  AppDelegate.swift
-//  Ramp Game - Yichen
-//
-//  Created by Yichen Yao on 2/1/16.
-//  Copyright © 2016 Yichen Yao. All rights reserved.
-//
-
+//Menu scene links to lever game
+//Ramp game and lever game link back to menu
+//ramp game has difficulty levels
+//graphics
 import UIKit
 
 @UIApplicationMain
