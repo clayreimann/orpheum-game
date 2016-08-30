@@ -1,9 +1,7 @@
 //
 //  GameViewController.swift
-//  Ramp Game - Yichen
 //
-//  Created by Yichen Yao on 2/1/16.
-//  Copyright (c) 2016 Yichen Yao. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
 //
 
 import UIKit

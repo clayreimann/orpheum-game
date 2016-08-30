@@ -1,15 +1,14 @@
 //
-//  Ramp_Game___YichenTests.swift
-//  Ramp Game - YichenTests
+//  orpheum-gameTests.swift
+//  orpheum-game Tests
 //
-//  Created by Yichen Yao on 2/1/16.
-//  Copyright © 2016 Yichen Yao. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
 //
 
 import XCTest
-@testable import Ramp_Game___Yichen
+@testable import orpheum_game
 
-class Ramp_Game___YichenTests: XCTestCase {
+class orpheum_gameTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

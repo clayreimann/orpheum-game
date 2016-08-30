@@ -1,8 +1,8 @@
 //
 //  GameScene.swift
 //
-//  Created by Yichen Yao on 2/1/16.
-//  Copyright (c) 2016 Yichen Yao. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
+//
 
 import SpriteKit
 
@@ -343,7 +343,7 @@ class GameScene: SKScene {
         timerValue.zPosition = 100
         self.addChild(timerValue)
         
-        monster = SKSpriteNode(imageNamed: "monster.png")
+        monster = SKSpriteNode(imageNamed: "Monster")
         monster.name = "monster"
         monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.size)
         monster.physicsBody?.mass = 0.5

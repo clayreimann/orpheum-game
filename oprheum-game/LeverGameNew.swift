@@ -1,9 +1,7 @@
 //
 //  LeverGameNew.swift
-//  Ramp Game - Yichen
 //
-//  Created by Yichen Yao on 8/25/16.
-//  Copyright © 2016 Yichen Yao. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
 //
 
 import SpriteKit
