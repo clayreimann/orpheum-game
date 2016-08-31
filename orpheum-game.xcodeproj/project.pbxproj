@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8128F8CD1D751AE000132AC2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B381C601C4400321C0B /* Info.plist */; };
+		81DEA1451D7659B1004E0869 /* SnowballNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEA1441D7659B1004E0869 /* SnowballNode.swift */; };
+		81DEA1471D765A03004E0869 /* RampNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEA1461D765A03004E0869 /* RampNode.swift */; };
 		C83B4B1E1C601C4400321C0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B1D1C601C4400321C0B /* AppDelegate.swift */; };
 		C83B4B201C601C4400321C0B /* SnowballScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B1F1C601C4400321C0B /* SnowballScene.sks */; };
 		C83B4B221C601C4400321C0B /* SnowballScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B211C601C4400321C0B /* SnowballScene.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81DEA1441D7659B1004E0869 /* SnowballNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowballNode.swift; sourceTree = "<group>"; };
+		81DEA1461D765A03004E0869 /* RampNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RampNode.swift; sourceTree = "<group>"; };
 		C83B4B1A1C601C4400321C0B /* orpheum-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "orpheum-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83B4B1D1C601C4400321C0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C83B4B1F1C601C4400321C0B /* SnowballScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowballScene.sks; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				C8D456361CA1F9E10095DB4E /* Snowball.swift */,
+				81DEA1441D7659B1004E0869 /* SnowballNode.swift */,
+				81DEA1461D765A03004E0869 /* RampNode.swift */,
 				C83B4B211C601C4400321C0B /* SnowballScene.swift */,
 				C83B4B1F1C601C4400321C0B /* SnowballScene.sks */,
 			);
@@ -312,8 +318,10 @@
 				C83B4B241C601C4400321C0B /* GameViewController.swift in Sources */,
 				C8F888781D39457F00A8FA80 /* MenuScene.swift in Sources */,
 				C88E3F5D1D6FC49F00FDC143 /* LeverScene.swift in Sources */,
+				81DEA1451D7659B1004E0869 /* SnowballNode.swift in Sources */,
 				C83B4B1E1C601C4400321C0B /* AppDelegate.swift in Sources */,
 				C8D456371CA1F9E10095DB4E /* Snowball.swift in Sources */,
+				81DEA1471D765A03004E0869 /* RampNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
