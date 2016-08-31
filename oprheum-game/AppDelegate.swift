@@ -1,7 +1,7 @@
-//Menu scene links to lever game
-//Ramp game and lever game link back to menu
-//ramp game has difficulty levels
-//graphics
+// Menu scene links to lever game
+// Ramp game and lever game link back to menu
+// ramp game has difficulty levels
+// graphics
 import UIKit
 
 @UIApplicationMain
@@ -39,4 +39,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
