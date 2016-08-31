@@ -35,7 +35,7 @@ class GameViewController: UIViewController {
     }
 
     func startSnowballGame() {
-        if let snowballGameScene = GameScene(fileNamed: "GameScene") {
+        if let snowballGameScene = SnowballScene(fileNamed: "SnowballScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -58,7 +58,7 @@ class GameViewController: UIViewController {
 
     
     func startLeverGameNew() {
-        if let leverGameScene = GameSceneNew(fileNamed: "GameScene") {
+        if let leverGameScene = LeverScene(fileNamed: "LeverScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true

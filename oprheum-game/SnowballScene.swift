@@ -140,7 +140,7 @@ class RampNode: SKNode {
     }
 }
 
-class GameScene: SKScene {
+class SnowballScene: SKScene {
     var gameViewController: GameViewController!
     var difficulty: CGFloat = 0.5
     
@@ -305,7 +305,7 @@ class GameScene: SKScene {
         self.addChild(buttons)
 
         let pinchRecognzier = UIPinchGestureRecognizer(target: self, action:
-            #selector(GameScene.handlePinchGesture(_:)))
+            #selector(SnowballScene.handlePinchGesture(_:)))
         self.view?.addGestureRecognizer(pinchRecognzier)
         
         let toggleSimulation = SKShapeNode(rect: CGRect(x: 50, y: 315, width: 70, height: 50), cornerRadius: 4)
