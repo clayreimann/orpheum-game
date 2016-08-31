@@ -7,11 +7,11 @@
 import SpriteKit
 
 class SnowballNode: SKNode {
+    let whiteColor = SKColor.whiteColor()
+    
     var snowballNode: SKShapeNode!
     var mass: CGFloat = 8
-    var mass0: CGFloat = 0
-    let whiteColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
-    
+    var mass0: CGFloat = 0 // this needs a better name
     
     override init() {
         super.init()
@@ -51,11 +51,10 @@ class SnowballNode: SKNode {
     
     func select() {
         snowballNode.fillColor = whiteColor
-        // snowballNode.fillColor = SKColor.whiteColor()
     }
     
     func unselect() {
-        snowballNode.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
+        snowballNode.fillColor = Snowball.SnowballColor
     }
     
     required init?(coder aDecoder: NSCoder) {

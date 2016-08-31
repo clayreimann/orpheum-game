@@ -6,18 +6,6 @@
 
 import SpriteKit
 
-func limit(val: CGFloat) -> (CGFloat) {
-    var result = val
-    
-    if val > 700 {
-        result = 700
-    } else if val < 100 {
-        result = 100
-    }
-    
-    return result
-}
-
 class SnowballScene: SKScene {
     var gameViewController: GameViewController!
     var difficulty: CGFloat = 0.5
@@ -38,7 +26,6 @@ class SnowballScene: SKScene {
     var previousDegrees: Int = 0
     var start: NSDate?
     var timerValue: SKLabelNode!
-    // create sklabel node to hold the current value of the timer
     
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -182,8 +169,7 @@ class SnowballScene: SKScene {
         buttons.zPosition = 100
         self.addChild(buttons)
 
-        let pinchRecognzier = UIPinchGestureRecognizer(target: self, action:
-            #selector(SnowballScene.handlePinchGesture(_:)))
+        let pinchRecognzier = UIPinchGestureRecognizer(target: self, action:#selector(SnowballScene.handlePinchGesture(_:)))
         self.view?.addGestureRecognizer(pinchRecognzier)
         
         let toggleSimulation = SKShapeNode(rect: CGRect(x: 50, y: 315, width: 70, height: 50), cornerRadius: 4)

@@ -7,6 +7,11 @@
 import SpriteKit
 
 class RampNode: SKNode {
+    static let selectedColor = SKColor.redColor()
+    static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
+    static let maxSize: CGFloat = 700
+    static let minSize: CGFloat = 100
+
     var rampNode: SKShapeNode!
     var triangleHeight: CGFloat = 400
     var triangleWidth: CGFloat = 400
@@ -38,6 +43,18 @@ class RampNode: SKNode {
     }
     
     func pinchBegan(touch1:CGPoint, touch2:CGPoint){
+
+    func limitRampSize(val: CGFloat) -> (CGFloat) {
+        var result = val
+
+        if val > RampNode.maxSize {
+            result = RampNode.maxSize
+        } else if val < RampNode.minSize {
+            result = RampNode.minSize
+        }
+
+        return result
+    }
         x0 = touch2.x - touch1.x
         y0 = touch1.y - touch2.y
     }
@@ -45,25 +62,25 @@ class RampNode: SKNode {
     func pinchChanged(touch1:CGPoint, touch2:CGPoint) {
         let xScale = (touch2.x - touch1.x) / x0
         let yScale = (touch1.y - touch2.y) / y0
-        let xLimit = limit(triangleWidth * xScale)
-        let yLimit = limit(triangleHeight * yScale)
+        let xLimit = limitRampSize(triangleWidth * xScale)
+        let yLimit = limitRampSize(triangleHeight * yScale)
         redrawTriangle(xLimit, height: yLimit)
     }
     
     func pinchEnded(touch1:CGPoint, touch2:CGPoint) {
         let xScale = (touch2.x - touch1.x) / x0
         let yScale = (touch1.y - touch2.y) / y0
-        triangleWidth = limit(triangleWidth * xScale)
-        triangleHeight = limit(triangleHeight * yScale)
+        triangleWidth = limitRampSize(triangleWidth * xScale)
+        triangleHeight = limitRampSize(triangleHeight * yScale)
         redrawTriangle(triangleWidth, height: triangleHeight)
     }
     
     func select() {
-        rampNode.fillColor = SKColor.redColor()
+        rampNode.fillColor = RampNode.selectedColor
     }
     
     func unselect() {
-        rampNode.fillColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
+        rampNode.fillColor = RampNode.rampColor
     }
     
     required init?(coder aDecoder: NSCoder) {
