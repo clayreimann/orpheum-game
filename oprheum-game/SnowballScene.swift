@@ -149,7 +149,7 @@ class SnowballScene: SKScene {
         hideWinOverlay()
         hideLoseOverlay()
         
-        snowballNode.position = CGPoint(x:30, y:self.frame.height - 30)
+        snowballNode.position = CGPoint(x:70, y:self.frame.height - 70)
         snowballNode.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         snowballNode.zPosition = 0
         

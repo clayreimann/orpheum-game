@@ -8,7 +8,7 @@ import SpriteKit
 
 class Snowball: SKNode {
     static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
-    static let DensityFactor :CGFloat = 30
+    static let DensityFactor :CGFloat = 20
 
     var mass: CGFloat
     
