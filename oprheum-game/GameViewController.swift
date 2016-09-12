@@ -35,7 +35,7 @@ class GameViewController: UIViewController {
     }
 
     func startSnowballGame() {
-        if let snowballGameScene = GameScene(fileNamed: "GameScene") {
+        if let snowballGameScene = SnowballScene(fileNamed: "SnowballScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -58,7 +58,7 @@ class GameViewController: UIViewController {
 
     
     func startLeverGameNew() {
-        if let leverGameScene = GameSceneNew(fileNamed: "GameScene") {
+        if let leverGameScene = LeverScene(fileNamed: "LeverScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -81,7 +81,7 @@ class GameViewController: UIViewController {
     
     override func shouldAutorotate() -> Bool {
         return true
-        }
+    }
         
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
@@ -89,11 +89,6 @@ class GameViewController: UIViewController {
         } else {
             return .All
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override func prefersStatusBarHidden() -> Bool {

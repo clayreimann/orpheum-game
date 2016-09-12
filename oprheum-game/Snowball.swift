@@ -7,7 +7,9 @@
 import SpriteKit
 
 class Snowball: SKNode {
-    
+    static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
+    static let DensityFactor :CGFloat = 30
+
     var mass: CGFloat
     
     init(weight: CGFloat) {
@@ -22,11 +24,11 @@ class Snowball: SKNode {
     }
     
     func configureChildNodes() {
-        let snowball = SKShapeNode(circleOfRadius: 30 * mass)
-        snowball.position = CGPoint(x: 30 * mass, y: 30 * mass)
+        let snowball = SKShapeNode(circleOfRadius: Snowball.DensityFactor * mass)
+        snowball.position = CGPoint(x: Snowball.DensityFactor * mass, y: Snowball.DensityFactor * mass)
         snowball.name = "snowball"
-        snowball.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
-        snowball.physicsBody = SKPhysicsBody(circleOfRadius: 5 * mass)
+        snowball.fillColor = Snowball.SnowballColor
+        snowball.physicsBody = SKPhysicsBody(circleOfRadius: 5 * mass) // why is the physics body not the same size as the shape?
         snowball.physicsBody?.mass = mass
         
         self.addChild(snowball)
@@ -37,6 +39,7 @@ class Snowball: SKNode {
         configureChildNodes()
     }
     
+    // Why are we doing this?
     override func calculateAccumulatedFrame() -> CGRect {
         let width = 60 * mass
         let height = 60 * mass

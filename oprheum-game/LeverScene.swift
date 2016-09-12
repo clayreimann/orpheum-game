@@ -6,7 +6,7 @@
 
 import SpriteKit
 
-class GameSceneNew: SKScene {
+class LeverScene: SKScene {
     var gameObjects: SKNode!
     var gameViewController: GameViewController!
     var movingFulcrum = false

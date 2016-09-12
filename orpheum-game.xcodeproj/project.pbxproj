@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		8128F8CD1D751AE000132AC2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B381C601C4400321C0B /* Info.plist */; };
+		81DEA1451D7659B1004E0869 /* SnowballNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEA1441D7659B1004E0869 /* SnowballNode.swift */; };
+		81DEA1471D765A03004E0869 /* RampNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEA1461D765A03004E0869 /* RampNode.swift */; };
 		C83B4B1E1C601C4400321C0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B1D1C601C4400321C0B /* AppDelegate.swift */; };
-		C83B4B201C601C4400321C0B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B1F1C601C4400321C0B /* GameScene.sks */; };
-		C83B4B221C601C4400321C0B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B211C601C4400321C0B /* GameScene.swift */; };
+		C83B4B201C601C4400321C0B /* SnowballScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B1F1C601C4400321C0B /* SnowballScene.sks */; };
+		C83B4B221C601C4400321C0B /* SnowballScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B211C601C4400321C0B /* SnowballScene.swift */; };
 		C83B4B241C601C4400321C0B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B231C601C4400321C0B /* GameViewController.swift */; };
 		C83B4B271C601C4400321C0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B251C601C4400321C0B /* Main.storyboard */; };
 		C83B4B291C601C4400321C0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B281C601C4400321C0B /* Assets.xcassets */; };
 		C83B4B2C1C601C4400321C0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B2A1C601C4400321C0B /* LaunchScreen.storyboard */; };
 		C83B4B371C601C4400321C0B /* orpheum-gameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B361C601C4400321C0B /* orpheum-gameTests.swift */; };
 		C83B4B421C601C4400321C0B /* orpheum-gameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B411C601C4400321C0B /* orpheum-gameUITests.swift */; };
-		C88E3F5D1D6FC49F00FDC143 /* LeverGameNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88E3F5C1D6FC49F00FDC143 /* LeverGameNew.swift */; };
-		C88E3F5F1D6FC7BB00FDC143 /* LeverGameNew.sks in Resources */ = {isa = PBXBuildFile; fileRef = C88E3F5E1D6FC7BB00FDC143 /* LeverGameNew.sks */; };
+		C88E3F5D1D6FC49F00FDC143 /* LeverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88E3F5C1D6FC49F00FDC143 /* LeverScene.swift */; };
+		C88E3F5F1D6FC7BB00FDC143 /* LeverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C88E3F5E1D6FC7BB00FDC143 /* LeverScene.sks */; };
 		C8D456371CA1F9E10095DB4E /* Snowball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D456361CA1F9E10095DB4E /* Snowball.swift */; };
 		C8F888761D39454E00A8FA80 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8F888751D39454E00A8FA80 /* MenuScene.sks */; };
 		C8F888781D39457F00A8FA80 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F888771D39457F00A8FA80 /* MenuScene.swift */; };
@@ -42,10 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81DEA1441D7659B1004E0869 /* SnowballNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowballNode.swift; sourceTree = "<group>"; };
+		81DEA1461D765A03004E0869 /* RampNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RampNode.swift; sourceTree = "<group>"; };
 		C83B4B1A1C601C4400321C0B /* orpheum-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "orpheum-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83B4B1D1C601C4400321C0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C83B4B1F1C601C4400321C0B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		C83B4B211C601C4400321C0B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		C83B4B1F1C601C4400321C0B /* SnowballScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowballScene.sks; sourceTree = "<group>"; };
+		C83B4B211C601C4400321C0B /* SnowballScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowballScene.swift; sourceTree = "<group>"; };
 		C83B4B231C601C4400321C0B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C83B4B261C601C4400321C0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C83B4B281C601C4400321C0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,8 +61,8 @@
 		C83B4B3D1C601C4400321C0B /* orpheum-gameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "orpheum-gameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83B4B411C601C4400321C0B /* orpheum-gameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "orpheum-gameUITests.swift"; sourceTree = "<group>"; };
 		C83B4B431C601C4400321C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C88E3F5C1D6FC49F00FDC143 /* LeverGameNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeverGameNew.swift; sourceTree = "<group>"; };
-		C88E3F5E1D6FC7BB00FDC143 /* LeverGameNew.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeverGameNew.sks; sourceTree = "<group>"; };
+		C88E3F5C1D6FC49F00FDC143 /* LeverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeverScene.swift; sourceTree = "<group>"; };
+		C88E3F5E1D6FC7BB00FDC143 /* LeverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeverScene.sks; sourceTree = "<group>"; };
 		C8D456361CA1F9E10095DB4E /* Snowball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snowball.swift; sourceTree = "<group>"; };
 		C8F888751D39454E00A8FA80 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		C8F888771D39457F00A8FA80 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
@@ -89,6 +93,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81DEA1411D765624004E0869 /* Snowball Game */ = {
+			isa = PBXGroup;
+			children = (
+				C8D456361CA1F9E10095DB4E /* Snowball.swift */,
+				81DEA1441D7659B1004E0869 /* SnowballNode.swift */,
+				81DEA1461D765A03004E0869 /* RampNode.swift */,
+				C83B4B211C601C4400321C0B /* SnowballScene.swift */,
+				C83B4B1F1C601C4400321C0B /* SnowballScene.sks */,
+			);
+			name = "Snowball Game";
+			sourceTree = "<group>";
+		};
+		81DEA1421D765672004E0869 /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C8F888771D39457F00A8FA80 /* MenuScene.swift */,
+				C8F888751D39454E00A8FA80 /* MenuScene.sks */,
+			);
+			name = "Main Menu";
+			sourceTree = "<group>";
+		};
+		81DEA1431D76567C004E0869 /* Lever Game */ = {
+			isa = PBXGroup;
+			children = (
+				C88E3F5C1D6FC49F00FDC143 /* LeverScene.swift */,
+				C88E3F5E1D6FC7BB00FDC143 /* LeverScene.sks */,
+			);
+			name = "Lever Game";
+			sourceTree = "<group>";
+		};
 		C83B4B111C601C4400321C0B = {
 			isa = PBXGroup;
 			children = (
@@ -113,14 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				C83B4B1D1C601C4400321C0B /* AppDelegate.swift */,
-				C83B4B1F1C601C4400321C0B /* GameScene.sks */,
-				C83B4B211C601C4400321C0B /* GameScene.swift */,
-				C8F888751D39454E00A8FA80 /* MenuScene.sks */,
-				C8F888771D39457F00A8FA80 /* MenuScene.swift */,
-				C8D456361CA1F9E10095DB4E /* Snowball.swift */,
 				C83B4B231C601C4400321C0B /* GameViewController.swift */,
-				C88E3F5C1D6FC49F00FDC143 /* LeverGameNew.swift */,
-				C88E3F5E1D6FC7BB00FDC143 /* LeverGameNew.sks */,
+				81DEA1421D765672004E0869 /* Main Menu */,
+				81DEA1411D765624004E0869 /* Snowball Game */,
+				81DEA1431D76567C004E0869 /* Lever Game */,
 				C83B4B251C601C4400321C0B /* Main.storyboard */,
 				C83B4B281C601C4400321C0B /* Assets.xcassets */,
 				C83B4B2A1C601C4400321C0B /* LaunchScreen.storyboard */,
@@ -253,8 +283,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C83B4B201C601C4400321C0B /* GameScene.sks in Resources */,
-				C88E3F5F1D6FC7BB00FDC143 /* LeverGameNew.sks in Resources */,
+				C83B4B201C601C4400321C0B /* SnowballScene.sks in Resources */,
+				C88E3F5F1D6FC7BB00FDC143 /* LeverScene.sks in Resources */,
 				C8F888761D39454E00A8FA80 /* MenuScene.sks in Resources */,
 				C83B4B2C1C601C4400321C0B /* LaunchScreen.storyboard in Resources */,
 				C83B4B291C601C4400321C0B /* Assets.xcassets in Resources */,
@@ -284,12 +314,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C83B4B221C601C4400321C0B /* GameScene.swift in Sources */,
+				C83B4B221C601C4400321C0B /* SnowballScene.swift in Sources */,
 				C83B4B241C601C4400321C0B /* GameViewController.swift in Sources */,
 				C8F888781D39457F00A8FA80 /* MenuScene.swift in Sources */,
-				C88E3F5D1D6FC49F00FDC143 /* LeverGameNew.swift in Sources */,
+				C88E3F5D1D6FC49F00FDC143 /* LeverScene.swift in Sources */,
+				81DEA1451D7659B1004E0869 /* SnowballNode.swift in Sources */,
 				C83B4B1E1C601C4400321C0B /* AppDelegate.swift in Sources */,
 				C8D456371CA1F9E10095DB4E /* Snowball.swift in Sources */,
+				81DEA1471D765A03004E0869 /* RampNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
