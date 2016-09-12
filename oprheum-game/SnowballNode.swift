@@ -10,7 +10,7 @@ class SnowballNode: SKNode {
     let whiteColor = SKColor.whiteColor()
     
     var snowballNode: SKShapeNode!
-    var mass: CGFloat = 8
+    var mass: CGFloat = 6
     var mass0: CGFloat = 0 // this needs a better name
     
     override init() {
