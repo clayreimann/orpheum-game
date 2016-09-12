@@ -14,28 +14,27 @@ class MenuScene: SKScene {
     var button: SKNode!
 
     override func didMoveToView(view: SKView) {
-        button = SKNode()
-        self.addChild(button)
-        
-        let toggleSnowballSimulation = SKShapeNode(rect: CGRect(x: 400, y: 315, width: 70, height: 50), cornerRadius: 4)
-        button.addChild(toggleSnowballSimulation)
+        let toggleSnowballSimulation = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 70, height: 50), cornerRadius: 4)
+        toggleSnowballSimulation.position = CGPoint(x: 400, y: 315)
         toggleSnowballSimulation.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
-        
         toggleSnowballSimulation.name = MenuScene.SnowballButtonName
-        let toggleSnowballSimulationText = SKLabelNode(text: "Lever")
-        toggleSnowballSimulationText.position = CGPoint(x: 85, y: 315)
+        self.addChild(toggleSnowballSimulation)
+
+        let toggleSnowballSimulationText = SKLabelNode(text: "Ramp")
+        toggleSnowballSimulationText.position = CGPoint(x: 0, y: 0)
         toggleSnowballSimulationText.fontSize = 20
         toggleSnowballSimulationText.fontColor = SKColor.darkGrayColor()
         toggleSnowballSimulationText.userInteractionEnabled = false
         toggleSnowballSimulation.addChild(toggleSnowballSimulationText)
     
-        let toggleLeverSimulation = SKShapeNode(rect: CGRect(x: 50, y: 315, width: 70, height: 50), cornerRadius: 4)
-        button.addChild(toggleLeverSimulation)
+        let toggleLeverSimulation = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 70, height: 50), cornerRadius: 4)
+        toggleLeverSimulation.position = CGPoint(x: 50, y: 315)
         toggleLeverSimulation.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
-        
         toggleLeverSimulation.name = MenuScene.LeverButtonName
-        let toggleLeverSimulationText = SKLabelNode(text: "Ramp")
-        toggleLeverSimulationText.position = CGPoint(x: 385, y: 315)
+        self.addChild(toggleLeverSimulation)
+
+        let toggleLeverSimulationText = SKLabelNode(text: "Lever")
+        toggleLeverSimulationText.position = CGPoint(x: 0, y: 0)
         toggleLeverSimulationText.fontSize = 20
         toggleLeverSimulationText.fontColor = SKColor.blackColor()
         toggleLeverSimulationText.userInteractionEnabled = false
@@ -51,10 +50,12 @@ class MenuScene: SKScene {
                     print("tapped node \(name) \(node.frame)")
                     if name == MenuScene.SnowballButtonName {
                         gameViewController.startSnowballGame()
+                        return
                     }
                     
                     if name == MenuScene.LeverButtonName {
                         gameViewController.startLeverGameNew()
+                        return
                     }
                 }
             }
