@@ -17,32 +17,32 @@ class RampNode: SKNode {
     var triangleWidth: CGFloat = 400
     var x0: CGFloat = 0
     var y0: CGFloat = 0
-    
+
     override init() {
         super.init()
-        
+
         self.name = "Ramp"
-        
+
         rampNode = SKShapeNode()
         rampNode.physicsBody?.mass=10000
         self.redrawTriangle(triangleWidth, height: triangleHeight)
         self.unselect()
-        
+
         self.addChild(rampNode)
     }
-    
+
     func redrawTriangle(width: CGFloat, height: CGFloat) {
         let rampPath = CGPathCreateMutable()
         CGPathMoveToPoint(rampPath, nil, 0, height)
         CGPathAddLineToPoint(rampPath, nil, 0, 0)
         CGPathAddLineToPoint(rampPath, nil, width, 0)
         CGPathCloseSubpath(rampPath)
-        
+
         rampNode.path = rampPath
         rampNode.physicsBody = SKPhysicsBody(polygonFromPath: rampPath)
     }
-    
-    func pinchBegan(touch1:CGPoint, touch2:CGPoint){
+
+    func pinchBegan(touch1: CGPoint, touch2: CGPoint) {
         x0 = touch2.x - touch1.x
         y0 = touch1.y - touch2.y
     }
@@ -58,31 +58,31 @@ class RampNode: SKNode {
 
         return result
     }
-    
-    func pinchChanged(touch1:CGPoint, touch2:CGPoint) {
+
+    func pinchChanged(touch1: CGPoint, touch2: CGPoint) {
         let xScale = (touch2.x - touch1.x) / x0
         let yScale = (touch1.y - touch2.y) / y0
         let xLimit = limitRampSize(triangleWidth * xScale)
         let yLimit = limitRampSize(triangleHeight * yScale)
         redrawTriangle(xLimit, height: yLimit)
     }
-    
-    func pinchEnded(touch1:CGPoint, touch2:CGPoint) {
+
+    func pinchEnded(touch1: CGPoint, touch2: CGPoint) {
         let xScale = (touch2.x - touch1.x) / x0
         let yScale = (touch1.y - touch2.y) / y0
         triangleWidth = limitRampSize(triangleWidth * xScale)
         triangleHeight = limitRampSize(triangleHeight * yScale)
         redrawTriangle(triangleWidth, height: triangleHeight)
     }
-    
+
     func select() {
         rampNode.fillColor = RampNode.selectedColor
     }
-    
+
     func unselect() {
         rampNode.fillColor = RampNode.rampColor
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
