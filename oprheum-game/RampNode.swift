@@ -43,8 +43,11 @@ class RampNode: SKNode {
     }
     
     func pinchBegan(touch1:CGPoint, touch2:CGPoint){
+        x0 = touch2.x - touch1.x
+        y0 = touch1.y - touch2.y
+    }
 
-    func limitRampSize(val: CGFloat) -> (CGFloat) {
+    func limitRampSize(val: CGFloat) -> CGFloat {
         var result = val
 
         if val > RampNode.maxSize {
@@ -54,9 +57,6 @@ class RampNode: SKNode {
         }
 
         return result
-    }
-        x0 = touch2.x - touch1.x
-        y0 = touch1.y - touch2.y
     }
     
     func pinchChanged(touch1:CGPoint, touch2:CGPoint) {
