@@ -21,7 +21,7 @@ class MenuScene: SKScene {
         self.addChild(toggleSnowballSimulation)
 
         let toggleSnowballSimulationText = SKLabelNode(text: "Ramp")
-        toggleSnowballSimulationText.position = CGPoint(x: 100, y: 30)
+        toggleSnowballSimulationText.position = CGPoint(x: (self.frame.width/2.0)-80, y: (self.frame.height/2.0)+10)
         toggleSnowballSimulationText.fontSize = 45
         toggleSnowballSimulationText.fontColor = SKColor.darkGrayColor()
         toggleSnowballSimulationText.userInteractionEnabled = false
