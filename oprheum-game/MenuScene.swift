@@ -3,7 +3,7 @@
 //
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
 //
-
+//	2048px by 1536px
 import SpriteKit
 
 class MenuScene: SKScene {
