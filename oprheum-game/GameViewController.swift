@@ -56,7 +56,7 @@ class GameViewController: UIViewController {
         }
     }
 
-    func startLeverGameNew() {
+    func startLeverGame() {
         if let leverGameScene = LeverScene(fileNamed: "LeverScene") {
             // Configure the view.
             let skView = self.view as! SKView
