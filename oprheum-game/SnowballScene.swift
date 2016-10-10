@@ -2,7 +2,7 @@
 //  GameScene.swift
 //
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
-
+//restarting simulator, restart computer, download new xcode
 import SpriteKit
 
 class SnowballScene: SKScene {
@@ -29,15 +29,17 @@ class SnowballScene: SKScene {
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
-        if let start = start {
-            timeRemaining = timeRemaining + start.timeIntervalSinceNow
-        }
-        start = nil
+        start = NSDate()
     }
 
     func startSimulation() {
         self.physicsWorld.speed = 1.0
-        start = NSDate()
+        if let start = start {
+            let delta = start.timeIntervalSinceReferenceDate - NSDate().timeIntervalSinceReferenceDate
+//print("\(start) \(start.timeIntervalSinceReferenceDate) \(start.timeIntervalSinceNow) \(NSDate().timeIntervalSinceReferenceDate)")
+            timeRemaining = timeRemaining + delta
+        }
+        start = nil
     }
 
     func buildInstructionOverlay() {
@@ -73,6 +75,7 @@ class SnowballScene: SKScene {
     }
 
     func buildWinOverlay() {
+        timerValue.alpha = 1
         winOverlay = SKNode()
         winOverlay.alpha = 0
 
@@ -90,6 +93,7 @@ class SnowballScene: SKScene {
     }
 
     func showWinOverlay() {
+        timerValue.alpha = 0
         let showWinOverlayAction = SKAction.fadeInWithDuration(0.3)
         winOverlay.runAction(showWinOverlayAction)
         let hideWinSceneAction = SKAction.fadeOutWithDuration(0.3)
@@ -97,6 +101,7 @@ class SnowballScene: SKScene {
     }
 
     func hideWinOverlay() {
+        timerValue.alpha = 1
         let hideWinOverlayAction = SKAction.fadeOutWithDuration(0.3)
         winOverlay.runAction(hideWinOverlayAction)
         let showWinSceneAction = SKAction.fadeInWithDuration(0.3)
@@ -104,7 +109,6 @@ class SnowballScene: SKScene {
     }
 
     func isGameWon() -> Bool {
-        timeRemaining = 30.0
         return winOverlay.alpha == 1
     }
 
@@ -128,6 +132,7 @@ class SnowballScene: SKScene {
     }
 
     func showLoseOverlay() {
+        timerValue.alpha = 0
         let showLoseOverlayAction = SKAction.fadeInWithDuration(0.3)
         loseOverlay.runAction(showLoseOverlayAction)
         let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
@@ -136,6 +141,7 @@ class SnowballScene: SKScene {
     }
 
     func hideLoseOverlay() {
+        timerValue.alpha = 1
         let hideLoseOverlayAction = SKAction.fadeOutWithDuration(0.3)
         loseOverlay.runAction(hideLoseOverlayAction)
         let showSceneAction = SKAction.fadeInWithDuration(0.3)
@@ -143,12 +149,10 @@ class SnowballScene: SKScene {
     }
 
     func isGameLost() -> Bool {
-        timeRemaining = 30.0
         return loseOverlay.alpha == 1
     }
 
     func resetScene() {
-        self.stopSimulation()
 
         hideWinOverlay()
         hideLoseOverlay()
@@ -198,12 +202,9 @@ class SnowballScene: SKScene {
         resetButtonLabel.position = CGPoint(x: 85, y: 275)
         resetButtonLabel.fontSize = 20
         resetButtonLabel.fontColor = SKColor.darkGrayColor()
-        // resetButtonLabel.fontColor = SKColor.whiteColor()
         resetButtonLabel.userInteractionEnabled = false
         resetButton.addChild(resetButtonLabel)
-        // reset button + label
 
-        // build the timer label
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
         timerValue.position = CGPoint(x: 550, y: 700)
@@ -227,6 +228,7 @@ class SnowballScene: SKScene {
         buildLoseOverlay()
         buildWinOverlay()
 
+        self.stopSimulation()
         resetScene()
     }
 
@@ -246,6 +248,7 @@ class SnowballScene: SKScene {
 
             if isGameLost() {
                 hideLoseOverlay()
+                self.stopSimulation()
                 resetScene()
                 return
             }
@@ -255,6 +258,7 @@ class SnowballScene: SKScene {
 
             if isGameWon() {
                 hideWinOverlay()
+                self.stopSimulation()
                 resetScene()
                 return
             }
@@ -281,8 +285,8 @@ class SnowballScene: SKScene {
                         resetScene()
                         startSimulation()
                     } else if name == "ResetButton" {
+                        self.stopSimulation()
                         resetScene()
-                        
                     }
                 }
             }
@@ -344,7 +348,6 @@ class SnowballScene: SKScene {
 
             if let start = start {
                 let interval = NSDate().timeIntervalSinceDate(start)
-
                 if interval > timeRemaining {
                     showLoseOverlay()
                     stopSimulation()
@@ -352,10 +355,8 @@ class SnowballScene: SKScene {
 
                 timerValue.text = String(format: "%.1f", (timeRemaining - interval))
                 let x = String(format: "%.1f", (timeRemaining - interval))
-                print("\(timeRemaining) - \(interval) = \(x)")
 
             }
         }
     }
-
 }
