@@ -14,8 +14,12 @@ class MenuScene: SKScene {
     var button: SKNode!
 
     override func didMoveToView(view: SKView) {
-        let toggleSnowballSimulation = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 200, height: 100), cornerRadius: 7)
-        toggleSnowballSimulation.position = CGPoint(x: 550, y: 100)
+        let snowButtonWidth = 1/5 * self.frame.size.width
+        let snowButtonHeight = 1/6 * self.frame.size.height
+        let leverButtonWidth = 1/5 * self.frame.width
+        let leverButtonHeight = 1/6 * self.frame.height
+        let toggleSnowballSimulation = SKShapeNode(rect: CGRect(x: 0, y: 0, width: snowButtonWidth, height: snowButtonHeight), cornerRadius: 7)
+        toggleSnowballSimulation.position = CGPoint(x: 1/5 * self.frame.width, y: 1/3 * self.frame.height)
         toggleSnowballSimulation.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
         toggleSnowballSimulation.name = MenuScene.SnowballButtonName
         self.addChild(toggleSnowballSimulation)
@@ -27,14 +31,14 @@ class MenuScene: SKScene {
         toggleSnowballSimulationText.userInteractionEnabled = false
         toggleSnowballSimulation.addChild(toggleSnowballSimulationText)
 
-        let toggleLeverSimulation = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 70, height: 50), cornerRadius: 4)
-        toggleLeverSimulation.position = CGPoint(x: 50, y: 315)
+        let toggleLeverSimulation = SKShapeNode(rect: CGRect(x: 0, y: 0, width: leverButtonWidth, height: leverButtonHeight), cornerRadius: 4)
+        toggleLeverSimulation.position = CGPoint(x: 3/5*(self.frame.width), y: 1/3*(self.frame.height))
         toggleLeverSimulation.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
         toggleLeverSimulation.name = MenuScene.LeverButtonName
         self.addChild(toggleLeverSimulation)
 
         let toggleLeverSimulationText = SKLabelNode(text: "Lever")
-        toggleLeverSimulationText.position = CGPoint(x: 100, y: 30)
+        toggleLeverSimulationText.position = CGPoint(x: leverButtonWidth/2, y: leverButtonHeight/3)
         toggleLeverSimulationText.fontSize = 45
         toggleLeverSimulationText.fontColor = SKColor.blackColor()
         toggleLeverSimulationText.userInteractionEnabled = false
