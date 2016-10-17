@@ -2,7 +2,7 @@
 //  GameScene.swift
 //
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
-//restarting simulator, restart computer, download new xcode
+
 import SpriteKit
 
 class SnowballScene: SKScene {
@@ -36,7 +36,6 @@ class SnowballScene: SKScene {
         self.physicsWorld.speed = 1.0
         if let start = start {
             let delta = start.timeIntervalSinceReferenceDate - NSDate().timeIntervalSinceReferenceDate
-//print("\(start) \(start.timeIntervalSinceReferenceDate) \(start.timeIntervalSinceNow) \(NSDate().timeIntervalSinceReferenceDate)")
             timeRemaining = timeRemaining + delta
         }
         start = nil
