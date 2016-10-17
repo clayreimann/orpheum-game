@@ -353,8 +353,6 @@ class SnowballScene: SKScene {
                 }
 
                 timerValue.text = String(format: "%.1f", (timeRemaining - interval))
-                let x = String(format: "%.1f", (timeRemaining - interval))
-
             }
         }
     }
