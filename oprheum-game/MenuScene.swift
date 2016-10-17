@@ -2,7 +2,6 @@
 //  MenuScene.swift
 //
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
-//
 
 import SpriteKit
 
