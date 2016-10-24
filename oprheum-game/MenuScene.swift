@@ -10,17 +10,17 @@ class MenuScene: BaseScene {
     static let LeverButtonName = "leverGameButton"
 
     override func didMoveToView(view: SKView) {
-        let buttonWidth = 1/5 * self.frame.size.width
+        let buttonWidth = 1/4 * self.frame.size.width
         let buttonHeight = 1/6 * self.frame.size.height
         let buttonSize = CGSize(width: buttonWidth, height: buttonHeight)
 
         let snowballGameButton = createBigButton(named: MenuScene.SnowballButtonName, text: "Snowball",
-                                                 atPoint: CGPoint(x: 450, y: 365), withSize: buttonSize)
+                                                 atPoint: CGPoint(x: 1/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
         self.addChild(snowballGameButton)
 
 
         let leverGameButton = createBigButton(named: MenuScene.LeverButtonName, text: "Castle",
-                                              atPoint: CGPoint(x: 200, y: 365), withSize: buttonSize)
+                                              atPoint: CGPoint(x: 3/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
         self.addChild(leverGameButton)
     }
 
