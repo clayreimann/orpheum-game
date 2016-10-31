@@ -6,12 +6,16 @@
 
 import SpriteKit
 
-class LeverScene: SKScene {
+class LeverScene: BaseScene {
+    static let runButtonName = "runButton"
+    static let resetButtonName = "resetButtonName"
+    static let smallWeightName = "smallWeight"
+    static let largeWeightName = "largeWeight"
+
     var gameObjects: SKNode!
-    var gameViewController: GameViewController!
-    var movingFulcrum = false
     var fulcrumNode: SKShapeNode!
     var instructionOverlay: SKNode!
+    var movingFulcrum = false
 
     func buildInstructionOverlay() {
         instructionOverlay = SKNode()
@@ -139,108 +143,90 @@ class LeverScene: SKScene {
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         self.name = "BouncingBalls"
 
-        // Run button//
-        let toggleSimulation = SKShapeNode(rect: CGRect(x: 950, y: 715, width: 70, height: 50), cornerRadius: 4)
-        self.addChild(toggleSimulation)
-        toggleSimulation.fillColor = SKColor.cyanColor()
-        toggleSimulation.name = "RunButton"
+        let startStopButton = createSmallButton(named: LeverScene.runButtonName, text: "Run/Pause",
+                                                atPoint: CGPoint(x: 950, y: 715), withSize: BaseScene.smallButtonSize)
+        self.addChild(startStopButton)
 
-        let toggleSimulationLabel = SKLabelNode(text: "Run/Pause")
-        toggleSimulationLabel.position = CGPoint(x: 985, y: 740)
-        toggleSimulationLabel.fontSize = 20
-        toggleSimulationLabel.fontColor = SKColor.blackColor()
-        toggleSimulationLabel.userInteractionEnabled = false
-        toggleSimulation.addChild(toggleSimulationLabel)
-
-        // Reset button
-        let resetButton = SKShapeNode(rect: CGRect(x: 950, y: 615, width: 70, height: 50), cornerRadius: 4)
+        let resetButton = createSmallButton(named: LeverScene.resetButtonName, text: "Reset",
+                                            atPoint: CGPoint(x: 950, y: 640), withSize: BaseScene.smallButtonSize)
         self.addChild(resetButton)
-        resetButton.fillColor = SKColor.blueColor()
-        resetButton.name = "ResetButton"
 
-        let resetButtonLabel = SKLabelNode(text: "Reset")
-        resetButtonLabel.position = CGPoint(x: 980, y: 640)
-        resetButtonLabel.fontSize = 20
-        resetButtonLabel.fontColor = SKColor.whiteColor()
-        resetButtonLabel.userInteractionEnabled = false
-        resetButton.addChild(resetButtonLabel)
+        let smallWeigthButton = createSmallButton(named: LeverScene.smallWeightName, text: "5kg",
+                                                  atPoint: CGPoint(x: 950, y: 565), withSize: BaseScene.smallButtonSize)
+        self.addChild(smallWeigthButton)
 
-        // five kg button //
-        let button5kg = SKShapeNode(rect: CGRect(x: 950, y: 515, width: 70, height: 50), cornerRadius: 4)
-        self.addChild(button5kg)
-        button5kg.fillColor = SKColor.blueColor()
-        button5kg.name = "button5kg"
-
-        let button5kgLabel = SKLabelNode(text: "5kg")
-        button5kgLabel.position = CGPoint(x: 980, y: 540)
-        button5kgLabel.fontSize = 20
-        button5kgLabel.fontColor = SKColor.whiteColor()
-        button5kgLabel.userInteractionEnabled = false
-        button5kg.addChild(button5kgLabel)
-
-        // ten kg button //
-        let button10kg = SKShapeNode(rect: CGRect(x: 950, y: 415, width: 70, height: 50), cornerRadius: 4)
-        self.addChild(button10kg)
-        button10kg.fillColor = SKColor.blueColor()
-        button10kg.name = "button10kg"
-
-        let button10kgLabel = SKLabelNode(text: "10kg")
-        button10kgLabel.position = CGPoint(x: 980, y: 440)
-        button10kgLabel.fontSize = 20
-        button10kgLabel.fontColor = SKColor.whiteColor()
-        button10kgLabel.userInteractionEnabled = false
-        button10kg.addChild(button10kgLabel)
+        let largeWeightButton = createSmallButton(named: LeverScene.largeWeightName, text: "10kg",
+                                                  atPoint: CGPoint(x: 950, y: 490), withSize: BaseScene.smallButtonSize)
+        self.addChild(largeWeightButton)
 
         buildInstructionOverlay()
 
         resetScene()
     }
 
-    // what happens when you touch certain things//
+
+    func runButtonTouched(touch: NSValue) -> Bool {
+        toggleSimulation()
+        return true // stop processing touches
+    }
+
+    func resetButtonTouched(touch: NSValue) -> Bool {
+        resetScene()
+
+        let showInstructionsAction = SKAction.fadeInWithDuration(0.3)
+        instructionOverlay.runAction(showInstructionsAction)
+        return true // stop processing touches
+    }
+
+    func smallWeightTouched(touch: NSValue) -> Bool {
+        let weight = createWeight(5)
+        weight.position = CGPoint(x: 365, y: 300)
+        gameObjects.addChild(weight)
+
+        return true // stop processing touches
+    }
+
+    func largeWeightTouched(touch: NSValue) -> Bool {
+        let weight = createWeight(10)
+        weight.position = CGPoint(x: 365, y: 300)
+        gameObjects.addChild(weight)
+
+        return true // stop processing touches
+    }
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
-            if instructionOverlay.alpha == 1 {
-                let hideInstructionsAction = SKAction.fadeOutWithDuration(0.3)
-                instructionOverlay.runAction(hideInstructionsAction)
-            }
-
+        if let touch = touches.first {
             let location = touch.locationInNode(self)
-
-            let buttons = self.nodesAtPoint(location)
-            for button in buttons {
-                print(button.name)
-                if button.name == "RunButton" {
-                    toggleSimulation()
-                } else if button.name == "ResetButton" {
-                    resetScene()
-
-                    let showInstructionsAction = SKAction.fadeInWithDuration(0.3)
-                    instructionOverlay.runAction(showInstructionsAction)
-
-                } else if button.name == "button5kg" {
-                    let weight = createWeight(5)
-                    weight.position = CGPoint(x: 365, y: 300)
-                    gameObjects.addChild(weight)
-
-                } else if button.name == "button10kg" {
-                    let weight = createWeight(10)
-                    weight.position = CGPoint(x: 365, y: 300)
-                    gameObjects.addChild(weight)
-
-                } else if button.name == "fulcrumTriangle" {
+            let nodes = self.nodesAtPoint(location)
+            for node in nodes {
+                if let name = node.name where name == "fulcrumTriangle" {
                     movingFulcrum = true
+                    return
                 }
             }
         }
     }
 
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesEnded(touches, withEvent: event)
+
+        if instructionOverlay.alpha == 1 {
+            let hideInstructionsAction = SKAction.fadeOutWithDuration(0.3)
+            instructionOverlay.runAction(hideInstructionsAction)
+        }
+
+        movingFulcrum = false
+    }
+
     // controls the movement of the fulcrum triangle//
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard movingFulcrum else { return }
+
         for touch in touches {
             let location = touch.locationInNode(self)
             let newPosition = CGPoint(x: location.x, y: 0)
             fulcrumNode.position = newPosition
-            NSLog("%@", touch)
+            print("%@", touch)
         }
     }
 

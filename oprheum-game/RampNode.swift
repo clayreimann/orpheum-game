@@ -9,7 +9,7 @@ import SpriteKit
 class RampNode: SKNode {
     static let selectedColor = SKColor.redColor()
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
-    static let maxSize: CGFloat = 700
+    static let maxSize: CGFloat = 675
     static let minSize: CGFloat = 100
 
     var rampNode: SKShapeNode!
@@ -25,9 +25,9 @@ class RampNode: SKNode {
 
         rampNode = SKShapeNode()
         rampNode.physicsBody?.mass=10000
+        rampNode.position = CGPoint(x: 0, y: 0)
         self.redrawTriangle(triangleWidth, height: triangleHeight)
         self.unselect()
-
         self.addChild(rampNode)
     }
 
