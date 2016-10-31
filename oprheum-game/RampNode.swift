@@ -40,6 +40,7 @@ class RampNode: SKNode {
 
         rampNode.path = rampPath
         rampNode.physicsBody = SKPhysicsBody(polygonFromPath: rampPath)
+        rampNode.physicsBody?.dynamic = false
     }
 
     func pinchBegan(touch1: CGPoint, touch2: CGPoint) {
