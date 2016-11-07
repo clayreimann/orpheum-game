@@ -331,7 +331,7 @@ class SnowballScene: SKScene {
     override func update(currentTime: NSTimeInterval) {
         if let monster = monster {
             let π = CGFloat(M_PI) // tailor:disable
-            let degrees = (monster.zRotation * 180 / π) % 360
+            let degrees = abs((monster.zRotation * 180 / π) % 360)
 
             if degrees > 85 && 280 > degrees {
                 let degrees = previousDegrees
