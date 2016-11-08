@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//
+//tap out of menu, make menu difficulty buttons do something, back to main main menu
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
 
 import SpriteKit
@@ -131,6 +131,7 @@ class SnowballScene: SKScene {
     }
 
     func showLoseOverlay() {
+        instructionOverlay.alpha = 0
         timerValue.alpha = 0
         let showLoseOverlayAction = SKAction.fadeInWithDuration(0.3)
         loseOverlay.runAction(showLoseOverlayAction)
@@ -244,7 +245,6 @@ class SnowballScene: SKScene {
                 instructionOverlay.runAction(hideInstructionsAction)
                 start = NSDate()
             }
-
             if isGameLost() {
                 hideLoseOverlay()
                 self.stopSimulation()
@@ -262,7 +262,7 @@ class SnowballScene: SKScene {
                 return
             }
 
-            let nodes = self.nodesAtPoint(touch.locationInNode(self))
+            var nodes = self.nodesAtPoint(touch.locationInNode(self))
             for node in nodes {
                 if let ramp = node as? RampNode {
                     unselectAll()
@@ -276,7 +276,14 @@ class SnowballScene: SKScene {
                     selectedNode = snowballNode
                     return
                 }
-
+                            //did user tap outside menu?
+                    
+//make X button to close menu then
+//remove from parent
+                    
+//                  node.hidden = true
+                
+                
                 if let name = node.name {
                     print(name)
 
@@ -286,6 +293,14 @@ class SnowballScene: SKScene {
                     } else if name == "ResetButton" {
                         self.stopSimulation()
                         resetScene()
+                    } else if name == "MenuButton" {
+                        start = nil
+                        timerValue.alpha = 0
+                        rampNode.removeFromParent()
+                        snowballNode.removeFromParent()
+                        buttons.removeFromParent()
+                        monster.removeFromParent()
+                        self.addChild(SnowballMenu())
                     }
                 }
             }
