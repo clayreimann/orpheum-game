@@ -159,6 +159,10 @@ class LeverScene: BaseScene {
                                                   atPoint: CGPoint(x: 950, y: 490), withSize: BaseScene.smallButtonSize)
         self.addChild(largeWeightButton)
 
+        let mainMenuButton = createSmallButton(named: "mainMenu", text: "Menu",
+                                               atPoint: CGPoint(x: 950, y: 415), withSize: BaseScene.smallButtonSize)
+        self.addChild(mainMenuButton)
+
         buildInstructionOverlay()
 
         resetScene()
@@ -192,6 +196,11 @@ class LeverScene: BaseScene {
         gameObjects.addChild(weight)
 
         return true // stop processing touches
+    }
+
+    func mainMenuTouched(touch: NSValue) -> Bool {
+            gameViewController.startMenu()
+            return true
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
