@@ -188,7 +188,7 @@
 				C83B4B161C601C4400321C0B /* Sources */,
 				C83B4B171C601C4400321C0B /* Frameworks */,
 				C83B4B181C601C4400321C0B /* Resources */,
-				E62C09AD8DC82D6153A186D4 /* Tailor */,
+				E62C09AD8DC82D6153A186D4 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -315,19 +315,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E62C09AD8DC82D6153A186D4 /* Tailor */ = {
+		E62C09AD8DC82D6153A186D4 /* Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Tailor;
+			name = Lint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n  tailor\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint \nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

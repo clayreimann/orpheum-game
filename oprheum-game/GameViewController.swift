@@ -16,28 +16,13 @@ class GameViewController: UIViewController {
 
     func startMenu() {
         if let menuScene = MenuScene(fileNamed: "MenuScene") {
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-
-            /* Set to true to see bounding boxes */
-            skView.showsPhysics = true
-
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-
-            /* Set the scale mode to scale to fit the window */
-            menuScene.scaleMode = .AspectFill
-            menuScene.gameViewController = self
-
-            skView.presentScene(menuScene)
+            configureScene(menuScene)
         }
     }
 
     func startSnowballGame() {
-        if let snowballGameScene = SnowballScene(fileNamed: "SnowballScene") {
-            // Configure the view.
-            let skView = self.view as! SKView
+        if let snowballGameScene = SnowballScene(fileNamed: "SnowballScene"),
+            let skView = self.view as? SKView {
             skView.showsFPS = true
             skView.showsNodeCount = true
 
@@ -58,8 +43,12 @@ class GameViewController: UIViewController {
 
     func startLeverGame() {
         if let leverGameScene = LeverScene(fileNamed: "LeverScene") {
-            // Configure the view.
-            let skView = self.view as! SKView
+            configureScene(leverGameScene)
+        }
+    }
+
+    func configureScene(toShow: BaseScene) {
+        if let skView = self.view as? SKView {
             skView.showsFPS = true
             skView.showsNodeCount = true
 
@@ -70,11 +59,10 @@ class GameViewController: UIViewController {
             skView.ignoresSiblingOrder = true
 
             /* Set the scale mode to scale to fit the window */
-            leverGameScene.scaleMode = .AspectFill
-            leverGameScene.gameViewController = self
+            toShow.scaleMode = .AspectFill
+            toShow.gameViewController = self
 
-            skView.presentScene(leverGameScene)
-            // get the this menu to call the other menus and set a variable for difficulty levels
+            skView.presentScene(toShow)
         }
     }
 

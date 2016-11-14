@@ -14,13 +14,15 @@ class MenuScene: BaseScene {
         let buttonHeight = 1/6 * self.frame.size.height
         let buttonSize = CGSize(width: buttonWidth, height: buttonHeight)
 
-        let snowballGameButton = createBigButton(named: MenuScene.SnowballButtonName, text: "Snowball",
-                                                 atPoint: CGPoint(x: 1/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
+        let snowballGameButton = createButton(named: MenuScene.SnowballButtonName, text: "Snowball",
+                                              atPoint: CGPoint(x: 1/4 * self.frame.width, y: 1/2 * self.frame.height),
+                                              withSize: buttonSize)
         self.addChild(snowballGameButton)
 
 
-        let leverGameButton = createBigButton(named: MenuScene.LeverButtonName, text: "Castle",
-                                              atPoint: CGPoint(x: 3/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
+        let leverGameButton = createButton(named: MenuScene.LeverButtonName, text: "Castle",
+                                           atPoint: CGPoint(x: 3/4 * self.frame.width, y: 1/2 * self.frame.height),
+                                           withSize: buttonSize)
         self.addChild(leverGameButton)
     }
 

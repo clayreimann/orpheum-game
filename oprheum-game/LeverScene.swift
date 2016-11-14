@@ -8,7 +8,7 @@ import SpriteKit
 
 class LeverScene: BaseScene {
     static let runButtonName = "runButton"
-    static let resetButtonName = "resetButtonName"
+    static let resetButtonName = "resetButton"
     static let smallWeightName = "smallWeight"
     static let largeWeightName = "largeWeight"
 
@@ -143,19 +143,19 @@ class LeverScene: BaseScene {
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         self.name = "BouncingBalls"
 
-        let startStopButton = createSmallButton(named: LeverScene.runButtonName, text: "Run/Pause",
+        let startStopButton = createButton(named: LeverScene.runButtonName, text: "Run/Pause",
                                                 atPoint: CGPoint(x: 950, y: 715), withSize: BaseScene.smallButtonSize)
         self.addChild(startStopButton)
 
-        let resetButton = createSmallButton(named: LeverScene.resetButtonName, text: "Reset",
+        let resetButton = createButton(named: LeverScene.resetButtonName, text: "Reset",
                                             atPoint: CGPoint(x: 950, y: 640), withSize: BaseScene.smallButtonSize)
         self.addChild(resetButton)
 
-        let smallWeigthButton = createSmallButton(named: LeverScene.smallWeightName, text: "5kg",
+        let smallWeigthButton = createButton(named: LeverScene.smallWeightName, text: "5kg",
                                                   atPoint: CGPoint(x: 950, y: 565), withSize: BaseScene.smallButtonSize)
         self.addChild(smallWeigthButton)
 
-        let largeWeightButton = createSmallButton(named: LeverScene.largeWeightName, text: "10kg",
+        let largeWeightButton = createButton(named: LeverScene.largeWeightName, text: "10kg",
                                                   atPoint: CGPoint(x: 950, y: 490), withSize: BaseScene.smallButtonSize)
         self.addChild(largeWeightButton)
 
