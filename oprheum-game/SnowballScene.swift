@@ -26,6 +26,8 @@ class SnowballScene: SKScene {
     var timerValue: SKLabelNode!
     var start: NSDate?
     var timeRemaining = 30.0
+    
+    var snowballMenu : SnowballMenu!
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -204,6 +206,19 @@ class SnowballScene: SKScene {
         resetButtonLabel.fontColor = SKColor.darkGrayColor()
         resetButtonLabel.userInteractionEnabled = false
         resetButton.addChild(resetButtonLabel)
+        
+        let menuButton = SKShapeNode(rect: CGRect(x: 50, y: 195, width: 70, height: 50), cornerRadius: 4)
+        buttons.addChild(menuButton)
+        menuButton.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
+        menuButton.name = "MenuButton"
+        
+        let menuButtonLabel = SKLabelNode(text: "Menu")
+        menuButtonLabel.position = CGPoint(x: 85, y: 200)
+        menuButtonLabel.fontSize = 20
+        menuButtonLabel.fontColor = SKColor.darkGrayColor()
+        menuButtonLabel.userInteractionEnabled = false
+        menuButton.addChild(menuButtonLabel)
+
 
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
@@ -262,7 +277,7 @@ class SnowballScene: SKScene {
                 return
             }
 
-            var nodes = self.nodesAtPoint(touch.locationInNode(self))
+            let nodes = self.nodesAtPoint(touch.locationInNode(self))
             for node in nodes {
                 if let ramp = node as? RampNode {
                     unselectAll()
@@ -276,14 +291,7 @@ class SnowballScene: SKScene {
                     selectedNode = snowballNode
                     return
                 }
-                            //did user tap outside menu?
-                    
-//make X button to close menu then
-//remove from parent
-                    
-//                  node.hidden = true
-                
-                
+
                 if let name = node.name {
                     print(name)
 
@@ -300,8 +308,19 @@ class SnowballScene: SKScene {
                         snowballNode.removeFromParent()
                         buttons.removeFromParent()
                         monster.removeFromParent()
-                        self.addChild(SnowballMenu())
+                        snowballMenu = SnowballMenu()
+                        self.addChild(snowballMenu)
                     }
+                    else if node.name == "exitButton" {
+                        self.addChild(rampNode)
+                        self.addChild(snowballNode)
+                        self.addChild(buttons)
+                        self.addChild(monster)
+                        snowballMenu.removeFromParent()
+                    }
+                 //   else if name == "backToMenuButton" {
+                        
+//                    }
                 }
             }
         }
