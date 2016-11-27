@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//tap out of menu, make menu difficulty buttons do something, back to main main menu
+// make menu difficulty buttons do something, back to main main menu
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
 
 import SpriteKit
@@ -27,7 +27,7 @@ class SnowballScene: SKScene {
     var start: NSDate?
     var timeRemaining = 30.0
     
-    var snowballMenu : SnowballMenu!
+    var snowballMenu: SnowballMenu!
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -193,7 +193,6 @@ class SnowballScene: SKScene {
         toggleSimulationLabel.fontColor = SKColor.darkGrayColor()
         toggleSimulationLabel.userInteractionEnabled = false
         toggleSimulation.addChild(toggleSimulationLabel)
-        // run button + label
 
         let resetButton = SKShapeNode(rect: CGRect(x: 50, y: 255, width: 70, height: 50), cornerRadius: 4)
         buttons.addChild(resetButton)
@@ -218,7 +217,6 @@ class SnowballScene: SKScene {
         menuButtonLabel.fontColor = SKColor.darkGrayColor()
         menuButtonLabel.userInteractionEnabled = false
         menuButton.addChild(menuButtonLabel)
-
 
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
@@ -311,16 +309,33 @@ class SnowballScene: SKScene {
                         snowballMenu = SnowballMenu()
                         self.addChild(snowballMenu)
                     }
+//                    else if node.name == "EasyButton" {
+//                        self.stopSimulation()
+//                        resetScene()
+//                        timeRemaining = 20
+//                        timerValue.alpha = 1
+//                        
+//                    }
+                else if node.name == "MediumButton" {
+                    self.stopSimulation()
+                    resetScene()
+                    timeRemaining = 20
+                    timerValue.alpha = 1
+                }
+                    else if node.name == "HardButton" {
+                        self.stopSimulation()
+                        resetScene()
+                        timeRemaining = 10
+                        timerValue.alpha = 1
+                    }
                     else if node.name == "exitButton" {
                         self.addChild(rampNode)
                         self.addChild(snowballNode)
                         self.addChild(buttons)
                         self.addChild(monster)
                         snowballMenu.removeFromParent()
+                        timerValue.alpha = 1
                     }
-                 //   else if name == "backToMenuButton" {
-                        
-//                    }
                 }
             }
         }
@@ -375,17 +390,14 @@ class SnowballScene: SKScene {
                 } else if previousDegrees == degrees {
                     unselectAll()
                 }
-
                 print(degrees)
             }
-
             if let start = start {
                 let interval = NSDate().timeIntervalSinceDate(start)
                 if interval > timeRemaining {
                     showLoseOverlay()
                     stopSimulation()
                 }
-
                 timerValue.text = String(format: "%.1f", (timeRemaining - interval))
             }
         }

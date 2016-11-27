@@ -4,7 +4,7 @@
 //
 //  Created by Yichen Yao on 10/17/16.
 //
-//easy, medium, hard, main menu, back
+//use max size from RampNode (for max size as snowball and ramp)
 
 import SpriteKit
 var button: SKNode?
