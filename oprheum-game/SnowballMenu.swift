@@ -9,13 +9,14 @@
 import SpriteKit
 var button: SKNode?
 class SnowballMenu: SKNode {
+    static let easyButtonName = "EasyButton"
     override init() {
 
         super.init()
         let node = SKShapeNode(rect: CGRect(x: 300, y: 100, width: 400, height: 600), cornerRadius: 5)
         node.fillColor = SKColor.grayColor()
         self.addChild(node)
-    
+
         let easyButton = SKShapeNode(rect: CGRect(x: 420, y: 570, width: 130, height: 90), cornerRadius: 4)
         node.addChild(easyButton)
         easyButton.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)

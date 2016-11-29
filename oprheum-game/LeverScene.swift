@@ -229,5 +229,4 @@ class LeverScene: BaseScene {
             print("%@", touch)
         }
     }
-
 }

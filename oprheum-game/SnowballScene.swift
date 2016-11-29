@@ -5,8 +5,11 @@
 
 import SpriteKit
 
-class SnowballScene: SKScene {
-    var gameViewController: GameViewController!
+class SnowballScene: BaseScene {
+    static let runButtonName = "RunButton"
+    static let resetButtonName = "ResetButton"
+    static let menuButtonName = "MenuButton"
+    
     var difficulty: CGFloat = 0.5
 
     var selectedNode: SKNode?
@@ -181,43 +184,16 @@ class SnowballScene: SKScene {
 
         let pinchRecognzier = UIPinchGestureRecognizer(target: self, action: #selector(SnowballScene.handlePinchGesture(_:)))
         self.view?.addGestureRecognizer(pinchRecognzier)
-
-        let toggleSimulation = SKShapeNode(rect: CGRect(x: 50, y: 315, width: 70, height: 50), cornerRadius: 4)
+        
+        let toggleSimulation = createSmallButton(named: SnowballScene.runButtonName, text: "Run", atPoint: CGPoint(x: 80, y: 295), withSize: BaseScene.smallButtonSize)
         buttons.addChild(toggleSimulation)
-        toggleSimulation.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
-        toggleSimulation.name = "RunButton"
-
-        let toggleSimulationLabel = SKLabelNode(text: "Run")
-        toggleSimulationLabel.position = CGPoint(x: 85, y: 335)
-        toggleSimulationLabel.fontSize = 20
-        toggleSimulationLabel.fontColor = SKColor.darkGrayColor()
-        toggleSimulationLabel.userInteractionEnabled = false
-        toggleSimulation.addChild(toggleSimulationLabel)
-
-        let resetButton = SKShapeNode(rect: CGRect(x: 50, y: 255, width: 70, height: 50), cornerRadius: 4)
+        
+        let resetButton = createSmallButton(named: SnowballScene.resetButtonName, text: "Reset", atPoint: CGPoint(x: 80, y: 220), withSize: BaseScene.smallButtonSize)
         buttons.addChild(resetButton)
-        resetButton.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
-        resetButton.name = "ResetButton"
 
-        let resetButtonLabel = SKLabelNode(text: "Reset")
-        resetButtonLabel.position = CGPoint(x: 85, y: 275)
-        resetButtonLabel.fontSize = 20
-        resetButtonLabel.fontColor = SKColor.darkGrayColor()
-        resetButtonLabel.userInteractionEnabled = false
-        resetButton.addChild(resetButtonLabel)
-        
-        let menuButton = SKShapeNode(rect: CGRect(x: 50, y: 195, width: 70, height: 50), cornerRadius: 4)
+        let menuButton = createSmallButton(named: SnowballScene.menuButtonName, text: "Menu", atPoint: CGPoint(x: 80, y: 155), withSize: BaseScene.smallButtonSize)
         buttons.addChild(menuButton)
-        menuButton.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
-        menuButton.name = "MenuButton"
         
-        let menuButtonLabel = SKLabelNode(text: "Menu")
-        menuButtonLabel.position = CGPoint(x: 85, y: 200)
-        menuButtonLabel.fontSize = 20
-        menuButtonLabel.fontColor = SKColor.darkGrayColor()
-        menuButtonLabel.userInteractionEnabled = false
-        menuButton.addChild(menuButtonLabel)
-
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
         timerValue.position = CGPoint(x: 550, y: 700)
@@ -250,7 +226,6 @@ class SnowballScene: SKScene {
         snowballNode.unselect()
         selectedNode = nil
     }
-
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             if instructionOverlay.alpha != 0 {
@@ -309,21 +284,36 @@ class SnowballScene: SKScene {
                         snowballMenu = SnowballMenu()
                         self.addChild(snowballMenu)
                     }
-//                    else if node.name == "EasyButton" {
-//                        self.stopSimulation()
-//                        resetScene()
-//                        timeRemaining = 20
-//                        timerValue.alpha = 1
-//                        
-//                    }
+                    else if node.name == "EasyButton" {
+                        self.stopSimulation()
+                        self.addChild(rampNode)
+                        self.addChild(snowballNode)
+                        self.addChild(buttons)
+                        self.addChild(monster)
+                        rampNode.maxSize = rampNode.maxSize
+                        snowballMenu.removeFromParent()
+                        resetScene()
+                    }
                 else if node.name == "MediumButton" {
                     self.stopSimulation()
+                    self.addChild(rampNode)
+                    self.addChild(snowballNode)
+                    self.addChild(buttons)
+                    self.addChild(monster)
+                    rampNode.maxSize = rampNode.maxMediumSize
+                    snowballMenu.removeFromParent()
                     resetScene()
                     timeRemaining = 20
                     timerValue.alpha = 1
                 }
                     else if node.name == "HardButton" {
                         self.stopSimulation()
+                        self.addChild(rampNode)
+                        self.addChild(snowballNode)
+                        self.addChild(buttons)
+                        self.addChild(monster)
+                        rampNode.maxSize = rampNode.maxHardSize
+                        snowballMenu.removeFromParent()
                         resetScene()
                         timeRemaining = 10
                         timerValue.alpha = 1
@@ -335,6 +325,9 @@ class SnowballScene: SKScene {
                         self.addChild(monster)
                         snowballMenu.removeFromParent()
                         timerValue.alpha = 1
+                    }
+                    else if node.name == "backToMenuButton" {
+                        gameViewController.startMenu()
                     }
                 }
             }
@@ -395,6 +388,10 @@ class SnowballScene: SKScene {
             if let start = start {
                 let interval = NSDate().timeIntervalSinceDate(start)
                 if interval > timeRemaining {
+                    rampNode.removeFromParent()
+                    snowballNode.removeFromParent()
+                    buttons.removeFromParent()
+                    monster.removeFromParent()
                     showLoseOverlay()
                     stopSimulation()
                 }
