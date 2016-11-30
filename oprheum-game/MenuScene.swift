@@ -6,20 +6,24 @@
 import SpriteKit
 
 class MenuScene: BaseScene {
-    static let SnowballButtonName = "snowballGameButton"
-    static let LeverButtonName = "leverGameButton"
+    static let snowballButtonName = "snowballGameButton"
+    static let leverButtonName = "leverGameButton"
 
     override func didMoveToView(view: SKView) {
-        let buttonWidth = 1/4 * self.frame.size.width
-        let buttonHeight = 1/6 * self.frame.size.height
-        let buttonSize = CGSize(width: buttonWidth, height: buttonHeight)
+        let cornerRadius: CGFloat = 10
+        let fontSize: CGFloat = 40
+        let buttonSize = CGSize(width: (1/4) * frame.width, height: (1/6) * frame.height)
 
-        let snowballGameButton = createBigButton(named: MenuScene.SnowballButtonName, text: "Snowball",
-                                                 atPoint: CGPoint(x: 1/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
+        let snowballGameButton = ButtonNode(name: MenuScene.snowballButtonName, text: "Snowball", size: buttonSize)
+        snowballGameButton.cornerRadius = cornerRadius
+        snowballGameButton.fontSize = fontSize
+        snowballGameButton.position = CGPoint(x: 1/4 * frame.width, y: 1/2 * frame.height)
         self.addChild(snowballGameButton)
 
-        let leverGameButton = createBigButton(named: MenuScene.LeverButtonName, text: "Castle",
-                                              atPoint: CGPoint(x: 3/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
+        let leverGameButton = ButtonNode(name: MenuScene.leverButtonName, text: "Castle", size: buttonSize)
+        leverGameButton.cornerRadius = cornerRadius
+        leverGameButton.fontSize = fontSize
+        leverGameButton.position = CGPoint(x: 3/4 * self.frame.width, y: 1/2 * self.frame.height)
         self.addChild(leverGameButton)
     }
 
