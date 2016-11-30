@@ -10,13 +10,19 @@ class RampNode: SKNode {
     static let selectedColor = SKColor.redColor()
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
     static let maxSize: CGFloat = 675
+    static let maxMediumSize: CGFloat = 475
+    static let maxHardSize: CGFloat = 275
     static let minSize: CGFloat = 100
 
     var rampNode: SKShapeNode!
-    var triangleHeight: CGFloat = 400
-    var triangleWidth: CGFloat = 400
+    var triangleHeight: CGFloat = 100
+    var triangleWidth: CGFloat = 100
     var x0: CGFloat = 0
     var y0: CGFloat = 0
+    var maxSize: CGFloat = RampNode.maxSize
+    var maxMediumSize: CGFloat = RampNode.maxMediumSize
+    var maxHardSize: CGFloat = RampNode.maxHardSize
+    var minSize: CGFloat = RampNode.minSize
 
     override init() {
         super.init()
@@ -51,10 +57,17 @@ class RampNode: SKNode {
     func limitRampSize(val: CGFloat) -> CGFloat {
         var result = val
 
-        if val > RampNode.maxSize {
-            result = RampNode.maxSize
-        } else if val < RampNode.minSize {
-            result = RampNode.minSize
+        if val > maxSize {
+            result = maxSize
+        }
+        else if val > maxMediumSize {
+            result = maxMediumSize
+        }
+        else if val > maxHardSize {
+            result = maxHardSize
+        }
+        else if val < minSize {
+            result = minSize
         }
 
         return result
