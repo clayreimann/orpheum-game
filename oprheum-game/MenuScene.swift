@@ -18,7 +18,6 @@ class MenuScene: BaseScene {
                                                  atPoint: CGPoint(x: 1/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
         self.addChild(snowballGameButton)
 
-
         let leverGameButton = createBigButton(named: MenuScene.LeverButtonName, text: "Castle",
                                               atPoint: CGPoint(x: 3/4 * self.frame.width, y: 1/2 * self.frame.height), withSize: buttonSize)
         self.addChild(leverGameButton)

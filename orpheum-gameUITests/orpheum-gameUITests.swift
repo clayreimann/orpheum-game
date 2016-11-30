@@ -7,7 +7,8 @@
 
 import XCTest
 
-class orpheum_gameTestsUITests: XCTestCase { // tailor:disable
+// swiftlint:disable type_name
+class orpheum_gameTestsUITests: XCTestCase { // swiftlint:enable type_name
 
     override func setUp() {
         super.setUp()

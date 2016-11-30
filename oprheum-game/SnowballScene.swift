@@ -9,7 +9,7 @@ class SnowballScene: BaseScene {
     static let runButtonName = "RunButton"
     static let resetButtonName = "ResetButton"
     static let menuButtonName = "MenuButton"
-    
+
     var difficulty: CGFloat = 0.5
 
     var selectedNode: SKNode?
@@ -29,7 +29,7 @@ class SnowballScene: BaseScene {
     var timerValue: SKLabelNode!
     var start: NSDate?
     var timeRemaining = 30.0
-    
+
     var snowballMenu: SnowballMenu!
 
     func stopSimulation() {
@@ -184,16 +184,16 @@ class SnowballScene: BaseScene {
 
         let pinchRecognzier = UIPinchGestureRecognizer(target: self, action: #selector(SnowballScene.handlePinchGesture(_:)))
         self.view?.addGestureRecognizer(pinchRecognzier)
-        
+
         let toggleSimulation = createSmallButton(named: SnowballScene.runButtonName, text: "Run", atPoint: CGPoint(x: 80, y: 295), withSize: BaseScene.smallButtonSize)
         buttons.addChild(toggleSimulation)
-        
+
         let resetButton = createSmallButton(named: SnowballScene.resetButtonName, text: "Reset", atPoint: CGPoint(x: 80, y: 220), withSize: BaseScene.smallButtonSize)
         buttons.addChild(resetButton)
 
         let menuButton = createSmallButton(named: SnowballScene.menuButtonName, text: "Menu", atPoint: CGPoint(x: 80, y: 155), withSize: BaseScene.smallButtonSize)
         buttons.addChild(menuButton)
-        
+
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
         timerValue.position = CGPoint(x: 550, y: 700)
@@ -283,8 +283,7 @@ class SnowballScene: BaseScene {
                         monster.removeFromParent()
                         snowballMenu = SnowballMenu()
                         self.addChild(snowballMenu)
-                    }
-                    else if node.name == "EasyButton" {
+                    } else if node.name == "EasyButton" {
                         self.stopSimulation()
                         self.addChild(rampNode)
                         self.addChild(snowballNode)
@@ -293,20 +292,18 @@ class SnowballScene: BaseScene {
                         rampNode.maxSize = rampNode.maxSize
                         snowballMenu.removeFromParent()
                         resetScene()
-                    }
-                else if node.name == "MediumButton" {
-                    self.stopSimulation()
-                    self.addChild(rampNode)
-                    self.addChild(snowballNode)
-                    self.addChild(buttons)
-                    self.addChild(monster)
-                    rampNode.maxSize = rampNode.maxMediumSize
-                    snowballMenu.removeFromParent()
-                    resetScene()
-                    timeRemaining = 20
-                    timerValue.alpha = 1
-                }
-                    else if node.name == "HardButton" {
+                    } else if node.name == "MediumButton" {
+                        self.stopSimulation()
+                        self.addChild(rampNode)
+                        self.addChild(snowballNode)
+                        self.addChild(buttons)
+                        self.addChild(monster)
+                        rampNode.maxSize = rampNode.maxMediumSize
+                        snowballMenu.removeFromParent()
+                        resetScene()
+                        timeRemaining = 20
+                        timerValue.alpha = 1
+                    } else if node.name == "HardButton" {
                         self.stopSimulation()
                         self.addChild(rampNode)
                         self.addChild(snowballNode)
@@ -317,16 +314,14 @@ class SnowballScene: BaseScene {
                         resetScene()
                         timeRemaining = 10
                         timerValue.alpha = 1
-                    }
-                    else if node.name == "exitButton" {
+                    } else if node.name == "exitButton" {
                         self.addChild(rampNode)
                         self.addChild(snowballNode)
                         self.addChild(buttons)
                         self.addChild(monster)
                         snowballMenu.removeFromParent()
                         timerValue.alpha = 1
-                    }
-                    else if node.name == "backToMenuButton" {
+                    } else if node.name == "backToMenuButton" {
                         gameViewController.startMenu()
                     }
                 }

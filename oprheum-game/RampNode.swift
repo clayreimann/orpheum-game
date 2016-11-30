@@ -17,8 +17,8 @@ class RampNode: SKNode {
     var rampNode: SKShapeNode!
     var triangleHeight: CGFloat = 100
     var triangleWidth: CGFloat = 100
-    var x0: CGFloat = 0
-    var y0: CGFloat = 0
+    var initialX: CGFloat = 0
+    var initialY: CGFloat = 0
     var maxSize: CGFloat = RampNode.maxSize
     var maxMediumSize: CGFloat = RampNode.maxMediumSize
     var maxHardSize: CGFloat = RampNode.maxHardSize
@@ -50,8 +50,8 @@ class RampNode: SKNode {
     }
 
     func pinchBegan(touch1: CGPoint, touch2: CGPoint) {
-        x0 = touch2.x - touch1.x
-        y0 = touch1.y - touch2.y
+        initialX = touch2.x - touch1.x
+        initialY = touch1.y - touch2.y
     }
 
     func limitRampSize(val: CGFloat) -> CGFloat {
@@ -59,14 +59,11 @@ class RampNode: SKNode {
 
         if val > maxSize {
             result = maxSize
-        }
-        else if val > maxMediumSize {
+        } else if val > maxMediumSize {
             result = maxMediumSize
-        }
-        else if val > maxHardSize {
+        } else if val > maxHardSize {
             result = maxHardSize
-        }
-        else if val < minSize {
+        } else if val < minSize {
             result = minSize
         }
 
@@ -74,16 +71,16 @@ class RampNode: SKNode {
     }
 
     func pinchChanged(touch1: CGPoint, touch2: CGPoint) {
-        let xScale = (touch2.x - touch1.x) / x0
-        let yScale = (touch1.y - touch2.y) / y0
+        let xScale = (touch2.x - touch1.x) / initialX
+        let yScale = (touch1.y - touch2.y) / initialY
         let xLimit = limitRampSize(triangleWidth * xScale)
         let yLimit = limitRampSize(triangleHeight * yScale)
         redrawTriangle(xLimit, height: yLimit)
     }
 
     func pinchEnded(touch1: CGPoint, touch2: CGPoint) {
-        let xScale = (touch2.x - touch1.x) / x0
-        let yScale = (touch1.y - touch2.y) / y0
+        let xScale = (touch2.x - touch1.x) / initialX
+        let yScale = (touch1.y - touch2.y) / initialY
         triangleWidth = limitRampSize(triangleWidth * xScale)
         triangleHeight = limitRampSize(triangleHeight * yScale)
         redrawTriangle(triangleWidth, height: triangleHeight)
