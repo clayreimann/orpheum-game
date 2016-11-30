@@ -289,7 +289,7 @@ class SnowballScene: BaseScene {
                         self.addChild(snowballNode)
                         self.addChild(buttons)
                         self.addChild(monster)
-                        rampNode.maxSize = rampNode.maxSize
+                        rampNode.maxSize = RampNode.easyMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
                     } else if node.name == "MediumButton" {
@@ -298,7 +298,7 @@ class SnowballScene: BaseScene {
                         self.addChild(snowballNode)
                         self.addChild(buttons)
                         self.addChild(monster)
-                        rampNode.maxSize = rampNode.maxMediumSize
+                        rampNode.maxSize = RampNode.mediumMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
                         timeRemaining = 20
@@ -309,7 +309,7 @@ class SnowballScene: BaseScene {
                         self.addChild(snowballNode)
                         self.addChild(buttons)
                         self.addChild(monster)
-                        rampNode.maxSize = rampNode.maxHardSize
+                        rampNode.maxSize = RampNode.hardMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
                         timeRemaining = 10
