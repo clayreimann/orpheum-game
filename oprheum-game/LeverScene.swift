@@ -168,7 +168,6 @@ class LeverScene: BaseScene {
         resetScene()
     }
 
-
     func runButtonTouched(touch: NSValue) -> Bool {
         toggleSimulation()
         return true // stop processing touches
