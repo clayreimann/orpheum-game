@@ -8,10 +8,7 @@ import SpriteKit
 
 class BaseScene: SKScene {
     static let fontName = UIFont.boldSystemFontOfSize(1).fontName
-    static let bigButtonWidth = 200
-    static let bigButtonHeight = 100
-    static let bigButtonSize = CGSize(width: BaseScene.bigButtonWidth, height: BaseScene.bigButtonHeight)
-    static let bigButtonRadius: CGFloat = 7.0
+
     static let bigFontSize: CGFloat = 40
 
     static let smallButtonWidth = 125
@@ -22,36 +19,10 @@ class BaseScene: SKScene {
 
     var gameViewController: GameViewController!
 
-    func createBigButton(named name: String, text: String, atPoint position: CGPoint, withSize size: CGSize) -> SKShapeNode {
-        let button = SKShapeNode(rectOfSize: size, cornerRadius: BaseScene.bigButtonRadius)
-        button.fillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
-        button.name = name
+    func createSmallButton(named name: String, text: String, atPoint position: CGPoint, withSize size: CGSize) -> SKNode {
+        let button = ButtonNode(name: name, text: text, size: size)
         button.position = position
-
-        let label = SKLabelNode(text: text)
-        label.position = CGPoint(x: 0, y: -1 * BaseScene.bigFontSize / 2)
-        label.fontSize = BaseScene.bigFontSize
-        label.fontName = BaseScene.fontName
-        label.fontColor = SKColor.darkGrayColor()
-        label.userInteractionEnabled = false
-        button.addChild(label)
-
-        return button
-    }
-
-    func createSmallButton(named name: String, text: String, atPoint position: CGPoint, withSize size: CGSize) -> SKShapeNode {
-        let button = SKShapeNode(rectOfSize: size, cornerRadius: BaseScene.smallButtonRadius)
-        button.fillColor = SKColor.cyanColor()
-        button.name = name
-        button.position = position
-
-        let label = SKLabelNode(text: text)
-        label.position = CGPoint(x: 0, y: -1 * BaseScene.smallFontSize / 2)
-        label.fontSize = BaseScene.smallFontSize
-        label.fontName = BaseScene.fontName
-        label.fontColor = SKColor.darkGrayColor()
-        label.userInteractionEnabled = false
-        button.addChild(label)
+        button.fontSize = BaseScene.smallFontSize
 
         return button
     }

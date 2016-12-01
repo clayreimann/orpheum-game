@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F2858CB1DEF15E300FC1458 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */; };
 		8128F8CD1D751AE000132AC2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B381C601C4400321C0B /* Info.plist */; };
 		8199CCFD1D95BF9D00EAA89A /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */; };
 		81DEA1451D7659B1004E0869 /* SnowballNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEA1441D7659B1004E0869 /* SnowballNode.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		81DEA1441D7659B1004E0869 /* SnowballNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowballNode.swift; sourceTree = "<group>"; };
 		81DEA1461D765A03004E0869 /* RampNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RampNode.swift; sourceTree = "<group>"; };
@@ -95,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F2858C91DEF15C900FC1458 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */,
+				6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		81DEA1411D765624004E0869 /* Snowball Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +161,7 @@
 			children = (
 				C83B4B1D1C601C4400321C0B /* AppDelegate.swift */,
 				C83B4B231C601C4400321C0B /* GameViewController.swift */,
-				8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */,
+				6F2858C91DEF15C900FC1458 /* Common */,
 				81DEA1421D765672004E0869 /* Main Menu */,
 				81DEA1411D765624004E0869 /* Snowball Game */,
 				81DEA1431D76567C004E0869 /* Lever Game */,
@@ -349,6 +360,7 @@
 				C83B4B1E1C601C4400321C0B /* AppDelegate.swift in Sources */,
 				C82FAD191DD14E7800AEC49B /* SnowballMenu.swift in Sources */,
 				81DEA1471D765A03004E0869 /* RampNode.swift in Sources */,
+				6F2858CB1DEF15E300FC1458 /* ButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
