@@ -9,20 +9,19 @@ import SpriteKit
 class RampNode: SKNode {
     static let selectedColor = SKColor.redColor()
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
-    static let maxSize: CGFloat = 675
-    static let maxMediumSize: CGFloat = 475
-    static let maxHardSize: CGFloat = 275
-    static let minSize: CGFloat = 100
+    static let easyMaximumSize: CGFloat = 675
+    static let mediumMaximumSize: CGFloat = 475
+    static let hardMaximumSize: CGFloat = 275
+    static let minimumSize: CGFloat = 100
 
     var rampNode: SKShapeNode!
     var triangleHeight: CGFloat = 100
     var triangleWidth: CGFloat = 100
     var initialX: CGFloat = 0
     var initialY: CGFloat = 0
-    var maxSize: CGFloat = RampNode.maxSize
-    var maxMediumSize: CGFloat = RampNode.maxMediumSize
-    var maxHardSize: CGFloat = RampNode.maxHardSize
-    var minSize: CGFloat = RampNode.minSize
+
+    var maxSize: CGFloat = RampNode.easyMaximumSize
+    var minSize: CGFloat = RampNode.minimumSize
 
     override init() {
         super.init()
@@ -59,10 +58,6 @@ class RampNode: SKNode {
 
         if val > maxSize {
             result = maxSize
-        } else if val > maxMediumSize {
-            result = maxMediumSize
-        } else if val > maxHardSize {
-            result = maxHardSize
         } else if val < minSize {
             result = minSize
         }
