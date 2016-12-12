@@ -21,7 +21,6 @@ class SnowballScene: BaseScene {
     var rampNode: RampNode!
     var monster: SKSpriteNode!
 
-    var instructionOverlay: SKNode!
     var winOverlay: SKNode!
     var loseOverlay: SKNode!
 
@@ -34,11 +33,19 @@ class SnowballScene: BaseScene {
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
-        start = NSDate()
+        startTimer()
     }
 
     func startSimulation() {
         self.physicsWorld.speed = 1.0
+        stopTimer()
+    }
+
+    func startTimer() {
+        start = NSDate()
+    }
+
+    func stopTimer() {
         if let start = start {
             let delta = start.timeIntervalSinceReferenceDate - NSDate().timeIntervalSinceReferenceDate
             timeRemaining = timeRemaining + delta
@@ -47,34 +54,9 @@ class SnowballScene: BaseScene {
     }
 
     func buildInstructionOverlay() {
-        instructionOverlay = SKNode()
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.blackColor()
-        background.alpha = 0.25
-        instructionOverlay.addChild(background)
-
-        let instructions = SKLabelNode(text: "Tap to continue")
-        instructions.position = CGPoint(x: 500, y: 50)
-        instructions.fontName = "Hoefler Text"
-        instructions.fontSize = 25
-        instructionOverlay.addChild(instructions)
-
-        let instructionsResize = SKLabelNode(text: "Pinch to resize")
-        instructionsResize.position = CGPoint(x: 220, y: 700)
-        instructionsResize.fontName = "Hoefler Text"
-        instructionOverlay.addChild(instructionsResize)
-
-        let instructionsPlay = SKLabelNode(text: "Resize the snowball and ramp to try and ")
-        instructionsPlay .position = CGPoint(x: 500, y: 370)
-        instructionsPlay.fontName = "Hoefler Text"
-        instructionOverlay.addChild(instructionsPlay)
-
-        let instructionsPlay2 = SKLabelNode(text: "knock the monster down with the snowball!")
-        instructionsPlay2 .position = CGPoint(x: 500, y: 330)
-        instructionsPlay2.fontName = "Hoefler Text"
-        instructionOverlay.addChild(instructionsPlay2)
-
+        instructionOverlay = InstructionOverlayNode(scene: self)
+        instructionOverlay.text1 = "Use the snowball and ramp to try and\nknock the monster down with the snowball"
+        instructionOverlay.text2 = "Tap on the ramp or the snowball to select them then pinch to resize"
         self.addChild(instructionOverlay)
     }
 
@@ -216,8 +198,6 @@ class SnowballScene: BaseScene {
         buildInstructionOverlay()
         buildLoseOverlay()
         buildWinOverlay()
-
-        self.stopSimulation()
         resetScene()
     }
 
@@ -229,9 +209,10 @@ class SnowballScene: BaseScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             if instructionOverlay.alpha != 0 {
+                self.stopSimulation()
                 let hideInstructionsAction = SKAction.fadeOutWithDuration(0.3)
                 instructionOverlay.runAction(hideInstructionsAction)
-                start = NSDate()
+                startTimer()
             }
             if isGameLost() {
                 hideLoseOverlay()
@@ -272,7 +253,7 @@ class SnowballScene: BaseScene {
                         resetScene()
                         startSimulation()
                     } else if name == "ResetButton" {
-                        self.stopSimulation()
+                        stopSimulation()
                         resetScene()
                     } else if name == "MenuButton" {
                         start = nil
@@ -284,7 +265,7 @@ class SnowballScene: BaseScene {
                         snowballMenu = SnowballMenu()
                         self.addChild(snowballMenu)
                     } else if node.name == "EasyButton" {
-                        self.stopSimulation()
+                        stopSimulation()
                         self.addChild(rampNode)
                         self.addChild(snowballNode)
                         self.addChild(buttons)
@@ -293,7 +274,7 @@ class SnowballScene: BaseScene {
                         snowballMenu.removeFromParent()
                         resetScene()
                     } else if node.name == "MediumButton" {
-                        self.stopSimulation()
+                        stopSimulation()
                         self.addChild(rampNode)
                         self.addChild(snowballNode)
                         self.addChild(buttons)
