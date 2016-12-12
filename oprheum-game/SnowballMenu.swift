@@ -16,21 +16,21 @@ class SnowballMenu: SKNode {
         node.fillColor = SKColor.grayColor()
         self.addChild(node)
 
-        let buttonSize = CGSize(width: 130, height: 90)
+        let buttonSize = CGSize(width: 150, height: 100)
         let easyButton = ButtonNode(name: "EasyButton", text: "Easy", size: buttonSize)
-        easyButton.position = CGPoint(x: 420, y: 570)
+        easyButton.position = CGPoint(x: 500, y: 620)
         node.addChild(easyButton)
 
         let mediumButton = ButtonNode(name: "MediumButton", text: "Medium", size: buttonSize)
-        mediumButton.position = CGPoint(x: 420, y: 455)
+        mediumButton.position = CGPoint(x: 500, y: 490)
         node.addChild(mediumButton)
 
         let hardButton = ButtonNode(name: "HardButton", text: "Hard", size: buttonSize)
-        hardButton.position = CGPoint(x: 420, y: 355)
+        hardButton.position = CGPoint(x: 500, y: 360)
         node.addChild(hardButton)
 
         let backToMenuButton = ButtonNode(name: "backToMenuButton", text: "Main Menu", size: buttonSize)
-        backToMenuButton.position = CGPoint(x: 420, y: 155)
+        backToMenuButton.position = CGPoint(x: 500, y: 175)
         node.addChild(backToMenuButton)
 
         let exitButton = ButtonNode(name: "exitButton", text: "X", size: CGSize(width: 60, height: 60))
