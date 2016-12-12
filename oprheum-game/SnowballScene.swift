@@ -171,6 +171,7 @@ class SnowballScene: BaseScene {
         gameObjects.addChild(rampNode)
 
         snowballNode = SnowballNode()
+        
         gameObjects.addChild(snowballNode)
 
         buildInstructionOverlay()
@@ -207,6 +208,7 @@ class SnowballScene: BaseScene {
                 addGameObjectsToScene()
                 resetScene()
                 timeRemaining = level
+                addGameObjectsToScene()
                 return
             }
 
@@ -262,8 +264,9 @@ class SnowballScene: BaseScene {
                         snowballMenu = SnowballMenu()
                         self.addChild(snowballMenu)
                     } else if node.name == "EasyButton" {
-                        stopSimulation()
                         addGameObjectsToScene()
+                        self.stopSimulation()
+                        timeRemaining = 30
                         rampNode.maxSize = RampNode.easyMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
@@ -274,6 +277,7 @@ class SnowballScene: BaseScene {
                         addGameObjectsToScene()
                         rampNode.maxSize = RampNode.mediumMaximumSize
                         snowballMenu.removeFromParent()
+                        monster.physicsBody?.mass = 1
                         resetScene()
                         timeRemaining = 20
                         level = 20
@@ -283,6 +287,7 @@ class SnowballScene: BaseScene {
                         addGameObjectsToScene()
                         rampNode.maxSize = RampNode.hardMaximumSize
                         snowballMenu.removeFromParent()
+                        monster.physicsBody?.mass = 1.5
                         resetScene()
                         timeRemaining = 10
                         level = 10
@@ -378,6 +383,7 @@ class SnowballScene: BaseScene {
                     stopSimulation()
                 }
                 timerValue.text = String(format: "%.1f", (timeRemaining - interval))
+                
             }
         }
     }

@@ -19,6 +19,7 @@ class SnowballNode: SKNode {
     var mass: CGFloat = SnowballNode.startingMass
     var mass0: CGFloat = 0 // this needs a better name
 
+
     override init() {
         super.init()
 
