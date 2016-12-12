@@ -1,9 +1,6 @@
-//
 //  InstructionOverlayNode.swift
-//  orpheum-game
 //
-//  Created by  Christopher Reimann on 12/5/16.
-//
+//  Created by Clay Reimann
 //
 
 import SpriteKit
