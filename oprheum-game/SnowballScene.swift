@@ -171,7 +171,6 @@ class SnowballScene: BaseScene {
         gameObjects.addChild(rampNode)
 
         snowballNode = SnowballNode()
-        
         gameObjects.addChild(snowballNode)
 
         buildInstructionOverlay()
@@ -383,7 +382,6 @@ class SnowballScene: BaseScene {
                     stopSimulation()
                 }
                 timerValue.text = String(format: "%.1f", (timeRemaining - interval))
-                
             }
         }
     }
