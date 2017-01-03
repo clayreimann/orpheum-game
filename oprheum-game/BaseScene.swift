@@ -18,7 +18,9 @@ class BaseScene: SKScene {
     static let smallFontSize: CGFloat = 20
 
     var gameViewController: GameViewController!
+
     var instructionOverlay: InstructionOverlayNode!
+    var winOverlay: WinOverlayNode
 
     func createSmallButton(named name: String, text: String, atPoint position: CGPoint, withSize size: CGSize) -> SKNode {
         let button = ButtonNode(name: name, text: text, size: size)

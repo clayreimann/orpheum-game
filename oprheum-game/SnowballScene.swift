@@ -22,6 +22,9 @@ class SnowballScene: BaseScene {
     var monster: SKSpriteNode!
 
     var winOverlay: SKNode!
+    var instructionOverlay: SKNode!
+
+    var internalOverlay: SKNode!
     var loseOverlay: SKNode!
 
     var previousDegrees: Int = 0
@@ -61,38 +64,73 @@ class SnowballScene: BaseScene {
     }
 
     func buildWinOverlay() {
-        timerValue.alpha = 1
-        winOverlay = SKNode()
-        winOverlay.alpha = 0
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.darkGrayColor()
-        background.alpha = 0.25
-        winOverlay.addChild(background)
-
-        let winScreen = SKLabelNode(text: "You Win!")
-        winScreen.position = CGPoint(x: 500, y: 400)
-        winScreen.fontName = "Hoefler Text"
-        winScreen.fontSize = 75
-        winOverlay.addChild(winScreen)
+        winOverlay = WinOverlayNode(scene: self)!
         self.addChild(winOverlay)
     }
-
-    func showWinOverlay() {
-        timerValue.alpha = 0
-        let showWinOverlayAction = SKAction.fadeInWithDuration(0.3)
-        winOverlay.runAction(showWinOverlayAction)
-        let hideWinSceneAction = SKAction.fadeOutWithDuration(0.3)
-        gameObjects.runAction(hideWinSceneAction)
-    }
-
-    func hideWinOverlay() {
-        timerValue.alpha = 1
-        let hideWinOverlayAction = SKAction.fadeOutWithDuration(0.3)
-        winOverlay.runAction(hideWinOverlayAction)
-        let showWinSceneAction = SKAction.fadeInWithDuration(0.3)
-        gameObjects.runAction(showWinSceneAction)
-    }
+//        instructionOverlay = SKNode()
+//
+//        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
+//        background.fillColor = SKColor.blackColor()
+//        background.alpha = 0.25
+//        instructionOverlay.addChild(background)
+//
+//        let instructions = SKLabelNode(text: "Tap to continue")
+//        instructions.position = CGPoint(x: 500, y: 50)
+//        instructions.fontName = "Hoefler Text"
+//        instructions.fontSize = 25
+//        instructionOverlay.addChild(instructions)
+//
+//        let instructionsResize = SKLabelNode(text: "Pinch to resize")
+//        instructionsResize.position = CGPoint(x: 220, y: 700)
+//        instructionsResize.fontName = "Hoefler Text"
+//        instructionOverlay.addChild(instructionsResize)
+//
+//        let instructionsPlay = SKLabelNode(text: "Resize the snowball and ramp to try and ")
+//        instructionsPlay .position = CGPoint(x: 500, y: 370)
+//        instructionsPlay.fontName = "Hoefler Text"
+//        instructionOverlay.addChild(instructionsPlay)
+//
+//        let instructionsPlay2 = SKLabelNode(text: "knock the monster down with the snowball!")
+//        instructionsPlay2 .position = CGPoint(x: 500, y: 330)
+//        instructionsPlay2.fontName = "Hoefler Text"
+//        instructionOverlay.addChild(instructionsPlay2)
+//
+//        self.addChild(instructionOverlay)
+//    }
+//
+//    func buildWinOverlay() {
+//        timerValue.alpha = 1
+//        winOverlay = SKNode()
+//        winOverlay.alpha = 0
+//
+//        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
+//        background.fillColor = SKColor.darkGrayColor()
+//        background.alpha = 0.25
+//        winOverlay.addChild(background)
+//
+//        let winScreen = SKLabelNode(text: "You Win!")
+//        winScreen.position = CGPoint(x: 500, y: 400)
+//        winScreen.fontName = "Hoefler Text"
+//        winScreen.fontSize = 75
+//        winOverlay.addChild(winScreen)
+//        self.addChild(winOverlay)
+//    }
+//
+//    func showWinOverlay() {
+//        timerValue.alpha = 0
+//        let showWinOverlayAction = SKAction.fadeInWithDuration(0.3)
+//        winOverlay.runAction(showWinOverlayAction)
+//        let hideWinSceneAction = SKAction.fadeOutWithDuration(0.3)
+//        gameObjects.runAction(hideWinSceneAction)
+//    }
+//
+//    func hideWinOverlay() {
+//        timerValue.alpha = 1
+//        let hideWinOverlayAction = SKAction.fadeOutWithDuration(0.3)
+//        winOverlay.runAction(hideWinOverlayAction)
+//        let showWinSceneAction = SKAction.fadeInWithDuration(0.3)
+//        gameObjects.runAction(showWinSceneAction)
+ //   }
 
     func isGameWon() -> Bool {
         return winOverlay.alpha == 1
@@ -375,4 +413,4 @@ class SnowballScene: BaseScene {
             }
         }
     }
-}
+
