@@ -8,39 +8,18 @@ import SpriteKit
 
 class LeverScene: BaseScene {
     static let runButtonName = "runButton"
-    static let resetButtonName = "resetButtonName"
+    static let resetButtonName = "resetButton"
     static let smallWeightName = "smallWeight"
     static let largeWeightName = "largeWeight"
 
     var gameObjects: SKNode!
     var fulcrumNode: SKShapeNode!
-    var instructionOverlay: SKNode!
     var movingFulcrum = false
 
     func buildInstructionOverlay() {
-        instructionOverlay = SKNode()
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.blackColor()
-        background.alpha = 0.25
-        instructionOverlay.addChild(background)
-
-        let instructions = SKLabelNode(text: "Move fulcrum for optimal drop")
-        instructions.position = CGPoint(x: 500, y: 50)
-        instructions.fontName = "Hoefler Text"
-        instructions.fontSize = 25
-        instructionOverlay.addChild(instructions)
-
-        let instructionsPlay = SKLabelNode(text: "Choose the right drop weight to move the")
-        instructionsPlay .position = CGPoint(x: 500, y: 370)
-        instructionsPlay.fontName = "Hoefler Text"
-        instructionOverlay.addChild(instructionsPlay)
-
-        let instructionsPlay2 = SKLabelNode(text: "rock and help the princess into her castle!")
-        instructionsPlay2 .position = CGPoint(x: 500, y: 330)
-        instructionsPlay2.fontName = "Hoefler Text"
-        instructionOverlay.addChild(instructionsPlay2)
-
+        instructionOverlay = InstructionOverlayNode(scene: self)
+        instructionOverlay.text1 = "Move fulcrum for optimal drop"
+        instructionOverlay.text2 = "Choose the right drop weight to move the\nrock and help the princess into her castle"
         self.addChild(instructionOverlay)
     }
 
