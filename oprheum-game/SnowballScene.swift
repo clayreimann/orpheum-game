@@ -22,7 +22,7 @@ class SnowballScene: BaseScene {
     var monster: SKSpriteNode!
 
     var internalOverlay: SKNode!
-    var loseOverlay: SKNode!
+ 
 
     var previousDegrees: Int = 0
     var timerValue: SKLabelNode!
@@ -84,29 +84,15 @@ class SnowballScene: BaseScene {
     }
 
     func buildLoseOverlay() {
-        loseOverlay = SKNode()
-        loseOverlay.alpha = 0
-        start = nil
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.darkGrayColor()
-        background.alpha = 0.25
-        loseOverlay.addChild(background)
-
-        let loseScreen = SKLabelNode(text: "Mission Failed. Try again!")
-        loseScreen.position = CGPoint(x: 500, y: 400)
-        loseScreen.fontName = "Hoefler Text"
-        loseScreen.fontSize = 75
-        loseOverlay.addChild(loseScreen)
-
-        self.addChild(loseOverlay)
+       self.addChild(loseOverlay)
     }
 
     func showLoseOverlay() {
         instructionOverlay.alpha = 0
         timerValue.alpha = 0
-        let showLoseOverlayAction = SKAction.fadeInWithDuration(0.3)
-        loseOverlay.runAction(showLoseOverlayAction)
+        loseOverlay.show()
+
+       
         let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
         gameObjects.runAction(hideSceneAction)
         start = nil
@@ -114,8 +100,8 @@ class SnowballScene: BaseScene {
 
     func hideLoseOverlay() {
         timerValue.alpha = 1
-        let hideLoseOverlayAction = SKAction.fadeOutWithDuration(0.3)
-        loseOverlay.runAction(hideLoseOverlayAction)
+        loseOverlay.hide()
+        
         let showSceneAction = SKAction.fadeInWithDuration(0.3)
         gameObjects.runAction(showSceneAction)
     }
