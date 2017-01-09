@@ -218,6 +218,10 @@ class SnowballScene: BaseScene {
                 hideLoseOverlay()
                 self.stopSimulation()
                 resetScene()
+                self.addChild(rampNode)
+                self.addChild(snowballNode)
+                self.addChild(buttons)
+                self.addChild(monster)
                 return
             }
 

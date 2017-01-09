@@ -154,9 +154,6 @@ class LeverScene: BaseScene {
 
     func resetButtonTouched(touch: NSValue) -> Bool {
         resetScene()
-
-        let showInstructionsAction = SKAction.fadeInWithDuration(0.3)
-        instructionOverlay.runAction(showInstructionsAction)
         return true // stop processing touches
     }
 
