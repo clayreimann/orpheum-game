@@ -22,7 +22,6 @@ class SnowballScene: BaseScene {
     var monster: SKSpriteNode!
 
     var internalOverlay: SKNode!
- 
 
     var previousDegrees: Int = 0
     var timerValue: SKLabelNode!
@@ -92,7 +91,6 @@ class SnowballScene: BaseScene {
         timerValue.alpha = 0
         loseOverlay.show()
 
-       
         let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
         gameObjects.runAction(hideSceneAction)
         start = nil
@@ -101,7 +99,7 @@ class SnowballScene: BaseScene {
     func hideLoseOverlay() {
         timerValue.alpha = 1
         loseOverlay.hide()
-        
+
         let showSceneAction = SKAction.fadeInWithDuration(0.3)
         gameObjects.runAction(showSceneAction)
     }
