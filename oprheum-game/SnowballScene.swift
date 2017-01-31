@@ -80,6 +80,7 @@ class SnowballScene: BaseScene {
 
     func showWinOverlay() {
         timerValue.alpha = 0
+
         let showWinOverlayAction = SKAction.fadeInWithDuration(0.3)
         winOverlay.runAction(showWinOverlayAction)
         let hideWinSceneAction = SKAction.fadeOutWithDuration(0.3)
@@ -88,6 +89,7 @@ class SnowballScene: BaseScene {
 
     func hideWinOverlay() {
         timerValue.alpha = 1
+        
         let hideWinOverlayAction = SKAction.fadeOutWithDuration(0.3)
         winOverlay.runAction(hideWinOverlayAction)
         let showWinSceneAction = SKAction.fadeInWithDuration(0.3)
@@ -95,7 +97,7 @@ class SnowballScene: BaseScene {
     }
 
     func isGameWon() -> Bool {
-        return winOverlay.alpha == 1
+        return winOverlay.alpha > 0.5
     }
 
     func buildLoseOverlay() {
@@ -120,6 +122,7 @@ class SnowballScene: BaseScene {
     func showLoseOverlay() {
         instructionOverlay.alpha = 0
         timerValue.alpha = 0
+        
         let showLoseOverlayAction = SKAction.fadeInWithDuration(0.3)
         loseOverlay.runAction(showLoseOverlayAction)
         let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
@@ -129,6 +132,9 @@ class SnowballScene: BaseScene {
 
     func hideLoseOverlay() {
         timerValue.alpha = 1
+        
+        
+        
         let hideLoseOverlayAction = SKAction.fadeOutWithDuration(0.3)
         loseOverlay.runAction(hideLoseOverlayAction)
         let showSceneAction = SKAction.fadeInWithDuration(0.3)
@@ -230,7 +236,13 @@ class SnowballScene: BaseScene {
 
             if isGameWon() {
                 hideWinOverlay()
+                
+                self.addChild(rampNode)
+                self.addChild(snowballNode)
+                self.addChild(buttons)
+                self.addChild(monster)
                 self.stopSimulation()
+                
                 resetScene()
                 return
             }
@@ -359,6 +371,10 @@ class SnowballScene: BaseScene {
                 let degrees = previousDegrees
                 if degrees == previousDegrees {
                     showWinOverlay()
+                    rampNode.removeFromParent()
+                    snowballNode.removeFromParent()
+                    buttons.removeFromParent()
+                    monster.removeFromParent()
                     stopSimulation()
                 } else if previousDegrees == degrees {
                     unselectAll()
