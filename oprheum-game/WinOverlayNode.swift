@@ -2,7 +2,7 @@
 //  WinOverlayNode.swift
 //  orpheum-game
 //
-//  Created by Anna Troutt on 12/30/16.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 //
 //
 

@@ -2,7 +2,7 @@
 //  LoseOverlayNode.swift
 //  orpheum-game
 //
-//  Created by Anna Troutt on 1/3/17.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 //
 //
 
