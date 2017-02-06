@@ -22,6 +22,7 @@ class SnowballNode: SKNode {
     }
 
     func setSnowballMass(mass: CGFloat) {
+        if mass>1.6 {let mass = 1.8}
         self.mass = mass
         redrawSnowball()
     }
