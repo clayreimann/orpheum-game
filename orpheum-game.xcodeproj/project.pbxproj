@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14D930F31E16FECF00F94BBB /* WinOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D930F21E16FECF00F94BBB /* WinOverlayNode.swift */; };
+		14D930F51E1C6B5B00F94BBB /* LoseOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D930F41E1C6B5B00F94BBB /* LoseOverlayNode.swift */; };
 		6F2858CB1DEF15E300FC1458 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */; };
 		8128F8CD1D751AE000132AC2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B381C601C4400321C0B /* Info.plist */; };
 		8199CCFD1D95BF9D00EAA89A /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14D930F21E16FECF00F94BBB /* WinOverlayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinOverlayNode.swift; sourceTree = "<group>"; };
+		14D930F41E1C6B5B00F94BBB /* LoseOverlayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseOverlayNode.swift; sourceTree = "<group>"; };
 		6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		81D67C0C1DF62C1200FF56C7 /* InstructionOverlayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionOverlayNode.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		6F2858C91DEF15C900FC1458 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				14D930F41E1C6B5B00F94BBB /* LoseOverlayNode.swift */,
+				14D930F21E16FECF00F94BBB /* WinOverlayNode.swift */,
 				8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */,
 				6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */,
 				81D67C0C1DF62C1200FF56C7 /* InstructionOverlayNode.swift */,
@@ -356,7 +362,9 @@
 			files = (
 				C83B4B221C601C4400321C0B /* SnowballScene.swift in Sources */,
 				8199CCFD1D95BF9D00EAA89A /* BaseScene.swift in Sources */,
+				14D930F31E16FECF00F94BBB /* WinOverlayNode.swift in Sources */,
 				C83B4B241C601C4400321C0B /* GameViewController.swift in Sources */,
+				14D930F51E1C6B5B00F94BBB /* LoseOverlayNode.swift in Sources */,
 				C8F888781D39457F00A8FA80 /* MenuScene.swift in Sources */,
 				C88E3F5D1D6FC49F00FDC143 /* LeverScene.swift in Sources */,
 				81DEA1451D7659B1004E0869 /* SnowballNode.swift in Sources */,

@@ -1,7 +1,7 @@
 //
 //  SnowballNode.swift
 //
-//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 
 import SpriteKit
 
