@@ -28,6 +28,7 @@ class SnowballScene: BaseScene {
     var timerValue: SKLabelNode!
     var start: NSDate?
     var timeRemaining = 30.0
+    var level = 30.0
 
     var snowballMenu: SnowballMenu!
 
@@ -223,11 +224,12 @@ class SnowballScene: BaseScene {
             if isGameLost() {
                 hideLoseOverlay()
                 self.stopSimulation()
-                resetScene()
                 self.addChild(rampNode)
                 self.addChild(snowballNode)
                 self.addChild(buttons)
                 self.addChild(monster)
+                resetScene()
+                timeRemaining = level
                 return
             }
 
@@ -242,8 +244,8 @@ class SnowballScene: BaseScene {
                 self.addChild(buttons)
                 self.addChild(monster)
                 self.stopSimulation()
-                
                 resetScene()
+                timeRemaining = level
                 return
             }
 
@@ -289,6 +291,8 @@ class SnowballScene: BaseScene {
                         rampNode.maxSize = RampNode.easyMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
+                        timeRemaining = 30
+                        level = 30
                     } else if node.name == "MediumButton" {
                         stopSimulation()
                         self.addChild(rampNode)
@@ -299,6 +303,7 @@ class SnowballScene: BaseScene {
                         snowballMenu.removeFromParent()
                         resetScene()
                         timeRemaining = 20
+                        level = 20
                         timerValue.alpha = 1
                     } else if node.name == "HardButton" {
                         self.stopSimulation()
@@ -310,6 +315,7 @@ class SnowballScene: BaseScene {
                         snowballMenu.removeFromParent()
                         resetScene()
                         timeRemaining = 10
+                        level = 10
                         timerValue.alpha = 1
                     } else if node.name == "exitButton" {
                         self.addChild(rampNode)
@@ -367,7 +373,7 @@ class SnowballScene: BaseScene {
             let π = CGFloat(M_PI) // tailor:disable
             let degrees = abs((monster.zRotation * 180 / π) % 360)
 
-            if degrees > 85 && 280 > degrees {
+            if degrees > 75 && 255 > degrees {
                 let degrees = previousDegrees
                 if degrees == previousDegrees {
                     showWinOverlay()
