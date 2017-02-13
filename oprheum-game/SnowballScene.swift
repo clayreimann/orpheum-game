@@ -199,7 +199,6 @@ class SnowballScene: BaseScene {
 
             if isGameWon() {
                 hideWinOverlay()
-                
                 self.addChild(rampNode)
                 self.addChild(snowballNode)
                 self.addChild(buttons)
