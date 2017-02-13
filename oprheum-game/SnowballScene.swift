@@ -324,8 +324,6 @@ class SnowballScene: BaseScene {
                         self.addChild(monster)
                         snowballMenu.removeFromParent()
                         timerValue.alpha = 1
-                    } else if node.name == "backToMenuButton" {
-                        gameViewController.startMenu()
                     }
                 }
             }
