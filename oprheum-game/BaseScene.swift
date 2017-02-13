@@ -1,7 +1,7 @@
 //
 //  BaseScene.swift
 //
-//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 //
 
 import SpriteKit
@@ -18,7 +18,10 @@ class BaseScene: SKScene {
     static let smallFontSize: CGFloat = 20
 
     var gameViewController: GameViewController!
+
     var instructionOverlay: InstructionOverlayNode!
+    var winOverlay = WinOverlayNode()
+    var loseOverlay = LoseOverlayNode ()
 
     func createSmallButton(named name: String, text: String, atPoint position: CGPoint, withSize size: CGSize) -> SKNode {
         let button = ButtonNode(name: name, text: text, size: size)

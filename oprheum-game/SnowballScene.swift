@@ -21,8 +21,7 @@ class SnowballScene: BaseScene {
     var rampNode: RampNode!
     var monster: SKSpriteNode!
 
-    var winOverlay: SKNode!
-    var loseOverlay: SKNode!
+    var internalOverlay: SKNode!
 
     var previousDegrees: Int = 0
     var timerValue: SKLabelNode!
@@ -62,37 +61,19 @@ class SnowballScene: BaseScene {
     }
 
     func buildWinOverlay() {
-        timerValue.alpha = 1
-        winOverlay = SKNode()
-        winOverlay.alpha = 0
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.darkGrayColor()
-        background.alpha = 0.25
-        winOverlay.addChild(background)
-
-        let winScreen = SKLabelNode(text: "You Win!")
-        winScreen.position = CGPoint(x: 500, y: 400)
-        winScreen.fontName = "Hoefler Text"
-        winScreen.fontSize = 75
-        winOverlay.addChild(winScreen)
         self.addChild(winOverlay)
     }
 
     func showWinOverlay() {
         timerValue.alpha = 0
-
-        let showWinOverlayAction = SKAction.fadeInWithDuration(0.3)
-        winOverlay.runAction(showWinOverlayAction)
+        winOverlay.show()
         let hideWinSceneAction = SKAction.fadeOutWithDuration(0.3)
         gameObjects.runAction(hideWinSceneAction)
     }
 
     func hideWinOverlay() {
         timerValue.alpha = 1
-        
-        let hideWinOverlayAction = SKAction.fadeOutWithDuration(0.3)
-        winOverlay.runAction(hideWinOverlayAction)
+        winOverlay.hide()
         let showWinSceneAction = SKAction.fadeInWithDuration(0.3)
         gameObjects.runAction(showWinSceneAction)
     }
@@ -102,30 +83,13 @@ class SnowballScene: BaseScene {
     }
 
     func buildLoseOverlay() {
-        loseOverlay = SKNode()
-        loseOverlay.alpha = 0
-        start = nil
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.darkGrayColor()
-        background.alpha = 0.25
-        loseOverlay.addChild(background)
-
-        let loseScreen = SKLabelNode(text: "Mission Failed. Try again!")
-        loseScreen.position = CGPoint(x: 500, y: 400)
-        loseScreen.fontName = "Hoefler Text"
-        loseScreen.fontSize = 75
-        loseOverlay.addChild(loseScreen)
-
-        self.addChild(loseOverlay)
+       self.addChild(loseOverlay)
     }
 
     func showLoseOverlay() {
         instructionOverlay.alpha = 0
         timerValue.alpha = 0
-        
-        let showLoseOverlayAction = SKAction.fadeInWithDuration(0.3)
-        loseOverlay.runAction(showLoseOverlayAction)
+        loseOverlay.show()
         let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
         gameObjects.runAction(hideSceneAction)
         start = nil
@@ -133,11 +97,7 @@ class SnowballScene: BaseScene {
 
     func hideLoseOverlay() {
         timerValue.alpha = 1
-        
-        
-        
-        let hideLoseOverlayAction = SKAction.fadeOutWithDuration(0.3)
-        loseOverlay.runAction(hideLoseOverlayAction)
+        loseOverlay.hide()
         let showSceneAction = SKAction.fadeInWithDuration(0.3)
         gameObjects.runAction(showSceneAction)
     }
@@ -221,6 +181,7 @@ class SnowballScene: BaseScene {
                 instructionOverlay.runAction(hideInstructionsAction)
                 startTimer()
             }
+
             if isGameLost() {
                 hideLoseOverlay()
                 self.stopSimulation()
@@ -401,4 +362,5 @@ class SnowballScene: BaseScene {
             }
         }
     }
+
 }

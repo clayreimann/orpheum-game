@@ -1,16 +1,19 @@
 //
 //  SnowballNode.swift
 //
-//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 
 import SpriteKit
 
 class SnowballNode: SKNode {
-    static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
+
+    static let maximumMass: CGFloat = 13
+    static let minimumMass: CGFloat = 1
+
     let whiteColor = SKColor.whiteColor()
 
-    var snowballNode: SKShapeNode!
-    var mass: CGFloat = 6
+    var snowball: SKShapeNode!
+    var mass: CGFloat = SnowballNode.maximumMass
     var mass0: CGFloat = 0 // this needs a better name
 
     override init() {
@@ -22,18 +25,26 @@ class SnowballNode: SKNode {
     }
 
     func setSnowballMass(mass: CGFloat) {
-        self.mass = mass
+        var newMass = mass
+        if newMass > SnowballNode.maximumMass {
+            newMass = SnowballNode.maximumMass
+        }
+        if newMass < SnowballNode.minimumMass {
+            newMass = SnowballNode.minimumMass
+        }
+        print("newMass %f mass %f", newMass, mass)
+        self.mass = newMass
         redrawSnowball()
     }
 
     func redrawSnowball() {
         self.removeAllChildren()
         let radius = mass * 10
-        snowballNode = SKShapeNode(circleOfRadius: radius)
+        snowball = SKShapeNode(circleOfRadius: radius)
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         self.physicsBody?.mass = mass
-        self.addChild(snowballNode)
-        snowballNode.fillColor = whiteColor
+        self.addChild(snowball)
+        snowball.fillColor = whiteColor
     }
 
     func pinchBegan(scale: CGFloat) {
@@ -49,11 +60,11 @@ class SnowballNode: SKNode {
     }
 
     func select() {
-        snowballNode.fillColor = whiteColor
+        snowball.fillColor = whiteColor
     }
 
     func unselect() {
-        snowballNode.fillColor = SnowballNode.SnowballColor
+        snowball.fillColor = SKColor.blueColor()
     }
 
     required init?(coder aDecoder: NSCoder) {
