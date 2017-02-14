@@ -194,9 +194,6 @@ class SnowballScene: BaseScene {
                 return
             }
 
-            let hideWinInstructionsAction = SKAction.fadeOutWithDuration(0.3)
-            instructionOverlay.runAction(hideWinInstructionsAction)
-
             if isGameWon() {
                 hideWinOverlay()
                 self.addChild(rampNode)
@@ -208,6 +205,10 @@ class SnowballScene: BaseScene {
                 timeRemaining = level
                 return
             }
+            
+            
+            let hideWinInstructionsAction = SKAction.fadeOutWithDuration(0.3)
+            instructionOverlay.runAction(hideWinInstructionsAction)
 
             let nodes = self.nodesAtPoint(touch.locationInNode(self))
             for node in nodes {
