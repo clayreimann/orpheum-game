@@ -10,7 +10,7 @@ class SnowballScene: BaseScene {
     static let resetButtonName = "ResetButton"
     static let menuButtonName = "MenuButton"
     static let physicsInstructionsName = "physicsInstructionsButton"
-    static let timeresetButtonName = "TimeResetButton" 
+    static let timeresetButtonName = "TimeResetButton"
 
     var difficulty: CGFloat = 0.5
 
@@ -27,7 +27,7 @@ class SnowballScene: BaseScene {
 
     var previousDegrees: Int = 0
     var timerValue: SKLabelNode!
-    var start: NSDate?
+    var start: Date?
     var timeRemaining = 30.0
     var level = 30.0
 
@@ -45,12 +45,12 @@ class SnowballScene: BaseScene {
     }
 
     func startTimer() {
-        start = NSDate()
+        start = Date()
     }
 
     func stopTimer() {
         if let start = start {
-            let delta = start.timeIntervalSinceReferenceDate - NSDate().timeIntervalSinceReferenceDate
+            let delta = start.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
             timeRemaining = timeRemaining + delta
         }
         start = nil
@@ -70,18 +70,16 @@ class SnowballScene: BaseScene {
 
     func showWinOverlay() {
         timerValue.alpha = 0
-
         winOverlay.show()
-        let hideObjects = SKAction.fadeOutWithDuration(0.3)
-        gameObjects.runAction(hideObjects)
+        let hideObjects = SKAction.fadeOut(withDuration: 0.3)
+        gameObjects.run(hideObjects)
     }
 
     func hideWinOverlay() {
         timerValue.alpha = 1
-
         winOverlay.hide()
-        let showObjects = SKAction.fadeInWithDuration(0.3)
-        gameObjects.runAction(showObjects)
+        let showObjects = SKAction.fadeIn(withDuration: 0.3)
+        gameObjects.run(showObjects)
     }
 
     func isGameWon() -> Bool {
@@ -96,18 +94,17 @@ class SnowballScene: BaseScene {
         instructionOverlay.alpha = 0
         timerValue.alpha = 0
         loseOverlay.show()
+        let hideSceneAction = SKAction.fadeOut(withDuration: 0.3)
+        gameObjects.run(hideSceneAction)
 
-        let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
-        gameObjects.runAction(hideSceneAction)
         start = nil
     }
 
     func hideLoseOverlay() {
         timerValue.alpha = 1
         loseOverlay.hide()
-
-        let showSceneAction = SKAction.fadeInWithDuration(0.3)
-        gameObjects.runAction(showSceneAction)
+        let showSceneAction = SKAction.fadeIn(withDuration: 0.3)
+        gameObjects.run(showSceneAction)
     }
 
     func isGameLost() -> Bool {
@@ -128,11 +125,11 @@ class SnowballScene: BaseScene {
         monster.zRotation = 0
     }
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         self.gameObjects = SKNode()
         self.addChild(gameObjects)
         self.physicsWorld.speed = 0.0
-        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.name = "BouncingBalls"
         buttons = SKNode()
         buttons.position = CGPoint(x: 900, y: 400)
@@ -148,17 +145,17 @@ class SnowballScene: BaseScene {
         let resetButton = createSmallButton(named: SnowballScene.resetButtonName, text: "Reset", atPoint: CGPoint(x: 80, y: 265), withSize: BaseScene.smallButtonSize)
         buttons.addChild(resetButton)
 
-        let timeresetButton = createSmallButton(named: SnowballScene.timeresetButtonName , text: "Timer Reset", atPoint: CGPoint(x: 80, y: 200), withSize: BaseScene.smallButtonSize)
+        let timeresetButton = createSmallButton(named: SnowballScene.timeresetButtonName, text: "Timer Reset", atPoint: CGPoint(x: 80, y: 200), withSize: BaseScene.smallButtonSize)
         buttons.addChild(timeresetButton)
 
         let menuButton = createSmallButton(named: SnowballScene.menuButtonName, text: "Menu", atPoint: CGPoint(x: 80, y: 135), withSize: BaseScene.smallButtonSize)
         buttons.addChild(menuButton)
-        
+
         let physicsInstructions = createSmallButton(named: SnowballScene.physicsInstructionsName, text: "?", atPoint: CGPoint(x: 80, y: 20), withSize: BaseScene.smallButtonSize)
         buttons.addChild(physicsInstructions)
 
         timerValue = SKLabelNode(text: "0")
-        timerValue.fontColor = SKColor.whiteColor()
+        timerValue.fontColor = SKColor.white
         timerValue.position = CGPoint(x: 550, y: 700)
         timerValue.fontSize = 60
         timerValue.zPosition = 100
@@ -166,7 +163,7 @@ class SnowballScene: BaseScene {
 
         monster = SKSpriteNode(imageNamed: "Monster")
         monster.name = "monster"
-        monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.size)
+        monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
         monster.physicsBody?.mass = 0.5
         gameObjects.addChild(monster)
 
@@ -187,44 +184,45 @@ class SnowballScene: BaseScene {
         snowballNode.unselect()
         selectedNode = nil
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+
+    func addGameObjectsToScene() {
+        self.addChild(rampNode)
+        self.addChild(snowballNode)
+        self.addChild(buttons)
+        self.addChild(monster)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             if instructionOverlay.alpha != 0 {
                 self.stopSimulation()
-                let hideInstructionsAction = SKAction.fadeOutWithDuration(0.3)
-                instructionOverlay.runAction(hideInstructionsAction)
+                let hideInstructionsAction = SKAction.fadeOut(withDuration: 0.3)
+                instructionOverlay.run(hideInstructionsAction)
                 startTimer()
             }
 
             if isGameLost() {
                 hideLoseOverlay()
-                self.stopSimulation()
-                self.addChild(rampNode)
-                self.addChild(snowballNode)
-                self.addChild(buttons)
-                self.addChild(monster)
+                stopSimulation()
+                addGameObjectsToScene()
                 resetScene()
                 timeRemaining = level
                 return
             }
+
+            let hideWinInstructionsAction = SKAction.fadeOut(withDuration: 0.3)
+            instructionOverlay.run(hideWinInstructionsAction)
 
             if isGameWon() {
                 hideWinOverlay()
-                self.addChild(rampNode)
-                self.addChild(snowballNode)
-                self.addChild(buttons)
-                self.addChild(monster)
-                self.stopSimulation()
+                addGameObjectsToScene()
+                stopSimulation()
                 resetScene()
                 timeRemaining = level
                 return
             }
-            
-            
-            let hideWinInstructionsAction = SKAction.fadeOutWithDuration(0.3)
-            instructionOverlay.runAction(hideWinInstructionsAction)
 
-            let nodes = self.nodesAtPoint(touch.locationInNode(self))
+            let nodes = self.nodes(at: touch.location(in: self))
             for node in nodes {
                 if let ramp = node as? RampNode {
                     unselectAll()
@@ -265,10 +263,7 @@ class SnowballScene: BaseScene {
                         self.addChild(snowballMenu)
                     } else if node.name == "EasyButton" {
                         stopSimulation()
-                        self.addChild(rampNode)
-                        self.addChild(snowballNode)
-                        self.addChild(buttons)
-                        self.addChild(monster)
+                        addGameObjectsToScene()
                         rampNode.maxSize = RampNode.easyMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
@@ -276,10 +271,7 @@ class SnowballScene: BaseScene {
                         level = 30
                     } else if node.name == "MediumButton" {
                         stopSimulation()
-                        self.addChild(rampNode)
-                        self.addChild(snowballNode)
-                        self.addChild(buttons)
-                        self.addChild(monster)
+                        addGameObjectsToScene()
                         rampNode.maxSize = RampNode.mediumMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
@@ -288,10 +280,7 @@ class SnowballScene: BaseScene {
                         timerValue.alpha = 1
                     } else if node.name == "HardButton" {
                         self.stopSimulation()
-                        self.addChild(rampNode)
-                        self.addChild(snowballNode)
-                        self.addChild(buttons)
-                        self.addChild(monster)
+                        addGameObjectsToScene()
                         rampNode.maxSize = RampNode.hardMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
@@ -299,10 +288,7 @@ class SnowballScene: BaseScene {
                         level = 10
                         timerValue.alpha = 1
                     } else if node.name == "exitButton" {
-                        self.addChild(rampNode)
-                        self.addChild(snowballNode)
-                        self.addChild(buttons)
-                        self.addChild(monster)
+                        addGameObjectsToScene()
                         snowballMenu.removeFromParent()
                         timerValue.alpha = 1
                     } else if node.name == "backToMenuButton" {
@@ -317,10 +303,7 @@ class SnowballScene: BaseScene {
                         physicsInstructions = SnowballGamePhysics()
                         self.addChild(physicsInstructions)
                     } else if node.name == "exitInstructionsButton" {
-                        self.addChild(rampNode)
-                        self.addChild(snowballNode)
-                        self.addChild(buttons)
-                        self.addChild(monster)
+                        addGameObjectsToScene()
                         physicsInstructions.removeFromParent()
                         timerValue.alpha = 1
                     }
@@ -329,25 +312,25 @@ class SnowballScene: BaseScene {
         }
     }
 
-    func handlePinchGesture(recognizer: UIPinchGestureRecognizer) {
-        let touch1 = recognizer.locationOfTouch(0, inView: self.view!)
-        let touch2 = recognizer.locationOfTouch(1, inView: self.view!)
+    func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
+        let touch1 = recognizer.location(ofTouch: 0, in: self.view!)
+        let touch2 = recognizer.location(ofTouch: 1, in: self.view!)
 
-        if recognizer.state == UIGestureRecognizerState.Began {
+        if recognizer.state == UIGestureRecognizerState.began {
             if let ramp = selectedNode as? RampNode {
                 ramp.pinchBegan(touch1, touch2: touch2)
             }
             if let snowball = selectedNode as? SnowballNode {
                 snowball.pinchBegan(recognizer.scale)
             }
-        } else if recognizer.state == UIGestureRecognizerState.Changed {
+        } else if recognizer.state == UIGestureRecognizerState.changed {
             if let ramp = selectedNode as? RampNode {
                 ramp.pinchChanged(touch1, touch2: touch2)
             }
             if let snowball = selectedNode as? SnowballNode {
                 snowball.pinchChanged(recognizer.scale)
             }
-        } else if recognizer.state == UIGestureRecognizerState.Ended {
+        } else if recognizer.state == UIGestureRecognizerState.ended {
             if let ramp = selectedNode as? RampNode {
                 ramp.pinchEnded(touch1, touch2: touch2)
             }
@@ -365,10 +348,10 @@ class SnowballScene: BaseScene {
         snowballNode.setSnowballMass(25)
     }
 
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         if let monster = monster {
-            let π = CGFloat(M_PI) // tailor:disable
-            let degrees = abs((monster.zRotation * 180 / π) % 360)
+            let π = CGFloat.pi
+            let degrees = abs((monster.zRotation * 180 / π).truncatingRemainder(dividingBy: 360))
 
             if degrees > 75 && 255 > degrees {
                 let degrees = previousDegrees
@@ -385,7 +368,7 @@ class SnowballScene: BaseScene {
                 print(degrees)
             }
             if let start = start {
-                let interval = NSDate().timeIntervalSinceDate(start)
+                let interval = Date().timeIntervalSince(start)
                 if interval > timeRemaining {
                     rampNode.removeFromParent()
                     snowballNode.removeFromParent()

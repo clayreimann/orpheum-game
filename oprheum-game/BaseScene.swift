@@ -7,7 +7,7 @@
 import SpriteKit
 
 class BaseScene: SKScene {
-    static let fontName = UIFont.boldSystemFontOfSize(1).fontName
+    static let fontName = UIFont.boldSystemFont(ofSize: 1).fontName
 
     static let bigFontSize: CGFloat = 40
 
@@ -35,15 +35,15 @@ class BaseScene: SKScene {
      *  Automatically attempt to call a func named <nodeName>Touched(atPoint: NSValue<CGPoint>)
      *  any such function should return a boolean value that, if true, will skip the evaluation of any other nodes that were touched
      */
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            let location = touch.locationInNode(self)
-            let nodes = self.nodesAtPoint(location)
+            let location = touch.location(in: self)
+            let nodes = self.nodes(at: location)
             for node in nodes {
                 if let name = node.name {
                     let sel = Selector("\(name)Touched:")
-                    if self.respondsToSelector(sel) {
-                        if self.performSelector(sel, withObject: NSValue(CGPoint: location)) != nil {
+                    if self.responds(to: sel) {
+                        if self.perform(sel, with: NSValue(cgPoint: location)) != nil {
                             print("skipping further evaluation after calling \(sel)")
                             return
                         } else {

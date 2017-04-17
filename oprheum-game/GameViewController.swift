@@ -35,23 +35,23 @@ class GameViewController: UIViewController {
         }
     }
 
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate: Bool {
         return true
     }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
         } else {
-            return .All
+            return .all
         }
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
 
-    func configureAndPresent(view: SKView, scene: BaseScene) {
+    func configureAndPresent(_ view: SKView, scene: BaseScene) {
         view.showsFPS = true
         view.showsNodeCount = true
 
@@ -59,7 +59,7 @@ class GameViewController: UIViewController {
         view.ignoresSiblingOrder = true // Sprite Kit applies additional optimizations to improve rendering performance
 
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.gameViewController = self
 
         view.presentScene(scene)

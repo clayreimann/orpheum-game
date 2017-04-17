@@ -6,13 +6,13 @@
 import SpriteKit
 
 class SnowballNode: SKNode {
-   
+
     static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
 
     static let maximumMass: CGFloat = 13
     static let minimumMass: CGFloat = 1
 
-    let whiteColor = SKColor.whiteColor()
+    let whiteColor = SKColor.white
 
     var snowball: SKShapeNode!
     var mass: CGFloat = SnowballNode.maximumMass
@@ -26,7 +26,7 @@ class SnowballNode: SKNode {
         unselect()
     }
 
-    func setSnowballMass(mass: CGFloat) {
+    func setSnowballMass(_ mass: CGFloat) {
         var newMass = mass
         if newMass > SnowballNode.maximumMass {
             newMass = SnowballNode.maximumMass
@@ -34,7 +34,7 @@ class SnowballNode: SKNode {
         if newMass < SnowballNode.minimumMass {
             newMass = SnowballNode.minimumMass
         }
-        print("newMass %f mass %f", newMass, mass)
+        print(String(format: "newMass %f mass %f", newMass, mass))
         self.mass = newMass
         redrawSnowball()
     }
@@ -49,15 +49,15 @@ class SnowballNode: SKNode {
         snowball.fillColor = whiteColor
     }
 
-    func pinchBegan(scale: CGFloat) {
+    func pinchBegan(_ scale: CGFloat) {
         mass0 = mass
     }
 
-    func pinchChanged(scale: CGFloat) {
+    func pinchChanged(_ scale: CGFloat) {
         setSnowballMass(mass0 * scale)
     }
 
-    func pinchEnded(scale: CGFloat) {
+    func pinchEnded(_ scale: CGFloat) {
         setSnowballMass(mass0 * scale)
     }
 
@@ -66,7 +66,7 @@ class SnowballNode: SKNode {
     }
 
     func unselect() {
-        snowball.fillColor = SKColor.blueColor()
+        snowball.fillColor = SKColor.blue
     }
 
     required init?(coder aDecoder: NSCoder) {

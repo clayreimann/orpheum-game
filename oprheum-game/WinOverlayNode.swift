@@ -9,13 +9,13 @@
 import SpriteKit
 
 class WinOverlayNode: SKNode {
-    private var background: SKShapeNode!
-    private var message: SKLabelNode!
+    fileprivate var background: SKShapeNode!
+    fileprivate var message: SKLabelNode!
 
     override init() {
         super.init()
-        background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.darkGrayColor()
+        background = SKShapeNode(rectOf: CGSize(width: 3000, height: 2000))
+        background.fillColor = SKColor.darkGray
         background.alpha = 0.25
         self.alpha = 0
         self.addChild(background)
@@ -32,12 +32,12 @@ class WinOverlayNode: SKNode {
     }
 
     func show() {
-        let showAction = SKAction.fadeInWithDuration(0.3)
-        self.runAction(showAction)
+        let showAction = SKAction.fadeIn(withDuration: 0.3)
+        self.run(showAction)
     }
 
     func hide() {
-        let hideAction = SKAction.fadeOutWithDuration(0.3)
-        self.runAction(hideAction)
+        let hideAction = SKAction.fadeOut(withDuration: 0.3)
+        self.run(hideAction)
     }
 }

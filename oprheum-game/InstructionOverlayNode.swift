@@ -38,21 +38,21 @@ class InstructionOverlayNode: SKNode {
             self.addChild(label2)
         }
     }
-   
+
     var text3 = "" {
         didSet(oldText) {
             label3.removeFromParent()
             label3 = makeLabel(text: text3)
             label3.position = centeredPoint(at: label3Height)
-            self.addChild(label3)  
+            self.addChild(label3)
         }
     }
 
-    private var background: SKShapeNode!
-    private var label1: SKLabelNode!
-    private var label2: SKLabelNode!
-    private var label3: SKLabelNode!
-    private var labelContinue: SKLabelNode!
+    fileprivate var background: SKShapeNode!
+    fileprivate var label1: SKLabelNode!
+    fileprivate var label2: SKLabelNode!
+    fileprivate var label3: SKLabelNode!
+    fileprivate var labelContinue: SKLabelNode!
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -80,13 +80,13 @@ class InstructionOverlayNode: SKNode {
 
         label2 = makeLabel(text: "")
         self.addChild(label2)
-        
+
         label3 = makeLabel(text: "")
         self.addChild(label3)
     }
 
-    func makeLabel(text text: String) -> SKLabelNode {
-        let lines = text.componentsSeparatedByString("\n")
+    func makeLabel(text: String) -> SKLabelNode {
+        let lines = text.components(separatedBy: "\n")
         let node = SKLabelNode()
         for line in lines {
             let lbl = SKLabelNode(text: line)
@@ -101,6 +101,6 @@ class InstructionOverlayNode: SKNode {
     }
 
     func backgroundPath() -> CGPath {
-        return CGPathCreateWithRect(CGRect(origin: CGPoint.zero, size: size), nil)
+        return CGPath(rect: CGRect(origin: CGPoint.zero, size: size), transform: nil)
     }
 }
