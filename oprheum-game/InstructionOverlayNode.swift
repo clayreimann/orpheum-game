@@ -38,7 +38,7 @@ class InstructionOverlayNode: SKNode {
             self.addChild(label2)
         }
     }
-    
+   
     var text3 = "" {
         didSet(oldText) {
             label3.removeFromParent()
