@@ -36,8 +36,7 @@ class SnowballMenu: SKNode {
         let exitButton = ButtonNode(name: "exitButton", text: "X", size: CGSize(width: 60, height: 60))
         exitButton.cornerRadius = 30
         exitButton.position = CGPoint(x: 635, y: 700)
-        node.addChild(exitButton)
-        
+        node.addChild(exitButton) 
     }
 
     required init?(coder aDecoder: NSCoder) {
