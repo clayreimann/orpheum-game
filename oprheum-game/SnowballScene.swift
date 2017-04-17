@@ -9,6 +9,7 @@ class SnowballScene: BaseScene {
     static let runButtonName = "RunButton"
     static let resetButtonName = "ResetButton"
     static let menuButtonName = "MenuButton"
+    static let physicsInstructionsName = "physicsInstructionsButton"
 
     var difficulty: CGFloat = 0.5
 
@@ -31,6 +32,7 @@ class SnowballScene: BaseScene {
     var level = 30.0
 
     var snowballMenu: SnowballMenu!
+    var physicsInstructions: SnowballGamePhysics!
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -182,6 +184,10 @@ class SnowballScene: BaseScene {
 
         let menuButton = createSmallButton(named: SnowballScene.menuButtonName, text: "Menu", atPoint: CGPoint(x: 80, y: 155), withSize: BaseScene.smallButtonSize)
         buttons.addChild(menuButton)
+        
+        let physicsInstructions = createSmallButton(named: SnowballScene.physicsInstructionsName, text: "?", atPoint: CGPoint(x: 80, y: 20), withSize: BaseScene.smallButtonSize)
+        buttons.addChild(physicsInstructions)
+    
 
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
@@ -324,7 +330,24 @@ class SnowballScene: BaseScene {
                         self.addChild(monster)
                         snowballMenu.removeFromParent()
                         timerValue.alpha = 1
-                    }
+                    } else if node.name == "physicsInstructionsButton" {
+                        start = nil
+                        timerValue.alpha = 0
+                        rampNode.removeFromParent()
+                        snowballNode.removeFromParent()
+                        buttons.removeFromParent()
+                        monster.removeFromParent()
+                        physicsInstructions = SnowballGamePhysics()
+                        self.addChild(physicsInstructions)
+                    } else if node.name == "exitInstructionsButton" {
+                        self.addChild(rampNode)
+                        self.addChild(snowballNode)
+                        self.addChild(buttons)
+                        self.addChild(monster)
+                        physicsInstructions.removeFromParent()
+                        timerValue.alpha = 1
+                   // }
+                }
                 }
             }
         }

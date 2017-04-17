@@ -12,7 +12,7 @@ class SnowballMenu: SKNode {
     static let easyButtonName = "EasyButton"
     override init() {
         super.init()
-        let node = SKShapeNode(rect: CGRect(x: 300, y: 100, width: 600, height: 400), cornerRadius: 5)
+        let node = SKShapeNode(rect: CGRect(x: 350, y: 100, width: 300, height: 600), cornerRadius: 5)
         node.fillColor = SKColor.grayColor()
         self.addChild(node)
 
@@ -35,8 +35,9 @@ class SnowballMenu: SKNode {
         
         let exitButton = ButtonNode(name: "exitButton", text: "X", size: CGSize(width: 60, height: 60))
         exitButton.cornerRadius = 30
-        exitButton.position = CGPoint(x: 695, y: 700)
+        exitButton.position = CGPoint(x: 635, y: 700)
         node.addChild(exitButton)
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

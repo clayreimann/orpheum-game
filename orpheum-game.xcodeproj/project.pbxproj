@@ -25,6 +25,7 @@
 		C83B4B421C601C4400321C0B /* orpheum-gameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B411C601C4400321C0B /* orpheum-gameUITests.swift */; };
 		C88E3F5D1D6FC49F00FDC143 /* LeverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88E3F5C1D6FC49F00FDC143 /* LeverScene.swift */; };
 		C88E3F5F1D6FC7BB00FDC143 /* LeverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C88E3F5E1D6FC7BB00FDC143 /* LeverScene.sks */; };
+		C8A2B1BA1E91676300FDEB0F /* PhysicsOverlayInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2B1B91E91676300FDEB0F /* PhysicsOverlayInstructions.swift */; };
 		C8F888761D39454E00A8FA80 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8F888751D39454E00A8FA80 /* MenuScene.sks */; };
 		C8F888781D39457F00A8FA80 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F888771D39457F00A8FA80 /* MenuScene.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		C83B4B431C601C4400321C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C88E3F5C1D6FC49F00FDC143 /* LeverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeverScene.swift; sourceTree = "<group>"; };
 		C88E3F5E1D6FC7BB00FDC143 /* LeverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeverScene.sks; sourceTree = "<group>"; };
+		C8A2B1B91E91676300FDEB0F /* PhysicsOverlayInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhysicsOverlayInstructions.swift; path = ../PhysicsOverlayInstructions.swift; sourceTree = "<group>"; };
 		C8F888751D39454E00A8FA80 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		C8F888771D39457F00A8FA80 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,10 +114,11 @@
 		81DEA1411D765624004E0869 /* Snowball Game */ = {
 			isa = PBXGroup;
 			children = (
-				C82FAD181DD14E7800AEC49B /* SnowballMenu.swift */,
 				81DEA1441D7659B1004E0869 /* SnowballNode.swift */,
 				81DEA1461D765A03004E0869 /* RampNode.swift */,
 				C83B4B211C601C4400321C0B /* SnowballScene.swift */,
+				C82FAD181DD14E7800AEC49B /* SnowballMenu.swift */,
+				C8A2B1B91E91676300FDEB0F /* PhysicsOverlayInstructions.swift */,
 				C83B4B1F1C601C4400321C0B /* SnowballScene.sks */,
 			);
 			name = "Snowball Game";
@@ -364,6 +367,7 @@
 				C82FAD191DD14E7800AEC49B /* SnowballMenu.swift in Sources */,
 				81DEA1471D765A03004E0869 /* RampNode.swift in Sources */,
 				6F2858CB1DEF15E300FC1458 /* ButtonNode.swift in Sources */,
+				C8A2B1BA1E91676300FDEB0F /* PhysicsOverlayInstructions.swift in Sources */,
 				81D67C0D1DF62C1200FF56C7 /* InstructionOverlayNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

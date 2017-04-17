@@ -46,19 +46,23 @@ class InstructionOverlayNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(scene: BaseScene) {
-        size = scene.frame.size
+    convenience init(scene: BaseScene) {
+        self.init(size: scene.frame.size)
+    }
+    
+    init(size: CGSize) {
+        self.size = size
         super.init()
 
-        background = SKShapeNode(path: backgroundPath())
-        background.fillColor = SKColor.blackColor()
-        background.alpha = 0.25
-        self.addChild(background)
+//        background = SKShapeNode(path: backgroundPath())
+//        background.fillColor = SKColor.blackColor()
+//        background.alpha = 0.25
+//        self.addChild(background)
 
-        labelContinue = makeLabel(text: "Tap to continue")
-        labelContinue.fontSize = 25
-        labelContinue.position = centeredPoint(at: continueHeight)
-        self.addChild(labelContinue)
+//        labelContinue = makeLabel(text: "Tap to continue")
+//        labelContinue.fontSize = 25
+//        labelContinue.position = centeredPoint(at: continueHeight)
+//        self.addChild(labelContinue)
 
         label1 = makeLabel(text: "")
         self.addChild(label1)

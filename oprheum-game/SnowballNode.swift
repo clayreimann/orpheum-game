@@ -6,6 +6,7 @@
 import SpriteKit
 
 class SnowballNode: SKNode {
+   
     static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
     let whiteColor = SKColor.whiteColor()
 
