@@ -61,7 +61,6 @@ class InstructionOverlayNode: SKNode {
     convenience init(scene: BaseScene) {
         self.init(size: scene.frame.size)
     }
-    
     init(size: CGSize) {
         self.size = size
         super.init()
@@ -97,7 +96,6 @@ class InstructionOverlayNode: SKNode {
         }
         return node
     }
-
     func centeredPoint(at height: CGFloat) -> CGPoint {
         return CGPoint(x: size.width / 2, y: height)
     }
