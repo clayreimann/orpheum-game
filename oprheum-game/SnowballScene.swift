@@ -22,8 +22,7 @@ class SnowballScene: BaseScene {
     var rampNode: RampNode!
     var monster: SKSpriteNode!
 
-    var winOverlay: SKNode!
-    var loseOverlay: SKNode!
+    var internalOverlay: SKNode!
 
     var previousDegrees: Int = 0
     var timerValue: SKLabelNode!
@@ -60,24 +59,11 @@ class SnowballScene: BaseScene {
         instructionOverlay = InstructionOverlayNode(scene: self)
         instructionOverlay.text1 = "Use the snowball and ramp to try and\nknock the monster down with the snowball"
         instructionOverlay.text2 = "Tap on the ramp or the snowball to select them then pinch to resize"
+        instructionOverlay.text3 = "Tap to continue"
         self.addChild(instructionOverlay)
     }
 
     func buildWinOverlay() {
-        timerValue.alpha = 1
-        winOverlay = SKNode()
-        winOverlay.alpha = 0
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.darkGrayColor()
-        background.alpha = 0.25
-        winOverlay.addChild(background)
-
-        let winScreen = SKLabelNode(text: "You Win!")
-        winScreen.position = CGPoint(x: 500, y: 400)
-        winScreen.fontName = "Hoefler Text"
-        winScreen.fontSize = 75
-        winOverlay.addChild(winScreen)
         self.addChild(winOverlay)
     }
 
@@ -86,17 +72,15 @@ class SnowballScene: BaseScene {
 
         let showWinOverlayAction = SKAction.fadeInWithDuration(0.3)
         winOverlay.runAction(showWinOverlayAction)
-        let hideWinSceneAction = SKAction.fadeOutWithDuration(0.3)
-        gameObjects.runAction(hideWinSceneAction)
+        winOverlay.show()
     }
 
     func hideWinOverlay() {
         timerValue.alpha = 1
-        
+
         let hideWinOverlayAction = SKAction.fadeOutWithDuration(0.3)
         winOverlay.runAction(hideWinOverlayAction)
-        let showWinSceneAction = SKAction.fadeInWithDuration(0.3)
-        gameObjects.runAction(showWinSceneAction)
+        winOverlay.hide()
     }
 
     func isGameWon() -> Bool {
@@ -104,22 +88,7 @@ class SnowballScene: BaseScene {
     }
 
     func buildLoseOverlay() {
-        loseOverlay = SKNode()
-        loseOverlay.alpha = 0
-        start = nil
-
-        let background = SKShapeNode(rectOfSize: CGSize(width: 3000, height: 2000))
-        background.fillColor = SKColor.darkGrayColor()
-        background.alpha = 0.25
-        loseOverlay.addChild(background)
-
-        let loseScreen = SKLabelNode(text: "Mission Failed. Try again!")
-        loseScreen.position = CGPoint(x: 500, y: 400)
-        loseScreen.fontName = "Hoefler Text"
-        loseScreen.fontSize = 75
-        loseOverlay.addChild(loseScreen)
-
-        self.addChild(loseOverlay)
+       self.addChild(loseOverlay)
     }
 
     func showLoseOverlay() {
@@ -128,20 +97,19 @@ class SnowballScene: BaseScene {
         
         let showLoseOverlayAction = SKAction.fadeInWithDuration(0.3)
         loseOverlay.runAction(showLoseOverlayAction)
-        let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
-        gameObjects.runAction(hideSceneAction)
-        start = nil
+        loseOverlay.show()
     }
 
     func hideLoseOverlay() {
         timerValue.alpha = 1
-        
-        
+
         
         let hideLoseOverlayAction = SKAction.fadeOutWithDuration(0.3)
         loseOverlay.runAction(hideLoseOverlayAction)
-        let showSceneAction = SKAction.fadeInWithDuration(0.3)
-        gameObjects.runAction(showSceneAction)
+        loseOverlay.hide()
+
+//        let showSceneAction = SKAction.fadeInWithDuration(0.3)
+//        gameObjects.runAction(showSceneAction)
     }
 
     func isGameLost() -> Bool {
@@ -227,6 +195,7 @@ class SnowballScene: BaseScene {
                 instructionOverlay.runAction(hideInstructionsAction)
                 startTimer()
             }
+
             if isGameLost() {
                 hideLoseOverlay()
                 self.stopSimulation()
@@ -239,12 +208,8 @@ class SnowballScene: BaseScene {
                 return
             }
 
-            let hideWinInstructionsAction = SKAction.fadeOutWithDuration(0.3)
-            instructionOverlay.runAction(hideWinInstructionsAction)
-
             if isGameWon() {
                 hideWinOverlay()
-                
                 self.addChild(rampNode)
                 self.addChild(snowballNode)
                 self.addChild(buttons)
@@ -254,6 +219,10 @@ class SnowballScene: BaseScene {
                 timeRemaining = level
                 return
             }
+            
+            
+            let hideWinInstructionsAction = SKAction.fadeOutWithDuration(0.3)
+            instructionOverlay.runAction(hideWinInstructionsAction)
 
             let nodes = self.nodesAtPoint(touch.locationInNode(self))
             for node in nodes {
@@ -330,6 +299,8 @@ class SnowballScene: BaseScene {
                         self.addChild(monster)
                         snowballMenu.removeFromParent()
                         timerValue.alpha = 1
+                    } else if node.name == "backToMenuButton" {
+                        gameViewController.startMenu()
                     } else if node.name == "physicsInstructionsButton" {
                         start = nil
                         timerValue.alpha = 0
@@ -346,8 +317,7 @@ class SnowballScene: BaseScene {
                         self.addChild(monster)
                         physicsInstructions.removeFromParent()
                         timerValue.alpha = 1
-                   // }
-                }
+                    }
                 }
             }
         }
@@ -422,4 +392,5 @@ class SnowballScene: BaseScene {
             }
         }
     }
+
 }

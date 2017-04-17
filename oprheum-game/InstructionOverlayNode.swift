@@ -8,6 +8,7 @@ import SpriteKit
 class InstructionOverlayNode: SKNode {
     let label1Height: CGFloat = 500
     let label2Height: CGFloat = 300
+    let label3Height: CGFloat = 100
     let continueHeight: CGFloat = 50
 
     var size = CGSize.zero {
@@ -16,6 +17,7 @@ class InstructionOverlayNode: SKNode {
             labelContinue.position = centeredPoint(at: continueHeight)
             label1.position = centeredPoint(at: label1Height)
             label2.position = centeredPoint(at: label2Height)
+            label3.position = centeredPoint(at: label3Height)
         }
     }
 
@@ -36,10 +38,21 @@ class InstructionOverlayNode: SKNode {
             self.addChild(label2)
         }
     }
+    
+    var text3 = "" {
+        didSet(oldText) {
+            label3.removeFromParent()
+            label3 = makeLabel(text: text3)
+            label3.position = centeredPoint(at: label3Height)
+            self.addChild(label3)
+            
+        }
+    }
 
     private var background: SKShapeNode!
     private var label1: SKLabelNode!
     private var label2: SKLabelNode!
+    private var label3: SKLabelNode!
     private var labelContinue: SKLabelNode!
 
     required init?(coder aDecoder: NSCoder) {
@@ -69,6 +82,9 @@ class InstructionOverlayNode: SKNode {
 
         label2 = makeLabel(text: "")
         self.addChild(label2)
+        
+        label3 = makeLabel(text: "")
+        self.addChild(label3)
     }
 
     func makeLabel(text text: String) -> SKLabelNode {

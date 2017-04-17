@@ -2,7 +2,7 @@
 //  SnowballMenu.swift
 //  orpheum-game
 //
-//  Created by Yichen Yao on 10/17/16.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 //
 //use max size from RampNode (for max size as snowball and ramp)
 

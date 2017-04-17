@@ -1,7 +1,7 @@
 //
 //  RampNode.swift
 //
-//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
+//  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 //
 
 import SpriteKit
@@ -11,12 +11,12 @@ class RampNode: SKNode {
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
     static let easyMaximumSize: CGFloat = 675
     static let mediumMaximumSize: CGFloat = 475
-    static let hardMaximumSize: CGFloat = 275
+    static let hardMaximumSize: CGFloat = 300
     static let minimumSize: CGFloat = 100
 
     var rampNode: SKShapeNode!
-    var triangleHeight: CGFloat = 100
-    var triangleWidth: CGFloat = 100
+    var triangleHeight: CGFloat = 200
+    var triangleWidth: CGFloat = 200
     var initialX: CGFloat = 0
     var initialY: CGFloat = 0
 

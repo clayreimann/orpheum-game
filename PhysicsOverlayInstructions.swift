@@ -5,7 +5,6 @@
 //  Created by Yichen Yao on 4/2/17.
 //
 //
-
 import SpriteKit
 
 class SnowballGamePhysics: SKShapeNode {
@@ -22,16 +21,16 @@ class SnowballGamePhysics: SKShapeNode {
         node.addChild(exitInstructionsButton)
 
         let instructions = InstructionOverlayNode(size: CGSize(width: 400, height: 400))
-        instructions.text1 = "The rate at which a ball will roll down a tilted surface depends\n" +
-            "on how tilted the surface is. The greater the tilt of the surface, the faster the rate\n" +
-            "at which the object will slide down it. In physics, a tilted surface is called an inclined\n" +
-            "plane. Balls accelerate down inclined planes because of forces. These forces are gravity\n" +
-            "and normal force. Gravity acts downward, while normal force acts perpendicular"
-        instructions.position = CGPoint(x: 200, y: 200)
+        instructions.text1 = "The rate at which a ball will roll down a tilted surface \n" +
+            "depends on how tilted the surface is. The greater the tilt of the surface,\n " +
+            "the faster the rate at which the object will slide down it.\n" +
+            "In physics, a tilted surface is called an inclined\n" +
+            "plane. Balls accelerate down inclined planes because of forces.\n" +
+            "These forces are gravity and normal force.\n" +
+            "Gravity acts downward, while normal force acts perpendicular"
+        instructions.position = CGPoint(x: 350, y: 100)
         self.addChild(instructions)
     }
-    
-    
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
