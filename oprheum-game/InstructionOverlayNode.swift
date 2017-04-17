@@ -44,8 +44,7 @@ class InstructionOverlayNode: SKNode {
             label3.removeFromParent()
             label3 = makeLabel(text: text3)
             label3.position = centeredPoint(at: label3Height)
-            self.addChild(label3)
-            
+            self.addChild(label3)  
         }
     }
 
@@ -96,7 +95,6 @@ class InstructionOverlayNode: SKNode {
             lbl.fontName = "Hoefler Text"
             node.addChild(lbl)
         }
-
         return node
     }
 
