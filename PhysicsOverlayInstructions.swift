@@ -1,10 +1,8 @@
-//
 //  PhysicsOverlayInstructions.swift
 //  orpheum-game
 //
 //  Created by Yichen Yao on 4/2/17.
-//
-//
+
 import SpriteKit
 
 class SnowballGamePhysics: SKShapeNode {
