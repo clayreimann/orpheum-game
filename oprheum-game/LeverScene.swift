@@ -67,6 +67,25 @@ class LeverScene: BaseScene {
         fulcrumBoard.position = CGPoint(x: 262, y: 50)
         gameObjects.addChild(fulcrumBoard)
 
+        //Castle square shape//
+        let CastleShapePath = CGPathCreateMutable()
+        CGPathMoveToPoint(CastleShapePath, nil, 500, 0)
+        CGPathAddLineToPoint(CastleShapePath, nil, 500, 300)
+        CGPathAddLineToPoint(CastleShapePath, nil, 674, 300)
+        CGPathAddLineToPoint(CastleShapePath, nil, 674, 0)
+        CGPathCloseSubpath(CastleShapePath)
+
+
+        let CastleShape = SKShapeNode(path: CastleShapePath)
+        CastleShape.name = "Castle shape"
+        CastleShape.fillColor = SKColor(red: 0.224, green: 1, blue: 0.847, alpha: 1)
+        CastleShape.physicsBody = SKPhysicsBody(polygonFromPath: CastleShapePath)
+        CastleShape.physicsBody?.mass = 10
+        CastleShape.physicsBody?.friction = 1
+        CastleShape.position = CGPoint(x: 350, y: 0)
+        gameObjects.addChild(CastleShape)
+
+
         // Rock structure and mass//
         let rockPath = CGPathCreateMutable()
         CGPathMoveToPoint(rockPath, nil, -50, 0)
@@ -80,11 +99,11 @@ class LeverScene: BaseScene {
         rock.name = "rockthing"
         rock.fillColor = SKColor(red: 0.380, green: 0.380, blue: 0.380, alpha: 1.00)
         rock.physicsBody = SKPhysicsBody(polygonFromPath: rockPath)
-        rock.physicsBody?.mass = 5
+        rock.physicsBody?.mass = 20
         rock.physicsBody?.friction = 1
-        rock.physicsBody?.mass = 5
+        rock.physicsBody?.mass = 20
 
-        let label = SKLabelNode(text: "5kg")
+        let label = SKLabelNode(text: "20kg")
         rock.addChild(label)
         rock.position = CGPoint(x: 700, y: 60)
 

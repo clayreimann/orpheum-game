@@ -10,6 +10,7 @@ class SnowballScene: BaseScene {
     static let resetButtonName = "ResetButton"
     static let menuButtonName = "MenuButton"
     static let physicsInstructionsName = "physicsInstructionsButton"
+    static let timeresetButtonName = "TimeResetButton" 
 
     var difficulty: CGFloat = 0.5
 
@@ -141,13 +142,16 @@ class SnowballScene: BaseScene {
         let pinchRecognzier = UIPinchGestureRecognizer(target: self, action: #selector(SnowballScene.handlePinchGesture(_:)))
         self.view?.addGestureRecognizer(pinchRecognzier)
 
-        let toggleSimulation = createSmallButton(named: SnowballScene.runButtonName, text: "Run", atPoint: CGPoint(x: 80, y: 295), withSize: BaseScene.smallButtonSize)
+        let toggleSimulation = createSmallButton(named: SnowballScene.runButtonName, text: "Run", atPoint: CGPoint(x: 80, y: 330), withSize: BaseScene.smallButtonSize)
         buttons.addChild(toggleSimulation)
 
-        let resetButton = createSmallButton(named: SnowballScene.resetButtonName, text: "Reset", atPoint: CGPoint(x: 80, y: 220), withSize: BaseScene.smallButtonSize)
+        let resetButton = createSmallButton(named: SnowballScene.resetButtonName, text: "Reset", atPoint: CGPoint(x: 80, y: 265), withSize: BaseScene.smallButtonSize)
         buttons.addChild(resetButton)
 
-        let menuButton = createSmallButton(named: SnowballScene.menuButtonName, text: "Menu", atPoint: CGPoint(x: 80, y: 155), withSize: BaseScene.smallButtonSize)
+        let timeresetButton = createSmallButton(named: SnowballScene.timeresetButtonName , text: "Timer Reset", atPoint: CGPoint(x: 80, y: 200), withSize: BaseScene.smallButtonSize)
+        buttons.addChild(timeresetButton)
+
+        let menuButton = createSmallButton(named: SnowballScene.menuButtonName, text: "Menu", atPoint: CGPoint(x: 80, y: 135), withSize: BaseScene.smallButtonSize)
         buttons.addChild(menuButton)
         
         let physicsInstructions = createSmallButton(named: SnowballScene.physicsInstructionsName, text: "?", atPoint: CGPoint(x: 80, y: 20), withSize: BaseScene.smallButtonSize)
@@ -244,6 +248,12 @@ class SnowballScene: BaseScene {
                     } else if name == "ResetButton" {
                         stopSimulation()
                         resetScene()
+
+                    } else if name == "TimeResetButton" {
+                       stopSimulation()
+                       resetScene ()
+                        timerValue.alpha = 30
+
                     } else if name == "MenuButton" {
                         start = nil
                         timerValue.alpha = 0
