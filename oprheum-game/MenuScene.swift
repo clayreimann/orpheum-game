@@ -9,7 +9,7 @@ class MenuScene: BaseScene {
     static let snowballButtonName = "snowballGameButton"
     static let leverButtonName = "leverGameButton"
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         let cornerRadius: CGFloat = 10
         let fontSize: CGFloat = 40
         let buttonSize = CGSize(width: (1/4) * frame.width, height: (1/6) * frame.height)
@@ -27,12 +27,12 @@ class MenuScene: BaseScene {
         self.addChild(leverGameButton)
     }
 
-    func snowballGameButtonTouched(atPoint: NSValue) -> Bool {
+    func snowballGameButtonTouched(_ atPoint: NSValue) -> Bool {
         gameViewController.startSnowballGame()
         return true
     }
 
-    func leverGameButtonTouched(atPoint: NSValue) -> Bool {
+    func leverGameButtonTouched(_ atPoint: NSValue) -> Bool {
         gameViewController.startLeverGame()
         return true
     }

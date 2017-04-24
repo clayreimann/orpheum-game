@@ -13,7 +13,7 @@ class ButtonNode: SKNode {
     static let defaultCornerRadius: CGFloat = 4.0
 
     static let defaultFontSize: CGFloat = 20
-    static let defaultFontName = UIFont.boldSystemFontOfSize(1).fontName
+    static let defaultFontName = UIFont.boldSystemFont(ofSize: 1).fontName
 
     static let defaultButtonFillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
 
@@ -33,7 +33,7 @@ class ButtonNode: SKNode {
             button.fillColor = fillColor
         }
     }
-    var fontColor = SKColor.darkGrayColor() {
+    var fontColor = SKColor.darkGray {
         didSet(old) {
             label.fontColor = fontColor
         }
@@ -53,12 +53,12 @@ class ButtonNode: SKNode {
     /*
      *  Private implementation details
      */
-    private var buttonPath: CGPath {
+    fileprivate var buttonPath: CGPath {
         let rect = CGRect(origin: CGPoint(x: -0.5 * size.width, y: -0.5 * size.height), size: size)
-        return CGPathCreateWithRoundedRect(rect, cornerRadius, cornerRadius, nil)
+        return CGPath(roundedRect: rect, cornerWidth: cornerRadius, cornerHeight: cornerRadius, transform: nil)
     }
-    private var button: SKShapeNode!
-    private var label: SKLabelNode!
+    fileprivate var button: SKShapeNode!
+    fileprivate var label: SKLabelNode!
 
     init(name: String, text: String, size: CGSize) {
         self.text = text
@@ -74,7 +74,7 @@ class ButtonNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func buildButton() {
+    fileprivate func buildButton() {
         button = SKShapeNode(path: buttonPath)
         button.fillColor = fillColor
         self.addChild(button)
@@ -83,13 +83,13 @@ class ButtonNode: SKNode {
         label.fontSize = fontSize
         label.fontName = fontName
         label.fontColor = fontColor
-        label.userInteractionEnabled = false
+        label.isUserInteractionEnabled = false
         button.addChild(label)
 
         positionLabel()
     }
 
-    private func positionLabel() {
+    fileprivate func positionLabel() {
         label.position = CGPoint(x: 0, y: -1 * fontSize / 2)
     }
 }

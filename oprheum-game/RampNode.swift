@@ -7,7 +7,7 @@
 import SpriteKit
 
 class RampNode: SKNode {
-    static let selectedColor = SKColor.redColor()
+    static let selectedColor = SKColor.red
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
     static let easyMaximumSize: CGFloat = 675
     static let mediumMaximumSize: CGFloat = 475
@@ -36,24 +36,24 @@ class RampNode: SKNode {
         self.addChild(rampNode)
     }
 
-    func redrawTriangle(width: CGFloat, height: CGFloat) {
-        let rampPath = CGPathCreateMutable()
-        CGPathMoveToPoint(rampPath, nil, 0, height)
-        CGPathAddLineToPoint(rampPath, nil, 0, 0)
-        CGPathAddLineToPoint(rampPath, nil, width, 0)
-        CGPathCloseSubpath(rampPath)
+    func redrawTriangle(_ width: CGFloat, height: CGFloat) {
+        let rampPath = CGMutablePath()
+        rampPath.move(to: CGPoint(x: 0, y: height))
+        rampPath.addLine(to: CGPoint(x: 0, y: 0))
+        rampPath.addLine(to: CGPoint(x: width, y: 0))
+        rampPath.closeSubpath()
 
         rampNode.path = rampPath
-        rampNode.physicsBody = SKPhysicsBody(polygonFromPath: rampPath)
-        rampNode.physicsBody?.dynamic = false
+        rampNode.physicsBody = SKPhysicsBody(polygonFrom: rampPath)
+        rampNode.physicsBody?.isDynamic = false
     }
 
-    func pinchBegan(touch1: CGPoint, touch2: CGPoint) {
+    func pinchBegan(_ touch1: CGPoint, touch2: CGPoint) {
         initialX = touch2.x - touch1.x
         initialY = touch1.y - touch2.y
     }
 
-    func limitRampSize(val: CGFloat) -> CGFloat {
+    func limitRampSize(_ val: CGFloat) -> CGFloat {
         var result = val
 
         if val > maxSize {
@@ -65,7 +65,7 @@ class RampNode: SKNode {
         return result
     }
 
-    func pinchChanged(touch1: CGPoint, touch2: CGPoint) {
+    func pinchChanged(_ touch1: CGPoint, touch2: CGPoint) {
         let xScale = (touch2.x - touch1.x) / initialX
         let yScale = (touch1.y - touch2.y) / initialY
         let xLimit = limitRampSize(triangleWidth * xScale)
@@ -73,7 +73,7 @@ class RampNode: SKNode {
         redrawTriangle(xLimit, height: yLimit)
     }
 
-    func pinchEnded(touch1: CGPoint, touch2: CGPoint) {
+    func pinchEnded(_ touch1: CGPoint, touch2: CGPoint) {
         let xScale = (touch2.x - touch1.x) / initialX
         let yScale = (touch1.y - touch2.y) / initialY
         triangleWidth = limitRampSize(triangleWidth * xScale)

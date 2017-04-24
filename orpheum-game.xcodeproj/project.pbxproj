@@ -10,7 +10,6 @@
 		14D930F31E16FECF00F94BBB /* WinOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D930F21E16FECF00F94BBB /* WinOverlayNode.swift */; };
 		14D930F51E1C6B5B00F94BBB /* LoseOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D930F41E1C6B5B00F94BBB /* LoseOverlayNode.swift */; };
 		6F2858CB1DEF15E300FC1458 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */; };
-		8128F8CD1D751AE000132AC2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B381C601C4400321C0B /* Info.plist */; };
 		8199CCFD1D95BF9D00EAA89A /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */; };
 		81D67C0D1DF62C1200FF56C7 /* InstructionOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D67C0C1DF62C1200FF56C7 /* InstructionOverlayNode.swift */; };
 		81DEA1451D7659B1004E0869 /* SnowballNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEA1441D7659B1004E0869 /* SnowballNode.swift */; };
@@ -273,18 +272,18 @@
 					C83B4B191C601C4400321C0B = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = PQMW4AT355;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 					};
 					C83B4B311C601C4400321C0B = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = CZ73EGAE93;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						TestTargetID = C83B4B191C601C4400321C0B;
 					};
 					C83B4B3C1C601C4400321C0B = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = CZ73EGAE93;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						TestTargetID = C83B4B191C601C4400321C0B;
 					};
 				};
@@ -327,7 +326,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8128F8CD1D751AE000132AC2 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,7 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.orpheum-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -546,7 +544,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.orpheum-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -557,11 +555,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CZ73EGAE93;
-				INFOPLIST_FILE = "$(SRCROOT)/oprheum-gameTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/orpheum-gameTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.orpheum-gameTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/orpheum-game.app/orpheum-game";
 			};
 			name = Debug;
@@ -571,11 +569,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = CZ73EGAE93;
-				INFOPLIST_FILE = "$(SRCROOT)/oprheum-gameTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/orpheum-gameTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.orpheum-gameTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/orpheum-game.app/orpheum-game";
 			};
 			name = Release;
@@ -584,12 +582,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = CZ73EGAE93;
-				INFOPLIST_FILE = "$(SRCROOT)/oprheum-gameUITests/Info.plist";
+				DEVELOPMENT_TEAM = PQMW4AT355;
+				INFOPLIST_FILE = "$(SRCROOT)/orpheum-gameUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.orpheum-gameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "orpheum-game";
 				USES_XCTRUNNER = YES;
 			};
@@ -598,12 +596,12 @@
 		C83B4B4E1C601C4400321C0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = CZ73EGAE93;
-				INFOPLIST_FILE = "$(SRCROOT)/oprheum-gameUITests/Info.plist";
+				DEVELOPMENT_TEAM = PQMW4AT355;
+				INFOPLIST_FILE = "$(SRCROOT)/orpheum-gameUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.orpheum-gameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "orpheum-game";
 				USES_XCTRUNNER = YES;
 			};
