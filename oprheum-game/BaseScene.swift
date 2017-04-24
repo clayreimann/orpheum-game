@@ -21,15 +21,7 @@ class BaseScene: SKScene {
     var instructionOverlay: InstructionOverlayNode!
 
     var winOverlay = WinOverlayNode()
-    var loseOverlay = LoseOverlayNode ()
-
-    func createSmallButton(named name: String, text: String, atPoint position: CGPoint, withSize size: CGSize) -> SKNode {
-        let button = ButtonNode(name: name, text: text, size: size)
-        button.position = position
-        button.fontSize = BaseScene.smallFontSize
-
-        return button
-    }
+    var loseOverlay = LoseOverlayNode()
 
     /**
      *  Automatically attempt to call a func named <nodeName>Touched(atPoint: NSValue<CGPoint>)
