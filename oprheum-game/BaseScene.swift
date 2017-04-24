@@ -18,8 +18,8 @@ class BaseScene: SKScene {
     static let smallFontSize: CGFloat = 20
 
     var gameViewController: GameViewController!
-
     var instructionOverlay: InstructionOverlayNode!
+
     var winOverlay = WinOverlayNode()
     var loseOverlay = LoseOverlayNode ()
 

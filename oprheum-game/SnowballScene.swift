@@ -9,6 +9,7 @@ class SnowballScene: BaseScene {
     static let runButtonName = "RunButton"
     static let resetButtonName = "ResetButton"
     static let menuButtonName = "MenuButton"
+    static let physicsInstructionsName = "physicsInstructionsButton"
 
     var difficulty: CGFloat = 0.5
 
@@ -30,6 +31,7 @@ class SnowballScene: BaseScene {
     var level = 30.0
 
     var snowballMenu: SnowballMenu!
+    var physicsInstructions: SnowballGamePhysics!
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -57,6 +59,7 @@ class SnowballScene: BaseScene {
         instructionOverlay = InstructionOverlayNode(scene: self)
         instructionOverlay.text1 = "Use the snowball and ramp to try and\nknock the monster down with the snowball"
         instructionOverlay.text2 = "Tap on the ramp or the snowball to select them then pinch to resize"
+        instructionOverlay.text3 = "Tap to continue"
         self.addChild(instructionOverlay)
     }
 
@@ -66,16 +69,18 @@ class SnowballScene: BaseScene {
 
     func showWinOverlay() {
         timerValue.alpha = 0
+
         winOverlay.show()
-        let hideWinSceneAction = SKAction.fadeOutWithDuration(0.3)
-        gameObjects.runAction(hideWinSceneAction)
+        let hideObjects = SKAction.fadeOutWithDuration(0.3)
+        gameObjects.runAction(hideObjects)
     }
 
     func hideWinOverlay() {
         timerValue.alpha = 1
+
         winOverlay.hide()
-        let showWinSceneAction = SKAction.fadeInWithDuration(0.3)
-        gameObjects.runAction(showWinSceneAction)
+        let showObjects = SKAction.fadeInWithDuration(0.3)
+        gameObjects.runAction(showObjects)
     }
 
     func isGameWon() -> Bool {
@@ -90,6 +95,7 @@ class SnowballScene: BaseScene {
         instructionOverlay.alpha = 0
         timerValue.alpha = 0
         loseOverlay.show()
+
         let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
         gameObjects.runAction(hideSceneAction)
         start = nil
@@ -98,6 +104,7 @@ class SnowballScene: BaseScene {
     func hideLoseOverlay() {
         timerValue.alpha = 1
         loseOverlay.hide()
+
         let showSceneAction = SKAction.fadeInWithDuration(0.3)
         gameObjects.runAction(showSceneAction)
     }
@@ -142,6 +149,9 @@ class SnowballScene: BaseScene {
 
         let menuButton = createSmallButton(named: SnowballScene.menuButtonName, text: "Menu", atPoint: CGPoint(x: 80, y: 155), withSize: BaseScene.smallButtonSize)
         buttons.addChild(menuButton)
+        
+        let physicsInstructions = createSmallButton(named: SnowballScene.physicsInstructionsName, text: "?", atPoint: CGPoint(x: 80, y: 20), withSize: BaseScene.smallButtonSize)
+        buttons.addChild(physicsInstructions)
 
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
@@ -287,6 +297,22 @@ class SnowballScene: BaseScene {
                         timerValue.alpha = 1
                     } else if node.name == "backToMenuButton" {
                         gameViewController.startMenu()
+                    } else if node.name == "physicsInstructionsButton" {
+                        start = nil
+                        timerValue.alpha = 0
+                        rampNode.removeFromParent()
+                        snowballNode.removeFromParent()
+                        buttons.removeFromParent()
+                        monster.removeFromParent()
+                        physicsInstructions = SnowballGamePhysics()
+                        self.addChild(physicsInstructions)
+                    } else if node.name == "exitInstructionsButton" {
+                        self.addChild(rampNode)
+                        self.addChild(snowballNode)
+                        self.addChild(buttons)
+                        self.addChild(monster)
+                        physicsInstructions.removeFromParent()
+                        timerValue.alpha = 1
                     }
                 }
             }

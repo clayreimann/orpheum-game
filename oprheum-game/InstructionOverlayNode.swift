@@ -8,6 +8,7 @@ import SpriteKit
 class InstructionOverlayNode: SKNode {
     let label1Height: CGFloat = 500
     let label2Height: CGFloat = 300
+    let label3Height: CGFloat = 100
     let continueHeight: CGFloat = 50
 
     var size = CGSize.zero {
@@ -16,6 +17,7 @@ class InstructionOverlayNode: SKNode {
             labelContinue.position = centeredPoint(at: continueHeight)
             label1.position = centeredPoint(at: label1Height)
             label2.position = centeredPoint(at: label2Height)
+            label3.position = centeredPoint(at: label3Height)
         }
     }
 
@@ -36,35 +38,51 @@ class InstructionOverlayNode: SKNode {
             self.addChild(label2)
         }
     }
+   
+    var text3 = "" {
+        didSet(oldText) {
+            label3.removeFromParent()
+            label3 = makeLabel(text: text3)
+            label3.position = centeredPoint(at: label3Height)
+            self.addChild(label3)  
+        }
+    }
 
     private var background: SKShapeNode!
     private var label1: SKLabelNode!
     private var label2: SKLabelNode!
+    private var label3: SKLabelNode!
     private var labelContinue: SKLabelNode!
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(scene: BaseScene) {
-        size = scene.frame.size
+    convenience init(scene: BaseScene) {
+        self.init(size: scene.frame.size)
+    }
+    init(size: CGSize) {
+        self.size = size
         super.init()
 
-        background = SKShapeNode(path: backgroundPath())
-        background.fillColor = SKColor.blackColor()
-        background.alpha = 0.25
-        self.addChild(background)
+//        background = SKShapeNode(path: backgroundPath())
+//        background.fillColor = SKColor.blackColor()
+//        background.alpha = 0.25
+//        self.addChild(background)
 
-        labelContinue = makeLabel(text: "Tap to continue")
-        labelContinue.fontSize = 25
-        labelContinue.position = centeredPoint(at: continueHeight)
-        self.addChild(labelContinue)
+//        labelContinue = makeLabel(text: "Tap to continue")
+//        labelContinue.fontSize = 25
+//        labelContinue.position = centeredPoint(at: continueHeight)
+//        self.addChild(labelContinue)
 
         label1 = makeLabel(text: "")
         self.addChild(label1)
 
         label2 = makeLabel(text: "")
         self.addChild(label2)
+        
+        label3 = makeLabel(text: "")
+        self.addChild(label3)
     }
 
     func makeLabel(text text: String) -> SKLabelNode {
@@ -76,10 +94,8 @@ class InstructionOverlayNode: SKNode {
             lbl.fontName = "Hoefler Text"
             node.addChild(lbl)
         }
-
         return node
     }
-
     func centeredPoint(at height: CGFloat) -> CGPoint {
         return CGPoint(x: size.width / 2, y: height)
     }
