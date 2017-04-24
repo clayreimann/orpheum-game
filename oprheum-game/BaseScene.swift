@@ -19,7 +19,6 @@ class BaseScene: SKScene {
 
     var gameViewController: GameViewController!
     var instructionOverlay: InstructionOverlayNode!
-    var instructionOverlay1: InstructionOverlayNode!
 
     var winOverlay = WinOverlayNode()
     var loseOverlay = LoseOverlayNode ()

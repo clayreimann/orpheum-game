@@ -70,17 +70,17 @@ class SnowballScene: BaseScene {
     func showWinOverlay() {
         timerValue.alpha = 0
 
-        let showWinOverlayAction = SKAction.fadeInWithDuration(0.3)
-        winOverlay.runAction(showWinOverlayAction)
         winOverlay.show()
+        let hideObjects = SKAction.fadeOutWithDuration(0.3)
+        gameObjects.runAction(hideObjects)
     }
 
     func hideWinOverlay() {
         timerValue.alpha = 1
 
-        let hideWinOverlayAction = SKAction.fadeOutWithDuration(0.3)
-        winOverlay.runAction(hideWinOverlayAction)
         winOverlay.hide()
+        let showObjects = SKAction.fadeInWithDuration(0.3)
+        gameObjects.runAction(showObjects)
     }
 
     func isGameWon() -> Bool {
@@ -94,22 +94,19 @@ class SnowballScene: BaseScene {
     func showLoseOverlay() {
         instructionOverlay.alpha = 0
         timerValue.alpha = 0
-        
-        let showLoseOverlayAction = SKAction.fadeInWithDuration(0.3)
-        loseOverlay.runAction(showLoseOverlayAction)
         loseOverlay.show()
+
+        let hideSceneAction = SKAction.fadeOutWithDuration(0.3)
+        gameObjects.runAction(hideSceneAction)
+        start = nil
     }
 
     func hideLoseOverlay() {
         timerValue.alpha = 1
-
-        
-        let hideLoseOverlayAction = SKAction.fadeOutWithDuration(0.3)
-        loseOverlay.runAction(hideLoseOverlayAction)
         loseOverlay.hide()
 
-//        let showSceneAction = SKAction.fadeInWithDuration(0.3)
-//        gameObjects.runAction(showSceneAction)
+        let showSceneAction = SKAction.fadeInWithDuration(0.3)
+        gameObjects.runAction(showSceneAction)
     }
 
     func isGameLost() -> Bool {
@@ -155,7 +152,6 @@ class SnowballScene: BaseScene {
         
         let physicsInstructions = createSmallButton(named: SnowballScene.physicsInstructionsName, text: "?", atPoint: CGPoint(x: 80, y: 20), withSize: BaseScene.smallButtonSize)
         buttons.addChild(physicsInstructions)
-    
 
         timerValue = SKLabelNode(text: "0")
         timerValue.fontColor = SKColor.whiteColor()
