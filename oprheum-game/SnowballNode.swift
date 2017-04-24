@@ -11,11 +11,12 @@ class SnowballNode: SKNode {
 
     static let maximumMass: CGFloat = 13
     static let minimumMass: CGFloat = 1
+    static let startingMass: CGFloat = 5
 
     let whiteColor = SKColor.white
 
     var snowball: SKShapeNode!
-    var mass: CGFloat = SnowballNode.maximumMass
+    var mass: CGFloat = SnowballNode.startingMass
     var mass0: CGFloat = 0 // this needs a better name
 
     override init() {

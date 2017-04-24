@@ -19,13 +19,13 @@ class SnowballGamePhysics: SKShapeNode {
         node.addChild(exitInstructionsButton)
 
         let instructions = InstructionOverlayNode(size: CGSize(width: 400, height: 400))
-        instructions.text1 = "The rate at which a ball will roll down a tilted surface \n" +
-            "depends on how tilted the surface is. The greater the tilt of the surface,\n " +
-            "the faster the rate at which the object will slide down it.\n" +
-            "In physics, a tilted surface is called an inclined\n" +
-            "plane. Balls accelerate down inclined planes because of forces.\n" +
-            "These forces are gravity and normal force.\n" +
-            "Gravity acts downward, while normal force acts perpendicular"
+        instructions.text1 =
+            "In physics, a tilted surface, or ramp, is called an inclined plane. \n\n" +
+            "The rate at which a ball will roll down an inclined plane \n" +
+            "depends on how tilted the surface is. \n" +
+            "The greater the tilt, the faster the object will roll down.\n\n" +
+            "Balls accelerate down inclined planes due to gravitational and normal forces.\n" +
+            "Gravity acts downward, while normal force acts perpendicularly."
         instructions.position = CGPoint(x: 350, y: 100)
         self.addChild(instructions)
     }
