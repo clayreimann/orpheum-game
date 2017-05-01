@@ -41,6 +41,8 @@ class BaseScene: SKScene {
                         } else {
                             print("continuing to call handlers after calling \(sel)")
                         }
+                    } else {
+                        print("no method found: <\(name)Touched:>")
                     }
                 }
             }

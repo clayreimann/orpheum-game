@@ -6,11 +6,11 @@
 import SpriteKit
 
 class SnowballScene: BaseScene {
-    static let runButtonName = "RunButton"
-    static let resetButtonName = "ResetButton"
-    static let menuButtonName = "MenuButton"
+    static let runButtonName = "runButton"
+    static let resetButtonName = "resetButton"
+    static let menuButtonName = "menuButton"
     static let physicsInstructionsName = "physicsInstructionsButton"
-    static let timerResetButtonName = "TimeResetButton"
+    static let timerResetButtonName = "timeResetButton"
 
     static let easyInitialTime = 30.0
     static let mediumInitialTime = 20.0
@@ -126,7 +126,7 @@ class SnowballScene: BaseScene {
         let pinchRecognzier = UIPinchGestureRecognizer(target: self, action: #selector(SnowballScene.handlePinchGesture(_:)))
         self.view?.addGestureRecognizer(pinchRecognzier)
 
-        timerValue = SKLabelNode(text: "0")
+        timerValue = SKLabelNode(text: String(format:"%.1f", initialLevelTime))
         timerValue.fontColor = SKColor.white
         timerValue.position = CGPoint(x: 550, y: 700)
         timerValue.fontSize = 60
@@ -194,7 +194,7 @@ class SnowballScene: BaseScene {
 
     func runButtonTouched(_ touch: NSValue) -> Bool {
         resetScene()
-        startTimer()
+        startSimulation()
         return true
     }
 
@@ -204,10 +204,86 @@ class SnowballScene: BaseScene {
         return true
     }
 
-    func timerResetButtonTouched(_ touch: NSValue) -> Bool {
+    func timeResetButtonTouched(_ touch: NSValue) -> Bool {
         resetScene()
         stopSimulation()
         timeRemaining = initialLevelTime
+        return true
+    }
+
+    func menuButtonTouched(_ touch: NSValue) -> Bool {
+        start = nil
+        timerValue.alpha = 0
+        rampNode.removeFromParent()
+        snowballNode.removeFromParent()
+        buttons.removeFromParent()
+        monster.removeFromParent()
+        snowballMenu = SnowballMenu()
+        self.addChild(snowballMenu)
+        return true
+    }
+
+    func easyButtonTouched(_ touch: NSValue) -> Bool {
+        stopSimulation()
+        addGameObjectsToScene()
+        rampNode.maxSize = RampNode.easyMaximumSize
+        initialLevelTime = SnowballScene.easyInitialTime
+        timeRemaining = SnowballScene.easyInitialTime
+        snowballMenu.removeFromParent()
+        resetScene()
+        return true
+    }
+
+    func mediumButtonTouched(_ touch: NSValue) -> Bool {
+        stopSimulation()
+        addGameObjectsToScene()
+        rampNode.maxSize = RampNode.mediumMaximumSize
+        timeRemaining = SnowballScene.mediumInitialTime
+        initialLevelTime = SnowballScene.mediumInitialTime
+        snowballMenu.removeFromParent()
+        resetScene()
+        return true
+    }
+
+    func hardButtonTouched(_ touch: NSValue) -> Bool {
+        stopSimulation()
+        addGameObjectsToScene()
+        rampNode.maxSize = RampNode.hardMaximumSize
+        timeRemaining = SnowballScene.hardInitialTime
+        initialLevelTime = SnowballScene.hardInitialTime
+        snowballMenu.removeFromParent()
+        resetScene()
+        return true
+    }
+
+    func exitButtonTouched(_ touch: NSValue) -> Bool {
+        addGameObjectsToScene()
+        snowballMenu.removeFromParent()
+        timerValue.alpha = 1
+        return true
+    }
+
+    func backToMenuButtonTouched(_ touch: NSValue) -> Bool {
+        gameViewController.startMenu()
+        return true
+    }
+
+    func physicsInstructionsButtonTouched(_ touch: NSValue) -> Bool {
+        start = nil
+        timerValue.alpha = 0
+        rampNode.removeFromParent()
+        snowballNode.removeFromParent()
+        buttons.removeFromParent()
+        monster.removeFromParent()
+        physicsInstructions = SnowballGamePhysics()
+        self.addChild(physicsInstructions)
+        return true
+    }
+
+    func exitInstructionsButtonTouched(_ touch: NSValue) -> Bool {
+        addGameObjectsToScene()
+        physicsInstructions.removeFromParent()
+        timerValue.alpha = 1
         return true
     }
 
@@ -248,71 +324,6 @@ class SnowballScene: BaseScene {
                     snowballNode.select()
                     selectedNode = snowballNode
                     return
-                }
-
-                if let name = node.name {
-                    if name == SnowballScene.menuButtonName {
-                        start = nil
-                        timerValue.alpha = 0
-                        rampNode.removeFromParent()
-                        snowballNode.removeFromParent()
-                        buttons.removeFromParent()
-                        monster.removeFromParent()
-                        snowballMenu = SnowballMenu()
-                        self.addChild(snowballMenu)
-
-                    } else if node.name == "EasyButton" {
-                        stopSimulation()
-                        addGameObjectsToScene()
-                        rampNode.maxSize = RampNode.easyMaximumSize
-                        initialLevelTime = SnowballScene.easyInitialTime
-                        timeRemaining = SnowballScene.easyInitialTime
-                        snowballMenu.removeFromParent()
-                        resetScene()
-
-                    } else if node.name == "MediumButton" {
-                        stopSimulation()
-                        addGameObjectsToScene()
-                        rampNode.maxSize = RampNode.mediumMaximumSize
-                        timeRemaining = SnowballScene.mediumInitialTime
-                        initialLevelTime = SnowballScene.mediumInitialTime
-                        snowballMenu.removeFromParent()
-                        monster.physicsBody?.mass = 1
-                        resetScene()
-
-                    } else if node.name == "HardButton" {
-                        stopSimulation()
-                        addGameObjectsToScene()
-                        rampNode.maxSize = RampNode.hardMaximumSize
-                        timeRemaining = SnowballScene.hardInitialTime
-                        initialLevelTime = SnowballScene.hardInitialTime
-                        snowballMenu.removeFromParent()
-                        monster.physicsBody?.mass = 1.5
-                        resetScene()
-
-                    } else if node.name == "exitButton" {
-                        addGameObjectsToScene()
-                        snowballMenu.removeFromParent()
-                        timerValue.alpha = 1
-
-                    } else if node.name == "backToMenuButton" {
-                        gameViewController.startMenu()
-
-                    } else if node.name == "physicsInstructionsButton" {
-                        start = nil
-                        timerValue.alpha = 0
-                        rampNode.removeFromParent()
-                        snowballNode.removeFromParent()
-                        buttons.removeFromParent()
-                        monster.removeFromParent()
-                        physicsInstructions = SnowballGamePhysics()
-                        self.addChild(physicsInstructions)
-
-                    } else if node.name == "exitInstructionsButton" {
-                        addGameObjectsToScene()
-                        physicsInstructions.removeFromParent()
-                        timerValue.alpha = 1
-                    }
                 }
             }
         }
