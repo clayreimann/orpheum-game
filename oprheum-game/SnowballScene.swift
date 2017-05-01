@@ -224,28 +224,21 @@ class SnowballScene: BaseScene {
     }
 
     func easyButtonTouched(_ touch: NSValue) -> Bool {
-        stopSimulation()
-        addGameObjectsToScene()
-        rampNode.maxSize = RampNode.easyMaximumSize
-        initialLevelTime = SnowballScene.easyInitialTime
-        timeRemaining = SnowballScene.easyInitialTime
-        snowballMenu.removeFromParent()
-        resetScene()
+        adjustForDifficulty(rampSize: RampNode.easyMaximumSize, levelTime: SnowballScene.easyInitialTime)
         return true
     }
 
     func mediumButtonTouched(_ touch: NSValue) -> Bool {
-        stopSimulation()
-        addGameObjectsToScene()
-        rampNode.maxSize = RampNode.mediumMaximumSize
-        timeRemaining = SnowballScene.mediumInitialTime
-        initialLevelTime = SnowballScene.mediumInitialTime
-        snowballMenu.removeFromParent()
-        resetScene()
+        adjustForDifficulty(rampSize: RampNode.mediumMaximumSize, levelTime: SnowballScene.mediumInitialTime)
         return true
     }
 
     func hardButtonTouched(_ touch: NSValue) -> Bool {
+        adjustForDifficulty(rampSize: RampNode.hardMaximumSize, levelTime: SnowballScene.hardInitialTime)
+        return true
+    }
+
+    func adjustForDifficulty(rampSize: CGFloat, levelTime: Double) {
         stopSimulation()
         addGameObjectsToScene()
         rampNode.maxSize = RampNode.hardMaximumSize
@@ -253,7 +246,6 @@ class SnowballScene: BaseScene {
         initialLevelTime = SnowballScene.hardInitialTime
         snowballMenu.removeFromParent()
         resetScene()
-        return true
     }
 
     func exitButtonTouched(_ touch: NSValue) -> Bool {
