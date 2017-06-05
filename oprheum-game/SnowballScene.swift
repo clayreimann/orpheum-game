@@ -298,6 +298,8 @@ class SnowballScene: BaseScene {
 
             addGameObjectsToScene()
             resetScene()
+            snowballNode.redrawSnowball()
+            rampNode.redrawTriangle(200, height: 200)
             timeRemaining = initialLevelTime
             return
         }
