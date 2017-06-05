@@ -201,27 +201,20 @@ class SnowballScene: BaseScene {
                 startTimer()
             }
 
-            if isGameLost() {
-                hideLoseOverlay()
+            if isGameLost() || isGameWon() {
                 stopSimulation()
+
+                hideLoseOverlay()
+                hideWinOverlay()
+
                 addGameObjectsToScene()
                 resetScene()
                 timeRemaining = level
-                addGameObjectsToScene()
                 return
             }
 
             let hideWinInstructionsAction = SKAction.fadeOut(withDuration: 0.3)
             instructionOverlay.run(hideWinInstructionsAction)
-
-            if isGameWon() {
-                hideWinOverlay()
-                addGameObjectsToScene()
-                stopSimulation()
-                resetScene()
-                timeRemaining = level
-                return
-            }
 
             let nodes = self.nodes(at: touch.location(in: self))
             for node in nodes {
@@ -239,20 +232,16 @@ class SnowballScene: BaseScene {
                 }
 
                 if let name = node.name {
-                    print(name)
-
                     if name == "RunButton" {
                         resetScene()
                         startSimulation()
                     } else if name == "ResetButton" {
                         stopSimulation()
                         resetScene()
-
                     } else if name == "TimeResetButton" {
-                       stopSimulation()
-                       resetScene ()
+                        stopSimulation()
+                        resetScene()
                         timerValue.alpha = 30
-
                     } else if name == "MenuButton" {
                         start = nil
                         timerValue.alpha = 0
