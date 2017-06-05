@@ -7,6 +7,8 @@
 import SpriteKit
 
 class RampNode: SKNode {
+    public static let initialSize: CGFloat = 200
+
     static let selectedColor = SKColor.red
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
     static let easyMaximumSize: CGFloat = 675
@@ -15,8 +17,8 @@ class RampNode: SKNode {
     static let minimumSize: CGFloat = 100
 
     var rampNode: SKShapeNode!
-    var triangleHeight: CGFloat = 200
-    var triangleWidth: CGFloat = 200
+    var triangleHeight: CGFloat = RampNode.initialSize
+    var triangleWidth: CGFloat = RampNode.initialSize
     var initialX: CGFloat = 0
     var initialY: CGFloat = 0
 

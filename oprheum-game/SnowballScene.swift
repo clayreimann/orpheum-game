@@ -7,10 +7,10 @@ import SpriteKit
 
 class SnowballScene: BaseScene {
     static let runButtonName = "runButton"
+    static let retryButtonName = "retryButton"
     static let resetButtonName = "resetButton"
     static let menuButtonName = "menuButton"
     static let physicsInstructionsName = "physicsInstructionsButton"
-    static let timerResetButtonName = "timeResetButton"
 
     static let easyInitialTime = 30.0
     static let mediumInitialTime = 20.0
@@ -162,11 +162,11 @@ class SnowballScene: BaseScene {
         toggleSimulation.position = CGPoint(x: 0, y: 330)
         buttons.addChild(toggleSimulation)
 
-        let resetButton = ButtonNode(name: SnowballScene.resetButtonName, text: "Reset", size: BaseScene.smallButtonSize)
+        let resetButton = ButtonNode(name: SnowballScene.retryButtonName, text: "Retry", size: BaseScene.smallButtonSize)
         resetButton.position = CGPoint(x: 0, y: 265)
         buttons.addChild(resetButton)
 
-        let timerResetButton = ButtonNode(name: SnowballScene.timerResetButtonName, text: "Timer Reset", size: BaseScene.smallButtonSize)
+        let timerResetButton = ButtonNode(name: SnowballScene.resetButtonName, text: "Reset", size: BaseScene.smallButtonSize)
         timerResetButton.position = CGPoint(x: 0, y: 200)
         buttons.addChild(timerResetButton)
 
@@ -198,15 +198,18 @@ class SnowballScene: BaseScene {
         return true
     }
 
-    func resetButtonTouched(_ touch: NSValue) -> Bool {
+    func retryButtonTouched(_ touch: NSValue) -> Bool {
         resetScene()
         stopSimulation()
         return true
     }
 
-    func timeResetButtonTouched(_ touch: NSValue) -> Bool {
+    func resetButtonTouched(_ touch: NSValue) -> Bool {
         resetScene()
         stopSimulation()
+        rampNode.redrawTriangle(RampNode.initialSize, height: RampNode.initialSize)
+        snowballNode.setSnowballMass(SnowballNode.initialMass)
+
         timeRemaining = initialLevelTime
         return true
     }
@@ -241,9 +244,9 @@ class SnowballScene: BaseScene {
     func adjustForDifficulty(rampSize: CGFloat, levelTime: Double) {
         stopSimulation()
         addGameObjectsToScene()
-        rampNode.maxSize = RampNode.hardMaximumSize
-        timeRemaining = SnowballScene.hardInitialTime
-        initialLevelTime = SnowballScene.hardInitialTime
+        rampNode.maxSize = rampSize
+        timeRemaining = levelTime
+        initialLevelTime = levelTime
         snowballMenu.removeFromParent()
         resetScene()
     }
