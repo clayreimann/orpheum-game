@@ -201,9 +201,12 @@ class SnowballScene: BaseScene {
                 startTimer()
             }
 
-            if isGameLost() {
-                hideLoseOverlay()
+            if isGameLost() || isGameWon() {
                 stopSimulation()
+
+                hideLoseOverlay()
+                hideWinOverlay()
+
                 addGameObjectsToScene()
                 resetScene()
                 timeRemaining = level
@@ -212,15 +215,6 @@ class SnowballScene: BaseScene {
 
             let hideWinInstructionsAction = SKAction.fadeOut(withDuration: 0.3)
             instructionOverlay.run(hideWinInstructionsAction)
-
-            if isGameWon() {
-                hideWinOverlay()
-                addGameObjectsToScene()
-                stopSimulation()
-                resetScene()
-                timeRemaining = level
-                return
-            }
 
             let nodes = self.nodes(at: touch.location(in: self))
             for node in nodes {
@@ -238,20 +232,16 @@ class SnowballScene: BaseScene {
                 }
 
                 if let name = node.name {
-                    print(name)
-
                     if name == "RunButton" {
                         resetScene()
                         startSimulation()
                     } else if name == "ResetButton" {
                         stopSimulation()
                         resetScene()
-
                     } else if name == "TimeResetButton" {
-                       stopSimulation()
-                       resetScene ()
+                        stopSimulation()
+                        resetScene()
                         timerValue.alpha = 30
-
                     } else if name == "MenuButton" {
                         start = nil
                         timerValue.alpha = 0
@@ -262,8 +252,9 @@ class SnowballScene: BaseScene {
                         snowballMenu = SnowballMenu()
                         self.addChild(snowballMenu)
                     } else if node.name == "EasyButton" {
-                        stopSimulation()
                         addGameObjectsToScene()
+                        self.stopSimulation()
+                        timeRemaining = 30
                         rampNode.maxSize = RampNode.easyMaximumSize
                         snowballMenu.removeFromParent()
                         resetScene()
@@ -274,6 +265,7 @@ class SnowballScene: BaseScene {
                         addGameObjectsToScene()
                         rampNode.maxSize = RampNode.mediumMaximumSize
                         snowballMenu.removeFromParent()
+                        monster.physicsBody?.mass = 1
                         resetScene()
                         timeRemaining = 20
                         level = 20
@@ -283,6 +275,7 @@ class SnowballScene: BaseScene {
                         addGameObjectsToScene()
                         rampNode.maxSize = RampNode.hardMaximumSize
                         snowballMenu.removeFromParent()
+                        monster.physicsBody?.mass = 1.5
                         resetScene()
                         timeRemaining = 10
                         level = 10
