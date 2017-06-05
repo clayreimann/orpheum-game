@@ -6,17 +6,16 @@
 import SpriteKit
 
 class SnowballNode: SKNode {
+    public static let initialMass: CGFloat = 5
 
     static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
-
     static let maximumMass: CGFloat = 13
     static let minimumMass: CGFloat = 1
-    static let startingMass: CGFloat = 5
 
     let whiteColor = SKColor.white
 
     var snowball: SKShapeNode!
-    var mass: CGFloat = SnowballNode.startingMass
+    var mass: CGFloat = SnowballNode.initialMass
     var mass0: CGFloat = 0 // this needs a better name
 
     override init() {

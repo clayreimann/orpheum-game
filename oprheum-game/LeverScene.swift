@@ -139,28 +139,27 @@ class LeverScene: BaseScene {
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.name = "BouncingBalls"
 
-        let startStopButton = createSmallButton(named: LeverScene.runButtonName, text: "Run/Pause",
-                                                atPoint: CGPoint(x: 950, y: 715), withSize: BaseScene.smallButtonSize)
+        let startStopButton = ButtonNode(name: LeverScene.runButtonName, text: "Run/Pause", size: BaseScene.smallButtonSize)
+        startStopButton.position = CGPoint(x: 950, y: 715)
         self.addChild(startStopButton)
 
-        let resetButton = createSmallButton(named: LeverScene.resetButtonName, text: "Reset",
-                                            atPoint: CGPoint(x: 950, y: 640), withSize: BaseScene.smallButtonSize)
+        let resetButton = ButtonNode(name: LeverScene.resetButtonName, text: "Reset", size: BaseScene.smallButtonSize)
+        resetButton.position = CGPoint(x: 950, y: 640)
         self.addChild(resetButton)
 
-        let smallWeigthButton = createSmallButton(named: LeverScene.smallWeightName, text: "5kg",
-                                                  atPoint: CGPoint(x: 950, y: 565), withSize: BaseScene.smallButtonSize)
+        let smallWeigthButton = ButtonNode(name: LeverScene.smallWeightName, text: "5kg", size: BaseScene.smallButtonSize)
+        smallWeigthButton.position = CGPoint(x: 950, y: 565)
         self.addChild(smallWeigthButton)
 
-        let largeWeightButton = createSmallButton(named: LeverScene.largeWeightName, text: "10kg",
-                                                  atPoint: CGPoint(x: 950, y: 490), withSize: BaseScene.smallButtonSize)
+        let largeWeightButton = ButtonNode(name: LeverScene.largeWeightName, text: "10kg", size: BaseScene.smallButtonSize)
+        largeWeightButton.position = CGPoint(x: 950, y: 490)
         self.addChild(largeWeightButton)
 
-        let mainMenuButton = createSmallButton(named: "mainMenu", text: "Menu",
-                                               atPoint: CGPoint(x: 950, y: 415), withSize: BaseScene.smallButtonSize)
+        let mainMenuButton = ButtonNode(name: "mainMenu", text: "Menu", size: BaseScene.smallButtonSize)
+        mainMenuButton.position = CGPoint(x: 950, y: 415)
         self.addChild(mainMenuButton)
 
         buildInstructionOverlay()
-
         resetScene()
     }
 

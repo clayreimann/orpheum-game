@@ -17,15 +17,15 @@ class SnowballMenu: SKNode {
         self.addChild(node)
 
         let buttonSize = CGSize(width: 150, height: 100)
-        let easyButton = ButtonNode(name: "EasyButton", text: "Easy", size: buttonSize)
+        let easyButton = ButtonNode(name: "easyButton", text: "Easy", size: buttonSize)
         easyButton.position = CGPoint(x: 500, y: 620)
         node.addChild(easyButton)
 
-        let mediumButton = ButtonNode(name: "MediumButton", text: "Medium", size: buttonSize)
+        let mediumButton = ButtonNode(name: "mediumButton", text: "Medium", size: buttonSize)
         mediumButton.position = CGPoint(x: 500, y: 490)
         node.addChild(mediumButton)
 
-        let hardButton = ButtonNode(name: "HardButton", text: "Hard", size: buttonSize)
+        let hardButton = ButtonNode(name: "hardButton", text: "Hard", size: buttonSize)
         hardButton.position = CGPoint(x: 500, y: 360)
         node.addChild(hardButton)
 
