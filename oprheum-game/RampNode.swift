@@ -29,7 +29,7 @@ class RampNode: SKNode {
         self.name = "Ramp"
 
         rampNode = SKShapeNode()
-        rampNode.physicsBody?.mass=10000
+        rampNode.physicsBody?.mass = 10000
         rampNode.position = CGPoint(x: 0, y: 0)
         self.redrawTriangle(triangleWidth, height: triangleHeight)
         self.unselect()

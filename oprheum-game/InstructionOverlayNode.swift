@@ -47,7 +47,6 @@ class InstructionOverlayNode: SKNode {
             self.addChild(label3)
         }
     }
-
     fileprivate var background: SKShapeNode!
     fileprivate var label1: SKLabelNode!
     fileprivate var label2: SKLabelNode!
