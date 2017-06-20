@@ -24,7 +24,8 @@ class SnowballGamePhysics: SKShapeNode {
             "The rate at which a ball will roll down an inclined plane \n" +
             "depends on how tilted the surface is. \n" +
             "The greater the tilt, the faster the object will roll down.\n\n" +
-            "Balls accelerate down inclined planes due to gravitational and normal forces.\n" +
+            "Balls accelerate down inclined planes \n" + 
+            "due to gravitational and normal forces.\n" +
             "Gravity acts downward, while normal force acts perpendicularly."
         instructions.position = CGPoint(x: 350, y: 100)
         self.addChild(instructions)

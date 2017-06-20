@@ -12,7 +12,7 @@ class RampNode: SKNode {
     static let selectedColor = SKColor.red
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
     static let easyMaximumSize: CGFloat = 675
-    static let mediumMaximumSize: CGFloat = 475
+    static let mediumMaximumSize: CGFloat = 400
     static let hardMaximumSize: CGFloat = 300
     static let minimumSize: CGFloat = 100
 
