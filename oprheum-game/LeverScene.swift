@@ -7,10 +7,12 @@
 import SpriteKit
 
 class LeverScene: BaseScene {
+    public static let initialMass: CGFloat = 5
     static let runButtonName = "runButton"
     static let resetButtonName = "resetButton"
-    static let smallWeightName = "smallWeight"
-    static let largeWeightName = "largeWeight"
+    static let addWeightName = "addWeight"
+    var weight: CGFloat = 0
+//    var weight0: CGFloat = 0
 
     var gameObjects: SKNode!
     var fulcrumNode: SKShapeNode!
@@ -35,11 +37,34 @@ class LeverScene: BaseScene {
         self.physicsWorld.speed = 0.0
         self.gameObjects.removeAllChildren()
 
+        let rockWeight = SKNode()
+        
+        let weightBoxPath = CGMutablePath()
+        weightBoxPath.move(to: CGPoint(x: -30, y: 0))
+        weightBoxPath.addLine(to: CGPoint(x: 30, y: 0))
+        weightBoxPath.addLine(to: CGPoint(x: 20, y: 40))
+        weightBoxPath.addLine(to: CGPoint(x: -20, y: 40))
+        weightBoxPath.closeSubpath()
+        
+        let weightBox = SKShapeNode(path: weightBoxPath)
+        weightBox.name = "weightBox"
+        weightBox.fillColor = SKColor(red: 0.132, green: 0.424, blue: 0.620, alpha: 1.00)
+        weightBox.physicsBody = SKPhysicsBody(polygonFrom: weightBoxPath)
+        weightBox.physicsBody?.mass = weight
+        weightBox.physicsBody?.friction = 1
+        rockWeight.addChild(weightBox)
+        
+        let weightBoxlabel = SKLabelNode(text: String(format: "%.0fkg", weight))
+        weightBox.addChild(weightBoxlabel)
+        
+        gameObjects.addChild(weightBox)
+        gameObjects.addChild(rockWeight)
+        
         // Fulcrum triangle structure and instructions//
         let fulcrumPath = CGMutablePath()
-        fulcrumPath.move(to: CGPoint(x: 25, y: 50))
+        fulcrumPath.move(to: CGPoint(x: 15, y: 35))
         fulcrumPath.addLine(to: CGPoint(x: 0, y: 0))
-        fulcrumPath.addLine(to: CGPoint(x: 50, y: 0))
+        fulcrumPath.addLine(to: CGPoint(x: 35, y: 0))
         fulcrumPath.closeSubpath()
 
         fulcrumNode = SKShapeNode(path: fulcrumPath)
@@ -47,7 +72,7 @@ class LeverScene: BaseScene {
         fulcrumNode.physicsBody = SKPhysicsBody(polygonFrom: fulcrumPath)
         fulcrumNode.physicsBody?.mass=100
         fulcrumNode.name = "fulcrumTriangle"
-        fulcrumNode.position = CGPoint (x: 487, y: 0)
+        fulcrumNode.position = CGPoint (x: 650, y: 0)
         gameObjects.addChild(fulcrumNode)
 
         // Fulcrum board structure and mass//
@@ -64,25 +89,38 @@ class LeverScene: BaseScene {
         fulcrumBoard.physicsBody = SKPhysicsBody(polygonFrom: fulcrumBoardPath)
         fulcrumBoard.physicsBody?.mass = 10
         fulcrumBoard.physicsBody?.friction = 1
-        fulcrumBoard.position = CGPoint(x: 262, y: 50)
+        fulcrumBoard.position = CGPoint(x: 520, y: 35)
         gameObjects.addChild(fulcrumBoard)
 
         //Castle square shape//
         let castleShapePath = CGMutablePath()
-        castleShapePath.move(to: CGPoint(x: 500, y: 0))
-        castleShapePath.addLine(to: CGPoint(x: 500, y: 300))
-        castleShapePath.addLine(to: CGPoint(x: 674, y: 300))
-        castleShapePath.addLine(to: CGPoint(x: 674, y: 0))
+        castleShapePath.move(to: CGPoint(x: 0, y: 0))
+        castleShapePath.addLine(to: CGPoint(x: 0, y: 700))
+        castleShapePath.addLine(to: CGPoint(x: 130, y: 700))
+        castleShapePath.addLine(to: CGPoint(x: 130, y: 0))
         castleShapePath.closeSubpath()
 
         let castleShape = SKShapeNode(path: castleShapePath)
         castleShape.name = "Castle shape"
         castleShape.fillColor = SKColor(red: 0.224, green: 1, blue: 0.847, alpha: 1)
         castleShape.physicsBody = SKPhysicsBody(polygonFrom: castleShapePath)
-        castleShape.physicsBody?.mass = 10
+        castleShape.physicsBody?.mass = 1000
         castleShape.physicsBody?.friction = 1
-        castleShape.position = CGPoint(x: 350, y: 0)
+        castleShape.position = CGPoint(x: 0, y: 0)
         gameObjects.addChild(castleShape)
+        
+        let castleWindowShapePath = CGMutablePath()
+        castleWindowShapePath.move(to: CGPoint(x: 30, y: 500))
+        castleWindowShapePath.addLine(to: CGPoint(x: 30, y: 600))
+        castleWindowShapePath.addLine(to: CGPoint(x: 100, y: 600))
+        castleWindowShapePath.addLine(to: CGPoint(x: 100, y: 500))
+        castleWindowShapePath.closeSubpath()
+        
+        let castleWindowShape = SKShapeNode(path: castleWindowShapePath)
+        castleWindowShape.name = "Castle shape"
+        castleWindowShape.fillColor = SKColor(red: 0.224, green: 0, blue: 0.847, alpha: 1)
+        castleWindowShape.position = CGPoint(x: 0, y: 0)
+        gameObjects.addChild(castleWindowShape)
 
         // Rock structure and mass//
         let rockPath = CGMutablePath()
@@ -97,42 +135,54 @@ class LeverScene: BaseScene {
         rock.name = "rockthing"
         rock.fillColor = SKColor(red: 0.380, green: 0.380, blue: 0.380, alpha: 1.00)
         rock.physicsBody = SKPhysicsBody(polygonFrom: rockPath)
-        rock.physicsBody?.mass = 20
+        rock.physicsBody?.mass = 10
         rock.physicsBody?.friction = 1
-        rock.physicsBody?.mass = 20
 
-        let label = SKLabelNode(text: "20kg")
-        rock.addChild(label)
-        rock.position = CGPoint(x: 700, y: 60)
-
+        let rockLabel = SKLabelNode(text: "10kg")
+        rockLabel.position = CGPoint(x:950, y: 65)
+        rock.addChild(rockLabel)
+        rock.position = CGPoint(x: 950, y: 45)
+        
         gameObjects.addChild(rock)
     }
-
-    // adds the weights tht will drop to fulcrum//
-    func createWeight(_ mass: CGFloat) -> SKNode {
-        let weight = SKNode()
-
-        let weightBoxPath = CGMutablePath()
-        weightBoxPath.move(to: CGPoint(x: -30, y: 0))
-        weightBoxPath.addLine(to: CGPoint(x: 30, y: 0))
-        weightBoxPath.addLine(to: CGPoint(x: 20, y: 40))
-        weightBoxPath.addLine(to: CGPoint(x: -20, y: 40))
-        weightBoxPath.closeSubpath()
-
-        let weightBox = SKShapeNode(path: weightBoxPath)
-        weightBox.name = "weightBox"
-        weightBox.fillColor = SKColor(red: 0.132, green: 0.424, blue: 0.620, alpha: 1.00)
-        weightBox.physicsBody = SKPhysicsBody(polygonFrom: weightBoxPath)
-        weightBox.physicsBody?.mass = mass
-        weightBox.physicsBody?.friction = 1
-        weight.addChild(weightBox)
-
-        let label = SKLabelNode(text: String(format: "%.0fkg", mass))
-        weightBox.addChild(label)
-
-        return weight
-    }
-
+    // I want this function to change the weight of the rock, not create/add many rocks//
+//    func createWeight() {
+//        weight = weight + 50
+//        originalWeight.position = CGPoint(x: 615, y: 300)
+//        gameObjects.addChild(originalWeight)
+//        let rockWeight = SKNode()
+//        
+//        let weightBoxPath = CGMutablePath()
+//        weightBoxPath.move(to: CGPoint(x: -30, y: 0))
+//        weightBoxPath.addLine(to: CGPoint(x: 30, y: 0))
+//        weightBoxPath.addLine(to: CGPoint(x: 20, y: 40))
+//        weightBoxPath.addLine(to: CGPoint(x: -20, y: 40))
+//        weightBoxPath.closeSubpath()
+//        
+//        let weightBox = SKShapeNode(path: weightBoxPath)
+//        weightBox.name = "weightBox"
+//        weightBox.fillColor = SKColor(red: 0.132, green: 0.424, blue: 0.620, alpha: 1.00)
+//        weightBox.physicsBody = SKPhysicsBody(polygonFrom: weightBoxPath)
+//        weightBox.physicsBody?.mass = mass + 50
+//        weightBox.physicsBody?.friction = 1
+//        rockWeight.addChild(weightBox)
+//        
+//        let label = SKLabelNode(text: String(format: "%.0fkg", mass))
+//        weightBox.addChild(label)
+        
+//        return rockWeight
+//    }
+        func showWinOverlay() {
+            winOverlay.show()
+        }
+    
+   //override function needed? idk...
+    //I want it to show the win overlay if the position of the original weight is the same as the position of the castle window (basically if the rock hits the window)
+//       
+//    if originalWeight.position == castleWindowShape.position {
+//            showWinOverlay()
+//        }
+    
     override func didMove(to view: SKView) {
         self.gameObjects = SKNode()
         self.addChild(gameObjects)
@@ -147,13 +197,9 @@ class LeverScene: BaseScene {
         resetButton.position = CGPoint(x: 950, y: 640)
         self.addChild(resetButton)
 
-        let smallWeigthButton = ButtonNode(name: LeverScene.smallWeightName, text: "5kg", size: BaseScene.smallButtonSize)
-        smallWeigthButton.position = CGPoint(x: 950, y: 565)
-        self.addChild(smallWeigthButton)
-
-        let largeWeightButton = ButtonNode(name: LeverScene.largeWeightName, text: "10kg", size: BaseScene.smallButtonSize)
-        largeWeightButton.position = CGPoint(x: 950, y: 490)
-        self.addChild(largeWeightButton)
+        let addWeightButton = ButtonNode(name: LeverScene.addWeightName, text: "+50kg", size: BaseScene.smallButtonSize)
+        addWeightButton.position = CGPoint(x: 950, y: 565)
+        self.addChild(addWeightButton)
 
         let mainMenuButton = ButtonNode(name: "mainMenu", text: "Menu", size: BaseScene.smallButtonSize)
         mainMenuButton.position = CGPoint(x: 950, y: 415)
@@ -175,22 +221,13 @@ class LeverScene: BaseScene {
         instructionOverlay.run(showInstructionsAction)
         return true // stop processing touches
     }
-
-    func smallWeightTouched(_ touch: NSValue) -> Bool {
-        let weight = createWeight(5)
-        weight.position = CGPoint(x: 365, y: 300)
-        gameObjects.addChild(weight)
+//i want this to change the mass of the weight
+    func addWeightTouched(_ touch: NSValue) -> Bool {
+        weight = weight + 50
 
         return true // stop processing touches
     }
 
-    func largeWeightTouched(_ touch: NSValue) -> Bool {
-        let weight = createWeight(10)
-        weight.position = CGPoint(x: 365, y: 300)
-        gameObjects.addChild(weight)
-
-        return true // stop processing touches
-    }
 
     func mainMenuTouched(_ touch: NSValue) -> Bool {
             gameViewController.startMenu()

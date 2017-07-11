@@ -282,7 +282,7 @@
 					};
 					C83B4B3C1C601C4400321C0B = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = CZ73EGAE93;
+						DevelopmentTeam = PQMW4AT355;
 						LastSwiftMigration = 0830;
 						TestTargetID = C83B4B191C601C4400321C0B;
 					};
