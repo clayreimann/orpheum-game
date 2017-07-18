@@ -328,6 +328,7 @@ class SnowballScene: BaseScene {
     }
 
     func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
+        guard recognizer.numberOfTouches == 2 else { return }
         let touch1 = recognizer.location(ofTouch: 0, in: self.view!)
         let touch2 = recognizer.location(ofTouch: 1, in: self.view!)
 
