@@ -6,6 +6,7 @@
 import SpriteKit
 
 class SnowballNode: SKNode {
+
     public static let initialMass: CGFloat = 5
 
     static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
@@ -14,7 +15,8 @@ class SnowballNode: SKNode {
 
     let whiteColor = SKColor.white
 
-    var snowball: SKShapeNode!
+    var snowballImage: UIImage!
+    var snowball: SKSpriteNode!
     var mass: CGFloat = SnowballNode.initialMass
     var mass0: CGFloat = 0 // this needs a better name
 
@@ -22,8 +24,15 @@ class SnowballNode: SKNode {
         super.init()
 
         self.name = "Snowball"
+        snowballImage = #imageLiteral(resourceName: "Coding_snowball")
+        snowball = SKSpriteNode(imageNamed: "Coding_snowball")
+        self.addChild(snowball)
+        
+        
         redrawSnowball()
-        unselect()
+
+        
+        //   unselect()
     }
 
     func setSnowballMass(_ mass: CGFloat) {
@@ -40,13 +49,14 @@ class SnowballNode: SKNode {
     }
 
     func redrawSnowball() {
-        self.removeAllChildren()
         let radius = mass * 10
-        snowball = SKShapeNode(circleOfRadius: radius)
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         self.physicsBody?.mass = mass
-        self.addChild(snowball)
-        snowball.fillColor = whiteColor
+
+        
+        let scale = radius / CGFloat(snowballImage.size.height / 3.14)
+        print("\(scale)")
+        self.snowball.setScale(scale)
     }
 
     func pinchBegan(_ scale: CGFloat) {
@@ -61,13 +71,13 @@ class SnowballNode: SKNode {
         setSnowballMass(mass0 * scale)
     }
 
-    func select() {
-        snowball.fillColor = whiteColor
-    }
-
-    func unselect() {
-        snowball.fillColor = SKColor.blue
-    }
+//    func select() {
+//        snowball.fillColor = whiteColor
+//    }
+//
+//    func unselect() {
+//        snowball.fillColor = SKColor.blue
+//    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -35,6 +35,9 @@ class SnowballScene: BaseScene {
 
     var snowballMenu: SnowballMenu!
     var physicsInstructions: SnowballGamePhysics!
+    
+    var background = SKSpriteNode(imageNamed: "Coding_background")
+    
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -100,7 +103,7 @@ class SnowballScene: BaseScene {
     func resetScene() {
         hideWinOverlay()
         hideLoseOverlay()
-
+        
         snowballNode.position = CGPoint(x: 70, y: self.frame.height - 70)
         snowballNode.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         snowballNode.zPosition = 0
@@ -111,6 +114,10 @@ class SnowballScene: BaseScene {
     }
 
     override func didMove(to view: SKView) {
+        
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        addChild(background)
+        
         self.gameObjects = SKNode()
         self.addChild(gameObjects)
         self.physicsWorld.speed = 0.0
@@ -141,8 +148,29 @@ class SnowballScene: BaseScene {
 
         rampNode = RampNode()
         gameObjects.addChild(rampNode)
+        
+        background.alpha = 0.50
 
+        
         snowballNode = SnowballNode()
+        
+        
+//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//        backgroundImage.image = UIImage(named: "Coding_background")
+//        self.view?.insertSubview(backgroundImage, at: 0)
+//    
+        
+        
+   //     self.view?.backgroundColor = UIColor(patternImage: UIImage(named:"Coding_background")!)
+        
+//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//        backgroundImage.image = UIImage(named: "Coding_background")
+//        backgroundImage.contentMode = UIViewContentMode.scaleAspectFill
+//        self.view!.insertSubview(backgroundImage, at: 0)
+//        
+    //    self.view!.backgroundColor = UIColor(patternImage: UIImage(named: "Coding_background"))
+        
+        
         gameObjects.addChild(snowballNode)
 
         self.addChild(loseOverlay)
@@ -181,7 +209,7 @@ class SnowballScene: BaseScene {
 
     func unselectAll() {
         rampNode.unselect()
-        snowballNode.unselect()
+    //    snowballNode.unselect()
         selectedNode = nil
     }
 
@@ -319,7 +347,7 @@ class SnowballScene: BaseScene {
                 }
                 if let snowballNode = node as? SnowballNode {
                     unselectAll()
-                    snowballNode.select()
+       //             snowballNode.select()
                     selectedNode = snowballNode
                     return
                 }
