@@ -28,11 +28,8 @@ class SnowballNode: SKNode {
         snowball = SKSpriteNode(imageNamed: "Coding_snowball")
         self.addChild(snowball)
         
-        
         redrawSnowball()
-
-        
-        //   unselect()
+        unselect()
     }
 
     func setSnowballMass(_ mass: CGFloat) {
@@ -71,13 +68,13 @@ class SnowballNode: SKNode {
         setSnowballMass(mass0 * scale)
     }
 
-//    func select() {
-//        snowball.fillColor = whiteColor
-//    }
-//
-//    func unselect() {
-//        snowball.fillColor = SKColor.blue
-//    }
+    func select() {
+        snowball.alpha = 1.0
+    }
+
+    func unselect() {
+        snowball.alpha = 0.8
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
