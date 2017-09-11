@@ -207,7 +207,7 @@ class SnowballScene: BaseScene {
     func resetButtonTouched(_ touch: NSValue) -> Bool {
         resetScene()
         stopSimulation()
-        rampNode.redrawTriangle(RampNode.initialSize, height: RampNode.initialSize)
+        rampNode.redrawTriangle(width: RampNode.initialSize, height: RampNode.initialSize)
         snowballNode.setSnowballMass(SnowballNode.initialMass)
 
         timeRemaining = initialLevelTime
@@ -300,7 +300,7 @@ class SnowballScene: BaseScene {
             resetScene()
             snowballNode.mass = 5
             snowballNode.redrawSnowball()
-            rampNode.redrawTriangle(RampNode.initialSize, height: RampNode.initialSize)
+            rampNode.redrawTriangle(width: RampNode.initialSize, height: RampNode.initialSize)
             timeRemaining = initialLevelTime
             return
         }

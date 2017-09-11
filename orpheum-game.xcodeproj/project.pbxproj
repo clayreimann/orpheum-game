@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		14D930F31E16FECF00F94BBB /* WinOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D930F21E16FECF00F94BBB /* WinOverlayNode.swift */; };
 		14D930F51E1C6B5B00F94BBB /* LoseOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D930F41E1C6B5B00F94BBB /* LoseOverlayNode.swift */; };
+		59889E571F4B8A560055A755 /* Coding_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 59889E561F4B8A560055A755 /* Coding_grid.png */; };
 		6F2858CB1DEF15E300FC1458 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */; };
 		8199CCFD1D95BF9D00EAA89A /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */; };
 		81D67C0D1DF62C1200FF56C7 /* InstructionOverlayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D67C0C1DF62C1200FF56C7 /* InstructionOverlayNode.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		14D930F21E16FECF00F94BBB /* WinOverlayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinOverlayNode.swift; sourceTree = "<group>"; };
 		14D930F41E1C6B5B00F94BBB /* LoseOverlayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseOverlayNode.swift; sourceTree = "<group>"; };
+		59889E561F4B8A560055A755 /* Coding_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coding_grid.png; sourceTree = "<group>"; };
 		6F2858CA1DEF15E300FC1458 /* ButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		8199CCFC1D95BF9D00EAA89A /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		81D67C0C1DF62C1200FF56C7 /* InstructionOverlayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionOverlayNode.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				81DEA1441D7659B1004E0869 /* SnowballNode.swift */,
 				81DEA1461D765A03004E0869 /* RampNode.swift */,
+				59889E561F4B8A560055A755 /* Coding_grid.png */,
 				C83B4B211C601C4400321C0B /* SnowballScene.swift */,
 				C82FAD181DD14E7800AEC49B /* SnowballMenu.swift */,
 				C8A2B1B91E91676300FDEB0F /* PhysicsOverlayInstructions.swift */,
@@ -282,7 +285,7 @@
 					};
 					C83B4B3C1C601C4400321C0B = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = CZ73EGAE93;
+						DevelopmentTeam = PQMW4AT355;
 						LastSwiftMigration = 0830;
 						TestTargetID = C83B4B191C601C4400321C0B;
 					};
@@ -317,6 +320,7 @@
 				C88E3F5F1D6FC7BB00FDC143 /* LeverScene.sks in Resources */,
 				C8F888761D39454E00A8FA80 /* MenuScene.sks in Resources */,
 				C83B4B2C1C601C4400321C0B /* LaunchScreen.storyboard in Resources */,
+				59889E571F4B8A560055A755 /* Coding_grid.png in Resources */,
 				C83B4B291C601C4400321C0B /* Assets.xcassets in Resources */,
 				C83B4B271C601C4400321C0B /* Main.storyboard in Resources */,
 			);
