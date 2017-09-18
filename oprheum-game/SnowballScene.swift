@@ -2,7 +2,6 @@
 //  GameScene.swift
 // make menu difficulty buttons do something, back to main main menu
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland. All rights reserved.
-
 import SpriteKit
 
 class SnowballScene: BaseScene {
@@ -17,9 +16,7 @@ class SnowballScene: BaseScene {
     static let hardInitialTime = 10.0
 
     var selectedNode: SKNode?
-
     var buttons: SKNode!
-
     var gameObjects: SKNode!
     var snowballNode: SnowballNode!
     var rampNode: RampNode!
@@ -298,12 +295,11 @@ class SnowballScene: BaseScene {
 
         if isGameLost() || isGameWon() {
             stopSimulation()
-
             hideLoseOverlay()
             hideWinOverlay()
-
             addGameObjectsToScene()
             resetScene()
+            
             snowballNode.mass = 5
             snowballNode.redrawSnowball()
             rampNode.redrawTriangle(RampNode.initialSize, height: RampNode.initialSize)
