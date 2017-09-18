@@ -6,7 +6,6 @@
 import SpriteKit
 
 class SnowballNode: SKNode {
-
     public static let initialMass: CGFloat = 5
 
     static let SnowballColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.00)
@@ -48,7 +47,6 @@ class SnowballNode: SKNode {
         let radius = mass * 10
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         self.physicsBody?.mass = mass
-
         
         let scale = radius / CGFloat(snowballImage.size.height / 3.14)
         print("\(scale)")
