@@ -10,7 +10,6 @@ class SnowballScene: BaseScene {
     static let resetButtonName = "resetButton"
     static let menuButtonName = "menuButton"
     static let physicsInstructionsName = "physicsInstructionsButton"
-
     static let easyInitialTime = 30.0
     static let mediumInitialTime = 20.0
     static let hardInitialTime = 10.0
@@ -21,7 +20,6 @@ class SnowballScene: BaseScene {
     var snowballNode: SnowballNode!
     var rampNode: RampNode!
     var monster: SKSpriteNode!
-
     var internalOverlay: SKNode!
 
     var previousDegrees: Int = 0
