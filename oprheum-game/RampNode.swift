@@ -3,7 +3,6 @@
 //
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 //
-
 import SpriteKit
 
 class RampNode: SKNode {
