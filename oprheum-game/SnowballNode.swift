@@ -22,7 +22,6 @@ class SnowballNode: SKNode {
 
     override init() {
         super.init()
-
         self.name = "Snowball"
         snowballImage = #imageLiteral(resourceName: "Coding_snowball")
         snowball = SKSpriteNode(imageNamed: "Coding_snowball")
