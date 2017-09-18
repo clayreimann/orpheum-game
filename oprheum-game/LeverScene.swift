@@ -16,7 +16,7 @@ class LeverScene: BaseScene {
     var weightBox: SKShapeNode!
     var movingFulcrum = false
     var mass: CGFloat = 0
-    var mass0 : CGFloat = 0
+    var mass0: CGFloat = 0
     
     func buildInstructionOverlay() {
         instructionOverlay = InstructionOverlayNode(scene: self)
