@@ -139,25 +139,15 @@ class LeverScene: BaseScene {
         rock.position = CGPoint(x: 950, y: 45)
         
         gameObjects.addChild(rock)
-        
-        
     }
     func addWeight (){
         let newMass = mass + 10
-        weightBox.physicsBody?.mass = newMass
-        
+        weightBox.physicsBody?.mass = newMass   
     }
 
     func showWinOverlay() {
         winOverlay.show()
     }
-    
-    //override function needed? idk...
-    //I want it to show the win overlay if the position of the original weight is the same as the position of the castle window (basically if the rock hits the window)
-    //
-    //    if originalWeight.position == castleWindowShape.position {
-    //            showWinOverlay()
-    //        }
     
     override func didMove(to view: SKView) {
         self.gameObjects = SKNode()
@@ -199,21 +189,9 @@ class LeverScene: BaseScene {
     }
     
     func addWeightButtonTouched(_ touch: NSValue) -> Bool {
-        
         addWeight()
         return true
     }
-    
-    //i want this to change the mass of the weight
-//    func addWeightTouched(_ touch: NSValue) -> Bool {
-//        let weight = createWeight(50)
-//        weight.position = CGPoint(x: 595, y: 300)
-//        gameObjects.addChild(weight)
-//        
-    
-//        return true // stop processing touches
-//    }
-    
     
     func mainMenuTouched(_ touch: NSValue) -> Bool {
         gameViewController.startMenu()
@@ -240,7 +218,6 @@ class LeverScene: BaseScene {
             let hideInstructionsAction = SKAction.fadeOut(withDuration: 0.3)
             instructionOverlay.run(hideInstructionsAction)
         }
-        
         movingFulcrum = false
     }
     
