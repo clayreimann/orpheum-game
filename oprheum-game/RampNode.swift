@@ -9,7 +9,6 @@ import SpriteKit
 class RampNode: SKNode {
     public static let initialSize: CGFloat = 200
 
-
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
     static let easyMaximumSize: CGFloat = 675
     static let mediumMaximumSize: CGFloat = 400
@@ -19,9 +18,7 @@ class RampNode: SKNode {
     var rampImage = #imageLiteral(resourceName: "Coding_grid.png")
     var rampNode: SKSpriteNode!
     var cropNode: SKCropNode!
-    
-//    var triangleHeight: CGFloat = RampNode.initialSize
-//    var triangleWidth: CGFloat = RampNode.initialSize
+
     var triangleHeight: CGFloat = RampNode.easyMaximumSize
     var triangleWidth: CGFloat = RampNode.easyMaximumSize
     var initialX: CGFloat = 0
@@ -64,13 +61,11 @@ class RampNode: SKNode {
         let physicsBody = SKPhysicsBody(polygonFrom: path)
         physicsBody.isDynamic = false
         cropNode.physicsBody = physicsBody
-        // update cropnode.mask
+
         let maskNode = SKShapeNode(path:path)
         maskNode.fillColor = SKColor.white
         cropNode.maskNode = maskNode
-
     }
-
 
     func pinchBegan(_ touch1: CGPoint, touch2: CGPoint) {
         initialX = touch2.x - touch1.x
@@ -85,7 +80,6 @@ class RampNode: SKNode {
         } else if val < minSize {
             result = minSize
         }
-
         return result
     }
 
