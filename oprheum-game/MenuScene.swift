@@ -12,7 +12,7 @@ class MenuScene: BaseScene {
     override func didMove(to view: SKView) {
         let cornerRadius: CGFloat = 10
         let fontSize: CGFloat = 40
-        let buttonSize = CGSize(width: (1/4) * frame.width, height: (1/6) * frame.height)
+        let buttonSize = CGSize(width: (1/2) * frame.width, height: (1/4) * frame.height)
 
         let snowballGameButton = ButtonNode(name: MenuScene.snowballButtonName, text: "Snowball", size: buttonSize)
         snowballGameButton.cornerRadius = cornerRadius

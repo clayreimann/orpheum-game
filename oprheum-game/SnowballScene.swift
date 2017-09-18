@@ -35,6 +35,9 @@ class SnowballScene: BaseScene {
 
     var snowballMenu: SnowballMenu!
     var physicsInstructions: SnowballGamePhysics!
+    
+    var background = SKSpriteNode(imageNamed: "Coding_background")
+    
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -100,7 +103,7 @@ class SnowballScene: BaseScene {
     func resetScene() {
         hideWinOverlay()
         hideLoseOverlay()
-
+        
         snowballNode.position = CGPoint(x: 70, y: self.frame.height - 70)
         snowballNode.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         snowballNode.zPosition = 0
@@ -111,6 +114,10 @@ class SnowballScene: BaseScene {
     }
 
     override func didMove(to view: SKView) {
+        
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        addChild(background)
+        
         self.gameObjects = SKNode()
         self.addChild(gameObjects)
         self.physicsWorld.speed = 0.0
@@ -141,8 +148,11 @@ class SnowballScene: BaseScene {
 
         rampNode = RampNode()
         gameObjects.addChild(rampNode)
-
+        
+        background.alpha = 0.50
+        
         snowballNode = SnowballNode()
+        
         gameObjects.addChild(snowballNode)
 
         self.addChild(loseOverlay)
@@ -159,23 +169,24 @@ class SnowballScene: BaseScene {
 
     func buildButtons() {
         let toggleSimulation = ButtonNode(name: SnowballScene.runButtonName, text: "Run", size: BaseScene.smallButtonSize)
-        toggleSimulation.position = CGPoint(x: 0, y: 330)
+        toggleSimulation.position = CGPoint(x: 0, y: 335)
+        
         buttons.addChild(toggleSimulation)
 
         let resetButton = ButtonNode(name: SnowballScene.retryButtonName, text: "Retry", size: BaseScene.smallButtonSize)
-        resetButton.position = CGPoint(x: 0, y: 265)
+        resetButton.position = CGPoint(x: 0, y: 255)
         buttons.addChild(resetButton)
 
         let timerResetButton = ButtonNode(name: SnowballScene.resetButtonName, text: "Reset", size: BaseScene.smallButtonSize)
-        timerResetButton.position = CGPoint(x: 0, y: 200)
+        timerResetButton.position = CGPoint(x: 0, y: 175)
         buttons.addChild(timerResetButton)
 
         let menuButton = ButtonNode(name: SnowballScene.menuButtonName, text: "Menu", size: BaseScene.smallButtonSize)
-        menuButton.position = CGPoint(x: 0, y: 135)
+        menuButton.position = CGPoint(x: 0, y: 95)
         buttons.addChild(menuButton)
 
         let physicsInstructions = ButtonNode(name: SnowballScene.physicsInstructionsName, text: "?", size: BaseScene.smallButtonSize)
-        physicsInstructions.position = CGPoint(x: 0, y: 20)
+        physicsInstructions.position = CGPoint(x: 0, y: 10)
         buttons.addChild(physicsInstructions)
     }
 
@@ -193,6 +204,7 @@ class SnowballScene: BaseScene {
     }
 
     func runButtonTouched(_ touch: NSValue) -> Bool {
+        snowballNode.unselect()
         resetScene()
         startSimulation()
         return true

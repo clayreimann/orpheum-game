@@ -12,10 +12,10 @@ class ButtonNode: SKNode {
 
     static let defaultCornerRadius: CGFloat = 4.0
 
-    static let defaultFontSize: CGFloat = 20
+    static let defaultFontSize: CGFloat = 30
     static let defaultFontName = UIFont.boldSystemFont(ofSize: 1).fontName
 
-    static let defaultButtonFillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
+//    static let defaultButtonFillColor = SKColor(red: 0.621, green: 0.864, blue: 1.000, alpha: 1.000)
 
     /*
      *  ButtonNode's public API
@@ -24,16 +24,16 @@ class ButtonNode: SKNode {
     var size: CGSize
     var cornerRadius = ButtonNode.defaultCornerRadius {
         didSet(old) {
-            button.path = buttonPath
+   //         button.path = buttonPath
             positionLabel()
         }
     }
-    var fillColor = ButtonNode.defaultButtonFillColor {
-        didSet(old) {
-            button.fillColor = fillColor
-        }
-    }
-    var fontColor = SKColor.darkGray {
+//    var fillColor = ButtonNode.defaultButtonFillColor {
+//        didSet(old) {
+   //         button.fillColor = fillColor
+//        }
+//    }
+    var fontColor = SKColor.white {
         didSet(old) {
             label.fontColor = fontColor
         }
@@ -57,7 +57,7 @@ class ButtonNode: SKNode {
         let rect = CGRect(origin: CGPoint(x: -0.5 * size.width, y: -0.5 * size.height), size: size)
         return CGPath(roundedRect: rect, cornerWidth: cornerRadius, cornerHeight: cornerRadius, transform: nil)
     }
-    fileprivate var button: SKShapeNode!
+    fileprivate var button: SKSpriteNode!
     fileprivate var label: SKLabelNode!
 
     init(name: String, text: String, size: CGSize) {
@@ -75,8 +75,19 @@ class ButtonNode: SKNode {
     }
 
     fileprivate func buildButton() {
-        button = SKShapeNode(path: buttonPath)
-        button.fillColor = fillColor
+        
+       
+        button = SKSpriteNode(imageNamed: "Coding_Block")
+        
+        
+        let scale = CGFloat(BaseScene.smallButtonWidth)/button.size.height
+       // print("\(scale)")
+        button.setScale(scale)
+        button.zPosition = 1
+ //    let scale = radius / CGFloat(snowballImage.size.height / 3.14)
+        
+     //   button = SKShapeNode(path: buttonPath)
+    //    button.fillColor = fillColor
         self.addChild(button)
 
         label = SKLabelNode(text: text)
@@ -84,7 +95,8 @@ class ButtonNode: SKNode {
         label.fontName = fontName
         label.fontColor = fontColor
         label.isUserInteractionEnabled = false
-        button.addChild(label)
+        label.zPosition = 2
+        addChild(label)
 
         positionLabel()
     }
