@@ -35,9 +35,7 @@ class SnowballScene: BaseScene {
 
     var snowballMenu: SnowballMenu!
     var physicsInstructions: SnowballGamePhysics!
-    
     var background = SKSpriteNode(imageNamed: "Coding_background")
-    
 
     func stopSimulation() {
         self.physicsWorld.speed = 0.0
@@ -150,11 +148,9 @@ class SnowballScene: BaseScene {
         gameObjects.addChild(rampNode)
         
         background.alpha = 0.50
-        
         snowballNode = SnowballNode()
         
         gameObjects.addChild(snowballNode)
-
         self.addChild(loseOverlay)
         self.addChild(winOverlay)
 
@@ -170,7 +166,6 @@ class SnowballScene: BaseScene {
     func buildButtons() {
         let toggleSimulation = ButtonNode(name: SnowballScene.runButtonName, text: "Run", size: BaseScene.smallButtonSize)
         toggleSimulation.position = CGPoint(x: 0, y: 335)
-        
         buttons.addChild(toggleSimulation)
 
         let resetButton = ButtonNode(name: SnowballScene.retryButtonName, text: "Retry", size: BaseScene.smallButtonSize)
@@ -408,5 +403,4 @@ class SnowballScene: BaseScene {
             }
         }
     }
-
 }
