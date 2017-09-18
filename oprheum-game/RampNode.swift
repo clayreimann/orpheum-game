@@ -23,6 +23,8 @@ class RampNode: SKNode {
     var initialX: CGFloat = 0
     var initialY: CGFloat = 0
 
+    var triangleHeight: CGFloat = RampNode.initialSize
+    var triangleWidth: CGFloat = RampNode.initialSize
     var maxSize: CGFloat = RampNode.easyMaximumSize
     var minSize: CGFloat = RampNode.minimumSize
 
