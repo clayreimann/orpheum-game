@@ -140,6 +140,7 @@ class LeverScene: BaseScene {
         
         gameObjects.addChild(rock)
     }
+    
     func addWeight () {
         let newMass = mass + 10
         weightBox.physicsBody?.mass = newMass   
