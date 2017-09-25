@@ -101,11 +101,9 @@ class RampNode: SKNode {
     }
 
     func select() {
-//        rampNode.fillColor = RampNode.selectedColor
     }
 
     func unselect() {
-//        rampNode.fillColor = RampNode.rampColor
     }
 
     required init?(coder aDecoder: NSCoder) {
