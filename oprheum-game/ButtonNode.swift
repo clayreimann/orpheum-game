@@ -72,8 +72,7 @@ class ButtonNode: SKNode {
         let scale = CGFloat(BaseScene.smallButtonWidth)/button.size.height
         button.setScale(scale)
         button.zPosition = 1
-        let scale = radius / CGFloat(snowballImage.size.height / 3.14)
-
+    
         self.addChild(button)
 
         label = SKLabelNode(text: text)

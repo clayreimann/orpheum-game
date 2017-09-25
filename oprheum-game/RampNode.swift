@@ -14,12 +14,10 @@ class RampNode: SKNode {
     static let hardMaximumSize: CGFloat = 300
     static let minimumSize: CGFloat = 100
 
-    var rampImage = #imageLiteral(resourceName: "Coding_grid.png")
+    var rampImage = #imageLiteral(resourceName: "Coding_background2.png")
     var rampNode: SKSpriteNode!
     var cropNode: SKCropNode!
 
-    var triangleHeight: CGFloat = RampNode.easyMaximumSize
-    var triangleWidth: CGFloat = RampNode.easyMaximumSize
     var initialX: CGFloat = 0
     var initialY: CGFloat = 0
 
@@ -32,12 +30,13 @@ class RampNode: SKNode {
         super.init()
 
         self.name = "Ramp"
-
-        let scale = 675 / rampImage.size.height
-        let rampNode = SKSpriteNode(imageNamed: "Coding_grid")
+        
+        let scale = 350 / rampImage.size.height
+        let rampNode = SKSpriteNode(imageNamed: "Coding_background2")
         rampNode.setScale(3*scale)
         rampNode.physicsBody?.mass = 10000
-        rampNode.position = CGPoint(x: 0, y: 0)
+        rampNode.position = CGPoint(x: 250, y: 250)
+        
 
         cropNode = SKCropNode()
         cropNode.addChild(rampNode)

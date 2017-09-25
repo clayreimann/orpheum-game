@@ -25,6 +25,11 @@
 		C83B4B2C1C601C4400321C0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83B4B2A1C601C4400321C0B /* LaunchScreen.storyboard */; };
 		C83B4B371C601C4400321C0B /* orpheum-gameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B361C601C4400321C0B /* orpheum-gameTests.swift */; };
 		C83B4B421C601C4400321C0B /* orpheum-gameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B4B411C601C4400321C0B /* orpheum-gameUITests.swift */; };
+		C883D8651F79B8D300D59C70 /* Coding_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C883D8611F79B8D300D59C70 /* Coding_background.png */; };
+		C883D8661F79B8D300D59C70 /* Coding_Block.png in Resources */ = {isa = PBXBuildFile; fileRef = C883D8621F79B8D300D59C70 /* Coding_Block.png */; };
+		C883D8671F79B8D300D59C70 /* Coding_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = C883D8631F79B8D300D59C70 /* Coding_grid.png */; };
+		C883D8681F79B8D300D59C70 /* Coding_snowball.png in Resources */ = {isa = PBXBuildFile; fileRef = C883D8641F79B8D300D59C70 /* Coding_snowball.png */; };
+		C883D8701F79BEB000D59C70 /* Coding_background2.png in Resources */ = {isa = PBXBuildFile; fileRef = C883D86F1F79BEB000D59C70 /* Coding_background2.png */; };
 		C88E3F5D1D6FC49F00FDC143 /* LeverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88E3F5C1D6FC49F00FDC143 /* LeverScene.swift */; };
 		C88E3F5F1D6FC7BB00FDC143 /* LeverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C88E3F5E1D6FC7BB00FDC143 /* LeverScene.sks */; };
 		C8A2B1BA1E91676300FDEB0F /* PhysicsOverlayInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2B1B91E91676300FDEB0F /* PhysicsOverlayInstructions.swift */; };
@@ -74,6 +79,11 @@
 		C83B4B3D1C601C4400321C0B /* orpheum-gameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "orpheum-gameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83B4B411C601C4400321C0B /* orpheum-gameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "orpheum-gameUITests.swift"; sourceTree = "<group>"; };
 		C83B4B431C601C4400321C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C883D8611F79B8D300D59C70 /* Coding_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coding_background.png; path = "../../Desktop/coding_pngs 2/Coding_background.png"; sourceTree = "<group>"; };
+		C883D8621F79B8D300D59C70 /* Coding_Block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coding_Block.png; path = "../../Desktop/coding_pngs 2/Coding_Block.png"; sourceTree = "<group>"; };
+		C883D8631F79B8D300D59C70 /* Coding_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coding_grid.png; path = "../../Desktop/coding_pngs 2/Coding_grid.png"; sourceTree = "<group>"; };
+		C883D8641F79B8D300D59C70 /* Coding_snowball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coding_snowball.png; path = "../../Desktop/coding_pngs 2/Coding_snowball.png"; sourceTree = "<group>"; };
+		C883D86F1F79BEB000D59C70 /* Coding_background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coding_background2.png; path = "../../Desktop/coding_pngs 2/Coding_background2.png"; sourceTree = "<group>"; };
 		C88E3F5C1D6FC49F00FDC143 /* LeverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeverScene.swift; sourceTree = "<group>"; };
 		C88E3F5E1D6FC7BB00FDC143 /* LeverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeverScene.sks; sourceTree = "<group>"; };
 		C8A2B1B91E91676300FDEB0F /* PhysicsOverlayInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhysicsOverlayInstructions.swift; path = ../PhysicsOverlayInstructions.swift; sourceTree = "<group>"; };
@@ -157,6 +167,11 @@
 				C83B4B351C601C4400321C0B /* orpheum-gameTests */,
 				C83B4B401C601C4400321C0B /* orpheum-gameUITests */,
 				C83B4B1B1C601C4400321C0B /* Products */,
+				C883D8611F79B8D300D59C70 /* Coding_background.png */,
+				C883D8621F79B8D300D59C70 /* Coding_Block.png */,
+				C883D8631F79B8D300D59C70 /* Coding_grid.png */,
+				C883D86F1F79BEB000D59C70 /* Coding_background2.png */,
+				C883D8641F79B8D300D59C70 /* Coding_snowball.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,11 +331,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C883D8661F79B8D300D59C70 /* Coding_Block.png in Resources */,
 				C83B4B201C601C4400321C0B /* SnowballScene.sks in Resources */,
 				C88E3F5F1D6FC7BB00FDC143 /* LeverScene.sks in Resources */,
 				C8F888761D39454E00A8FA80 /* MenuScene.sks in Resources */,
+				C883D8651F79B8D300D59C70 /* Coding_background.png in Resources */,
 				C83B4B2C1C601C4400321C0B /* LaunchScreen.storyboard in Resources */,
+				C883D8701F79BEB000D59C70 /* Coding_background2.png in Resources */,
+				C883D8681F79B8D300D59C70 /* Coding_snowball.png in Resources */,
 				59889E571F4B8A560055A755 /* Coding_grid.png in Resources */,
+				C883D8671F79B8D300D59C70 /* Coding_grid.png in Resources */,
 				C83B4B291C601C4400321C0B /* Assets.xcassets in Resources */,
 				C83B4B271C601C4400321C0B /* Main.storyboard in Resources */,
 			);
