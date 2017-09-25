@@ -3,25 +3,28 @@
 //
 //  Copyright © 2016 Yichen Yao, Elizabeth Singer, Hadley Shapland, Anna Troutt. All rights reserved.
 //
-
 import SpriteKit
 
 class RampNode: SKNode {
     public static let initialSize: CGFloat = 200
 
-    static let selectedColor = SKColor.red
     static let rampColor = SKColor(red: 0.039, green: 1.000, blue: 0.004, alpha: 1.00)
     static let easyMaximumSize: CGFloat = 675
     static let mediumMaximumSize: CGFloat = 400
     static let hardMaximumSize: CGFloat = 300
     static let minimumSize: CGFloat = 100
 
-    var rampNode: SKShapeNode!
-    var triangleHeight: CGFloat = RampNode.initialSize
-    var triangleWidth: CGFloat = RampNode.initialSize
+    var rampImage = #imageLiteral(resourceName: "Coding_grid.png")
+    var rampNode: SKSpriteNode!
+    var cropNode: SKCropNode!
+
+    var triangleHeight: CGFloat = RampNode.easyMaximumSize
+    var triangleWidth: CGFloat = RampNode.easyMaximumSize
     var initialX: CGFloat = 0
     var initialY: CGFloat = 0
 
+    var triangleHeight: CGFloat = RampNode.initialSize
+    var triangleWidth: CGFloat = RampNode.initialSize
     var maxSize: CGFloat = RampNode.easyMaximumSize
     var minSize: CGFloat = RampNode.minimumSize
 
@@ -30,25 +33,39 @@ class RampNode: SKNode {
 
         self.name = "Ramp"
 
-        rampNode = SKShapeNode()
-
+        let scale = 675 / rampImage.size.height
+        let rampNode = SKSpriteNode(imageNamed: "Coding_grid")
+        rampNode.setScale(3*scale)
         rampNode.physicsBody?.mass = 10000
         rampNode.position = CGPoint(x: 0, y: 0)
-        self.redrawTriangle(triangleWidth, height: triangleHeight)
+
+        cropNode = SKCropNode()
+        cropNode.addChild(rampNode)
+
+        self.redrawTriangle(width: triangleWidth, height: triangleHeight)
         self.unselect()
-        self.addChild(rampNode)
+        self.addChild(cropNode)
     }
 
-    func redrawTriangle(_ width: CGFloat, height: CGFloat) {
+    func rampPath(width: CGFloat, height: CGFloat) -> CGPath {
         let rampPath = CGMutablePath()
         rampPath.move(to: CGPoint(x: 0, y: height))
         rampPath.addLine(to: CGPoint(x: 0, y: 0))
         rampPath.addLine(to: CGPoint(x: width, y: 0))
         rampPath.closeSubpath()
 
-        rampNode.path = rampPath
-        rampNode.physicsBody = SKPhysicsBody(polygonFrom: rampPath)
-        rampNode.physicsBody?.isDynamic = false
+        return rampPath
+    }
+
+    func redrawTriangle(width: CGFloat, height: CGFloat) {
+        let path = rampPath(width: width, height: height)
+        let physicsBody = SKPhysicsBody(polygonFrom: path)
+        physicsBody.isDynamic = false
+        cropNode.physicsBody = physicsBody
+
+        let maskNode = SKShapeNode(path:path)
+        maskNode.fillColor = SKColor.white
+        cropNode.maskNode = maskNode
     }
 
     func pinchBegan(_ touch1: CGPoint, touch2: CGPoint) {
@@ -64,7 +81,6 @@ class RampNode: SKNode {
         } else if val < minSize {
             result = minSize
         }
-
         return result
     }
 
@@ -73,7 +89,7 @@ class RampNode: SKNode {
         let yScale = (touch1.y - touch2.y) / initialY
         let xLimit = limitRampSize(triangleWidth * xScale)
         let yLimit = limitRampSize(triangleHeight * yScale)
-        redrawTriangle(xLimit, height: yLimit)
+        redrawTriangle(width: xLimit, height: yLimit)
     }
 
     func pinchEnded(_ touch1: CGPoint, touch2: CGPoint) {
@@ -81,15 +97,13 @@ class RampNode: SKNode {
         let yScale = (touch1.y - touch2.y) / initialY
         triangleWidth = limitRampSize(triangleWidth * xScale)
         triangleHeight = limitRampSize(triangleHeight * yScale)
-        redrawTriangle(triangleWidth, height: triangleHeight)
+        redrawTriangle(width: triangleWidth, height: triangleHeight)
     }
 
     func select() {
-        rampNode.fillColor = RampNode.selectedColor
     }
 
     func unselect() {
-        rampNode.fillColor = RampNode.rampColor
     }
 
     required init?(coder aDecoder: NSCoder) {
