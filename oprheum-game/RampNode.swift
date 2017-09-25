@@ -36,7 +36,6 @@ class RampNode: SKNode {
         rampNode.setScale(3*scale)
         rampNode.physicsBody?.mass = 10000
         rampNode.position = CGPoint(x: 250, y: 250)
-        
 
         cropNode = SKCropNode()
         cropNode.addChild(rampNode)
